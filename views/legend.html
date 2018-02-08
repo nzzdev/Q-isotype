@@ -1,0 +1,8 @@
+{% if not item.options.hideLegend %}
+<div class="q-isotype-legend">
+  {%- for category in categories %}
+  <span class="q-isotype-legend-item s-font-note">
+    <img src="{{ item.icons[loop.index0].url }}" style="height: 100%" />{{category}}</span>
+  {%- endfor %}
+</div>
+{%- endif %}

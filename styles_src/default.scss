@@ -1,4 +1,39 @@
-$color: purple;
-h1 {
-  color: $color;
+.q-isotype {
+  opacity: 1 !important;
+}
+
+.q-isotype-legend {
+  text-align: right;
+  height: 20px;
+}
+
+.q-isotype-row-title {
+  margin-bottom: 6px;
+}
+
+.q-isotype-icon-row {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.q-isotype-icon-container {
+  width: 6%;
+}
+
+.q-isotype-icon-png,
+.q-isotype-icon-svg {
+  padding-bottom: 100%;
+}
+
+.q-isotype-icon-png {
+  background-size: contain;
+}
+
+.q-isotype-icon-svg {
+  position: relative;
+
+  & svg {
+    position: absolute;
+    display: block;
+  }
 }
