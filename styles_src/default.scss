@@ -2,6 +2,10 @@ $legend-size: 26px;
 
 .q-isotype {
   opacity: 1 !important;
+
+  &-row {
+    margin-bottom: 24px;
+  }
 }
 
 .q-isotype-legend {
@@ -38,7 +42,6 @@ $legend-size: 26px;
 
 .q-isotype-icon-row {
   display: flex;
-  margin-bottom: 24px;
   flex-wrap: wrap;
 }
 

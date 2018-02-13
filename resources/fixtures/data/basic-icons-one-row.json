@@ -1,5 +1,6 @@
 {
-  "title": "FIXTURE: Basic mit 6 Kategorien",
+  "title":
+    "FIXTURE: Basic mit 6 Kategorien - Icons pro Kategorie nebeneinander",
   "subtitle": "Noch ein Untertitel",
   "data": [
     [
@@ -91,5 +92,9 @@
     {
       "text": "Noch eine Quelle ohne Link"
     }
-  ]
+  ],
+  "options": {
+    "hideLegend": false,
+    "iconsOneRow": true
+  }
 }
