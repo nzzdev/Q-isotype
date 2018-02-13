@@ -29,18 +29,22 @@ function validateAgainstSchema(item, options) {
   if (validate(item)) {
     return item;
   } else {
+    console.log("item not valid");
     throw Boom.badRequest(JSON.stringify(validate.errors));
   }
 }
 
 async function validatePayload(payload, options, next) {
   if (typeof payload !== "object") {
+    console.log("payload not an object");
     return next(Boom.badRequest(), payload);
   }
   if (typeof payload.item !== "object") {
+    console.log("item not an object");
     return next(Boom.badRequest(), payload);
   }
   if (typeof payload.toolRuntimeConfig !== "object") {
+    console.log("toolRuntimeConfig not an object");
     return next(Boom.badRequest(), payload);
   }
   await validateAgainstSchema(payload.item, options);
