@@ -1,23 +1,53 @@
+$legend-size: 26px;
+
 .q-isotype {
   opacity: 1 !important;
 }
 
 .q-isotype-legend {
   text-align: right;
-  height: 20px;
-}
+  display: flex;
+  justify-content: flex-end;
+  line-height: $legend-size;
+  flex-wrap: wrap;
 
-.q-isotype-row-title {
-  margin-bottom: 6px;
+  &-container {
+    display: flex;
+    margin-bottom: 12px;
+  }
+
+  &-png,
+  &-svg {
+    margin-right: 5px;
+    margin-left: 12px;
+  }
+
+  &-png,
+  &-svg {
+    height: $legend-size;
+  }
+
+  &-png img {
+    height: 100%;
+  }
+
+  &-svg svg {
+    height: 100%;
+  }
 }
 
 .q-isotype-icon-row {
   display: flex;
   margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
 .q-isotype-icon-container {
-  width: 6%;
+  min-width: 26px;
+  max-width: 36px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-top: 6px;
 }
 
 .q-isotype-icon-png,

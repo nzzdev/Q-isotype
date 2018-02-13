@@ -1,8 +1,18 @@
 {% if not item.options.hideLegend %}
-<div class="q-isotype-legend">
+<div class="q-isotype-legend s-font-note">
   {%- for category in categories %}
-  <span class="q-isotype-legend-item s-font-note">
-    <img src="{{ item.icons[loop.index0].url }}" style="height: 100%" />{{category}}</span>
+  <div class="q-isotype-legend-container">
+    {% if item.icons[loop.index0].svg %}
+    <div class="q-isotype-legend-svg">
+      {{ item.icons[loop.index0].svg | safe }}
+    </div>
+    {% else %}
+    <div class="q-isotype-legend-png">
+      <img src="{{ item.icons[loop.index0].url }}" />
+    </div>
+    {%- endif %}
+    <div class="q-isotype-legend-category">{{category}}</div>
+  </div>
   {%- endfor %}
 </div>
 {%- endif %}

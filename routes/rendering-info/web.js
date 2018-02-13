@@ -148,6 +148,18 @@ module.exports = {
       categories = item.data[0].slice(1);
     }
 
+    let sumAmounts = [];
+    item.data.slice(1).forEach(entry => {
+      sumAmounts.push(
+        entry.slice(1).reduce((acc, current) => {
+          return acc + current;
+        }, 0)
+      );
+    });
+
+    const maxAmount = Math.max(...sumAmounts);
+    item.maxAmount = 100 / maxAmount;
+
     if (item.icons) {
       await Promise.all(
         item.icons.map(async icon => {
