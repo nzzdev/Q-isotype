@@ -7,7 +7,7 @@
     <div class="q-isotype-icon-row">
       {% for value in row %} {% set currentCategoryIndex = loop.index0 %} {% if currentCategoryIndex > 0 %} {% for i in range(row[currentCategoryIndex])
       -%} {% if item.icons and item.icons[currentCategoryIndex - 1] %}
-      <div class="q-isotype-icon-container" style="width: {{ item.maxAmount }}%;">
+      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
         {% if item.icons[currentCategoryIndex - 1].svg %}
         <div class="q-isotype-icon-svg" style="{{ item.icons[currentCategoryIndex - 1].style }};">
           {{ item.icons[currentCategoryIndex - 1].svg | safe }}
@@ -22,7 +22,7 @@
     <div class="q-isotype-icon-row">
       {% if currentCategoryIndex > 0 %} {% for i in range(row[currentCategoryIndex]) -%} {% if item.icons and item.icons[currentCategoryIndex
       - 1] %}
-      <div class="q-isotype-icon-container" style="width: {{ item.maxAmount }}%;">
+      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
         {% if item.icons[currentCategoryIndex - 1].svg %}
         <div class="q-isotype-icon-svg" style="{{ item.icons[currentCategoryIndex - 1].style }};">
           {{ item.icons[currentCategoryIndex - 1].svg | safe }}

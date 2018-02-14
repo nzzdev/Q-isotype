@@ -1,6 +1,6 @@
 <div class="s-q-item__footer">
   {%- if item.notes %}
-  <span>{{ item.notes }}&nbsp;&ndash;&nbsp;</span>
+  <span>{{ item.notes }} {%- if item.sources.length > 0 %}&nbsp;&ndash;&nbsp; {%- endif %}</span>
   {%- endif %} {%- if item.sources.length > 0 %} {%- if item.sources.length > 1 %} Quellen: {%- else %} Quelle: {%- endif %}
   {%- for source in item.sources %} {%- if source.text !== "" %} {%- if source.link and source.link.url and source.link.isValid
   %}

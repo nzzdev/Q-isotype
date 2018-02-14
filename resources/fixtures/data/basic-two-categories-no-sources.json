@@ -1,5 +1,5 @@
 {
-  "title": "FIXTURE: Basic mit zwei Kategorien",
+  "title": "FIXTURE: Basic mit zwei Kategorien - keine Quellen",
   "subtitle": "Noch ein Untertitel",
   "data": [
     ["Filme", "Oscar", "Golden Globe"],
@@ -28,24 +28,5 @@
       }
     }
   ],
-  "notes": "Groooosses Kino",
-  "sources": [
-    {
-      "text": "NZZ",
-      "link": {
-        "isValid": true,
-        "url": "https://nzz.ch"
-      }
-    },
-    {
-      "text": "Github",
-      "link": {
-        "isValid": true,
-        "url": "https://github.com/nzzdev/Q-isotype"
-      }
-    },
-    {
-      "text": "Noch eine Quelle ohne Link"
-    }
-  ]
+  "notes": "Groooosses Kino"
 }

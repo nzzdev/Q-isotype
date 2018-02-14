@@ -64,7 +64,7 @@ function getIntegerValues(data) {
       if (cell === null) {
         return null;
       }
-      return parseInt(cell);
+      return parseInt(cell, 10);
     });
   });
 }
@@ -76,9 +76,9 @@ function getResizeImageUrl(image) {
   );
 }
 
-var attrToLowerCase = function(name) {
+function attrToLowerCase(name) {
   return name.toLowerCase();
-};
+}
 
 function getSvgSizeStyle(svg) {
   return new Promise((resolve, reject) => {
@@ -104,18 +104,20 @@ function getSvgSizeStyle(svg) {
         let width;
         try {
           if (hasWidthHeightAttr) {
-            height = parseInt(result.SVG.ATTR["height"]);
-            width = parseInt(result.SVG.ATTR["width"]);
+            height = parseInt(result.SVG.ATTR["height"], 10);
+            width = parseInt(result.SVG.ATTR["width"], 10);
           } else {
             width = parseInt(
               result.SVG.ATTR["viewbox"]
                 .toString()
-                .replace(/^\d+\s\d+\s(\d+\.?[\d])\s(\d+\.?[\d])/, "$1")
+                .replace(/^\d+\s\d+\s(\d+\.?[\d])\s(\d+\.?[\d])/, "$1"),
+              10
             );
             height = parseInt(
               result.SVG.ATTR["viewbox"]
                 .toString()
-                .replace(/^\d+\s\d+\s(\d+\.?[\d])\s(\d+\.?[\d])/, "$2")
+                .replace(/^\d+\s\d+\s(\d+\.?[\d])\s(\d+\.?[\d])/, "$2"),
+              10
             );
           }
           if (height > width) {
@@ -153,8 +155,10 @@ module.exports = {
     }
 
     let sumAmounts = [];
+    // cutting off the header row as it contains no values just categories
     item.data.slice(1).forEach(entry => {
       sumAmounts.push(
+        // cutting off the row title
         entry.slice(1).reduce((acc, current) => {
           return acc + current;
         }, 0)
@@ -162,7 +166,6 @@ module.exports = {
     });
 
     const maxAmount = Math.max(...sumAmounts);
-    item.maxAmount = 100 / maxAmount;
 
     if (item.icons) {
       await Promise.all(
@@ -192,11 +195,11 @@ module.exports = {
 
     const context = {
       item: item,
-      categories: categories
+      categories: categories,
+      maxAmountWidth: 100 / maxAmount
     };
 
     const renderingInfo = {
-      polyfills: ["Promise"],
       stylesheets: [
         {
           name: styleHashMap["default"]

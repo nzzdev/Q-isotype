@@ -1,6 +1,6 @@
 {
   "title":
-    "FIXTURE: Basic mit 6 Kategorien - Icons pro Kategorie nebeneinander",
+    "FIXTURE: Basic mit 6 Kategorien - ohne Legende - ohne Anmerkungen - eine Quelle",
   "subtitle": "Noch ein Untertitel",
   "data": [
     [
@@ -73,7 +73,6 @@
       }
     }
   ],
-  "notes": "Groooosses Kino",
   "sources": [
     {
       "text": "NZZ",
@@ -81,20 +80,9 @@
         "isValid": true,
         "url": "https://nzz.ch"
       }
-    },
-    {
-      "text": "Github",
-      "link": {
-        "isValid": true,
-        "url": "https://github.com/nzzdev/Q-isotype"
-      }
-    },
-    {
-      "text": "Noch eine Quelle ohne Link"
     }
   ],
   "options": {
-    "hideLegend": false,
-    "iconsOneRow": true
+    "hideLegend": true
   }
 }
