@@ -10,9 +10,105 @@
     "subtitle": {
       "title": "Untertitel",
       "type": "string"
+    },
+    "data": {
+      "title": "Daten",
+      "type": "array",
+      "Q:type": "table",
+      "Q:options": {
+        "allowTranspose": false
+      },
+      "items": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "minItems": 1
+    },
+    "icons": {
+      "title": "Isotype Icons",
+      "type": "array",
+      "Q:options": {
+        "expandable": true
+      },
+      "items": {
+        "title": "Isotype Icon",
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "object",
+            "Q:type": "files",
+            "Q:options": {
+              "maxFiles": 1,
+              "acceptedFiles": "image/png,image/svg+xml",
+              "fileProperties": {
+                "url": "url",
+                "key": "key",
+                "size": "size",
+                "width": "width",
+                "height": "height"
+              }
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "title": "Quellen",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "Quelle",
+        "properties": {
+          "text": {
+            "title": "Text",
+            "type": "string"
+          },
+          "link": {
+            "Q:type": "link",
+            "title": "Link",
+            "type": "object",
+            "properties": {
+              "url": {
+                "title": "Url",
+                "type": "string"
+              },
+              "isValid": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "required": ["text"]
+      }
+    },
+    "notes": {
+      "title": "Anmerkungen",
+      "type": "string"
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "hideLegend": {
+          "title": "Legende ausblenden",
+          "type": "boolean",
+          "default": false
+        },
+        "iconsOneRow": {
+          "title": "Unterschiedliche Icons nebeneinander anzeigen",
+          "type": "boolean",
+          "default": false
+        }
+      }
     }
   },
-  "required": [
-    "title"
-  ]
+  "required": ["title"]
 }

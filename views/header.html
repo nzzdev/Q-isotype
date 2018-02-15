@@ -1,0 +1,4 @@
+{% if displayOptions.hideTitle !== true %}
+<h3 class="s-q-item__title">{{ item.title }}</h3>{% endif %} {%- if item.subtitle and item.subtitle !== '' %}
+<div class="s-q-item__subtitle s-font-note">{{ item.subtitle }}</div>
+{%- endif %}
