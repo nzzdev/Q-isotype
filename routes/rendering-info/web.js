@@ -80,7 +80,7 @@ function attrToLowerCase(name) {
   return name.toLowerCase();
 }
 
-function getSvgSizeStyle(svg) {
+function getSvgInfo(svg) {
   return new Promise((resolve, reject) => {
     parseString(
       svg,
@@ -121,9 +121,17 @@ function getSvgSizeStyle(svg) {
             );
           }
           if (height > width) {
-            resolve("height: 100%");
+            resolve({
+              hasHeight: result.SVG.ATTR["height"] !== undefined,
+              hasWidth: result.SVG.ATTR["width"] !== undefined,
+              style: "height: 100%"
+            });
           } else {
-            resolve("width: 100%");
+            resolve({
+              hasHeight: result.SVG.ATTR["height"] !== undefined,
+              hasWidth: result.SVG.ATTR["width"] !== undefined,
+              style: "width: 100%"
+            });
           }
         } catch (err) {
           reject(err);
@@ -131,6 +139,18 @@ function getSvgSizeStyle(svg) {
       }
     );
   });
+}
+
+function getCleanedSvg(svg, svgInfo) {
+  if (svgInfo.hasHeight) {
+    // search in svg tag the height attribute and replace it with a space
+    svg = svg.replace(/(<svg[^>]*)height="[\d]*"(.*)/, "$1 $2");
+  }
+  if (svgInfo.hasWidth) {
+    // search in svg tag the width attribute and replace it with a space
+    svg = svg.replace(/(<svg[^>]*)width="[\d]*"(.*)/, "$1 $2");
+  }
+  return svg;
 }
 
 module.exports = {
@@ -178,8 +198,13 @@ module.exports = {
             ) {
               icon.svg = await response.text();
               try {
-                icon.style = await getSvgSizeStyle(icon.svg);
+                const svgInfo = await getSvgInfo(icon.svg);
+                icon.style = svgInfo.style;
+                if (svgInfo.hasHeight || svgInfo.hasWidth) {
+                  icon.svg = getCleanedSvg(icon.svg, svgInfo);
+                }
               } catch (err) {
+                console.log(err);
                 // fallback to background image and delete icon.svg?
               }
             }

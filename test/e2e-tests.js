@@ -78,6 +78,20 @@ lab.experiment("stylesheets route", () => {
   });
 });
 
+lab.experiment("locales route", () => {
+  it("returns existing english translation", async () => {
+    const response = await server.inject(`/locales/en/translation.json`);
+    expect(response.statusCode).to.be.equal(200);
+  });
+
+  it("returns Not Found when requesting an inexisting translation", async () => {
+    const response = await server.inject(
+      "/locales/inexisting/translation.json"
+    );
+    expect(response.statusCode).to.be.equal(404);
+  });
+});
+
 lab.experiment("rendering-info", () => {
   it("renders correct markup", async () => {
     const fixtureResponse = await server.inject("/fixtures/data");
@@ -94,6 +108,20 @@ lab.experiment("rendering-info", () => {
     expect(response.result.markup).startsWith(
       `<div class="s-q-item q-isotype"`
     );
+  });
+
+  it("renders correct markup including svg without height attribute", async () => {
+    const fixtureData = require(`${__dirname}/../resources/fixtures/data/only-svg-with-width-and-height-data-floats.json`);
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: fixtureData,
+        toolRuntimeConfig: {}
+      }
+    });
+    expect(response.statusCode).to.be.equal(200);
+    expect(response.result.markup).to.not.match(/.*<svg[^>]*height="[\d]*".*/);
   });
 
   it("returns 400 if no payload is given", async () => {
