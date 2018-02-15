@@ -1,0 +1,23 @@
+{
+  "title": "FIXTURE: nur PNG - keine Quellen",
+  "subtitle": "Noch ein Untertitel",
+  "data": [
+    ["Filme", "Oscar"],
+    ["La La Land", "10"],
+    ["Titanic", "13"],
+    ["Spotlight", "1"]
+  ],
+  "icons": [
+    {
+      "file": {
+        "url":
+          "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/07/13acc2fd-5503-450a-a4bc-75e707c527b2.png",
+        "key": "2018/02/07/13acc2fd-5503-450a-a4bc-75e707c527b2.png",
+        "size": 845,
+        "width": 64,
+        "height": 64
+      }
+    }
+  ],
+  "notes": "Groooosses Kino"
+}

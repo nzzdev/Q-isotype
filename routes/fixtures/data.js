@@ -3,10 +3,13 @@ const fixtureDataDirectory = "../../resources/fixtures/data";
 // provide every fixture data file present in ../../resources/fixtures/data
 // has to be in sync with files created in build task - see ../../tasks/build.js
 const fixtureData = [
-  require(`${fixtureDataDirectory}/basic.json`),
-  require(`${fixtureDataDirectory}/basic-two-categories-no-sources.json`),
-  require(`${fixtureDataDirectory}/basic-no-legend-no-notes-one-source.json`),
-  require(`${fixtureDataDirectory}/basic-icons-one-row-no-notes-no-sources.json`)
+  require(`${fixtureDataDirectory}/svg-png-viz-color.json`),
+  require(`${fixtureDataDirectory}/only-svg-viz-color.json`),
+  require(`${fixtureDataDirectory}/only-png-no-sources.json`),
+  require(`${fixtureDataDirectory}/svg-png-no-viz-color-no-source.json`),
+  require(`${fixtureDataDirectory}/svg-png-viz-color-missing-icon.json`),
+  require(`${fixtureDataDirectory}/svg-png-viz-color-no-legend-no-notes-one-source.json`),
+  require(`${fixtureDataDirectory}/svg-png-viz-color-one-row-no-footer.json`)
 ];
 
 module.exports = {
