@@ -110,7 +110,7 @@ lab.experiment("rendering-info", () => {
     );
   });
 
-  it("renders correct markup", async () => {
+  it("renders correct markup including svg without height attribute", async () => {
     const fixtureData = require(`${__dirname}/../resources/fixtures/data/only-svg-with-width-and-height-data-floats.json`);
     const response = await server.inject({
       url: "/rendering-info/web",
