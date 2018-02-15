@@ -1,0 +1,17 @@
+{
+  "Isotype": "isotype",
+  "Title": "title",
+  "Untertitel": "subtitle",
+  "Daten": "data",
+  "Isotype Icons": "isotype icons",
+  "Isotype Icon": "isotype icon",
+  "Quellen": "sources",
+  "Quelle": "source",
+  "Text": "text",
+  "Link": "link",
+  "Url": "url",
+  "Anmerkungen": "notes",
+  "Legende ausblenden": "hide legend",
+  "Unterschiedliche Icons nebeneinander anzeigen":
+    "display icons of different categories in one row"
+}

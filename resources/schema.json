@@ -105,7 +105,7 @@
         "iconsOneRow": {
           "title": "Unterschiedliche Icons nebeneinander anzeigen",
           "type": "boolean",
-          "default": "false"
+          "default": false
         }
       }
     }
