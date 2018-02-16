@@ -16,6 +16,12 @@
         <div class="q-isotype-icon-png" style="background-image: url('{{ item.icons[currentCategoryIndex - 1].url }}');"></div>
         {%- endif %}
       </div>
+      {% else %}
+      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
+        <div class="q-isotype-icon-svg" style="width: 100%;">
+          {%- include "./no-icon-default-svg.html"%}
+        </div>
+      </div>
       {%- endif %} {%- endfor %} {%- endif %} {%- endfor %}
     </div>
     {% else %} {% for value in row %} {% set currentCategoryIndex = loop.index0 %}
@@ -30,6 +36,12 @@
         {% else %}
         <div class="q-isotype-icon-png" style="background-image: url('{{ item.icons[currentCategoryIndex - 1].url }}');"></div>
         {%- endif %}
+      </div>
+      {% else %}
+      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
+        <div class="q-isotype-icon-svg" style="width: 100%;">
+          {%- include "./no-icon-default-svg.html"%}
+        </div>
       </div>
       {%- endif %} {%- endfor %} {%- endif %}
     </div>
