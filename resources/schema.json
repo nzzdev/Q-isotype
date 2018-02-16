@@ -16,7 +16,7 @@
       "type": "array",
       "Q:type": "table",
       "Q:options": {
-        "allowTranspose": false
+        "allowTranspose": true
       },
       "items": {
         "type": "array",
