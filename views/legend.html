@@ -7,9 +7,7 @@
       {{ item.icons[loop.index0].svg | safe }}
     </div>
     {% else %}
-    <div class="q-isotype-legend-png">
-      <img src="{{ item.icons[loop.index0].url }}" />
-    </div>
+    <div class="q-isotype-legend-png" style="background-image: url('{{ item.icons[loop.index0].url }}')"></div>
     {%- endif %}
     <div class="q-isotype-legend-category">{{category}}</div>
   </div>

@@ -24,15 +24,14 @@ $legend-size: 26px;
   &-svg {
     margin-right: 5px;
     margin-left: 12px;
-  }
-
-  &-png,
-  &-svg {
     height: $legend-size;
   }
 
-  &-png img {
-    height: 100%;
+  &-png {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 26px;
   }
 
   &-svg svg {
