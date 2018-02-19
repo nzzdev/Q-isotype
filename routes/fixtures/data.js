@@ -4,8 +4,10 @@ const fixtureDataDirectory = "../../resources/fixtures/data";
 // has to be in sync with files created in build task - see ../../tasks/build.js
 const fixtureData = [
   require(`${fixtureDataDirectory}/svg-png-viz-color.json`),
-  require(`${fixtureDataDirectory}/only-svg-viz-color.json`),
+  require(`${fixtureDataDirectory}/only-svg-sizes-viz-color.json`),
+  require(`${fixtureDataDirectory}/only-svg-sizes-one-row.json`),
   require(`${fixtureDataDirectory}/only-png-no-sources.json`),
+  require(`${fixtureDataDirectory}/only-png-no-sources-one-row.json`),
   require(`${fixtureDataDirectory}/svg-png-no-viz-color-no-source.json`),
   require(`${fixtureDataDirectory}/svg-png-viz-color-missing-icon.json`),
   require(`${fixtureDataDirectory}/svg-png-viz-color-no-legend-no-notes-one-source.json`),
