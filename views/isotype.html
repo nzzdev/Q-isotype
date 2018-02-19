@@ -16,12 +16,21 @@
         <div class="q-isotype-icon-png" style="background-image: url('{{ item.icons[currentCategoryIndex - 1].url }}');"></div>
         {%- endif %}
       </div>
+      {% else %}
+      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
+        <div class="q-isotype-icon-svg" style="width: 100%;">
+          {%- include "./no-icon-default-svg.html"%}
+        </div>
+      </div>
       {%- endif %} {%- endfor %} {%- endif %} {%- endfor %}
     </div>
-    {% else %} {% for value in row %} {% set currentCategoryIndex = loop.index0 %}
+    {% else %} {% for value in row %} {% set currentCategoryIndex = loop.index0 %} {% if currentCategoryIndex > 0 %}
     <div class="q-isotype-icon-row">
-      {% if currentCategoryIndex > 0 %} {% for i in range(row[currentCategoryIndex]) -%} {% if item.icons and item.icons[currentCategoryIndex
-      - 1] %}
+      {%- if row[currentCategoryIndex] == 0 or row[currentCategoryIndex] == null %}
+      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
+        <div class="q-isotype-icon-png"></div>
+      </div>
+      {% else %} {% for i in range(row[currentCategoryIndex]) -%} {% if item.icons and item.icons[currentCategoryIndex - 1] %}
       <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
         {% if item.icons[currentCategoryIndex - 1].svg %}
         <div class="q-isotype-icon-svg" style="{{ item.icons[currentCategoryIndex - 1].style }};">
@@ -31,9 +40,15 @@
         <div class="q-isotype-icon-png" style="background-image: url('{{ item.icons[currentCategoryIndex - 1].url }}');"></div>
         {%- endif %}
       </div>
+      {% else %}
+      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
+        <div class="q-isotype-icon-svg" style="width: 100%;">
+          {%- include "./no-icon-default-svg.html"%}
+        </div>
+      </div>
       {%- endif %} {%- endfor %} {%- endif %}
     </div>
-    {%- endfor %} {%- endif %}
+    {%- endif %} {%- endfor %} {%- endif %}
   </div>
   {%- endfor %} {%- endif %} {%- include "./footer.html" %}
 </div>

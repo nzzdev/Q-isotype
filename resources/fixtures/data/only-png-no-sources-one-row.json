@@ -1,5 +1,6 @@
 {
-  "title": "FIXTURE: nur PNG - alle Grössenoptionen - keine Quellen",
+  "title":
+    "FIXTURE: nur PNG - alle Grössenoptionen - eine Zeile - keine Quellen",
   "subtitle": "Noch ein Untertitel",
   "data": [
     ["Icons", "Hoch", "Breit", "Quadratisch"],
@@ -39,5 +40,8 @@
       }
     }
   ],
-  "notes": "Groooosses Kino"
+  "notes": "Groooosses Kino",
+  "options": {
+    "iconsOneRow": true
+  }
 }

@@ -14,6 +14,8 @@ const nunjucksEnv = new nunjucks.Environment();
 const viewsDir = path.join(__dirname, "/../../views/");
 const maxWidth = "40";
 
+const noIconDefault = require("../../resources/assets/no-icon-default.js");
+
 const schemaString = JSON.parse(
   fs.readFileSync(path.join(__dirname, "../../resources/", "schema.json"), {
     encoding: "utf-8"
@@ -205,7 +207,8 @@ module.exports = {
                 }
               } catch (err) {
                 console.log(err);
-                // fallback to background image and delete icon.svg?
+                icon.svg = noIconDefault;
+                icon.style = "width: 100%";
               }
             }
           } catch (err) {
