@@ -37,6 +37,7 @@ $legend-size: 26px;
 
   &-svg svg {
     height: 100%;
+    width: 100%;
   }
 }
 
@@ -70,5 +71,7 @@ $legend-size: 26px;
   & svg {
     position: absolute;
     display: block;
+    height: 100%;
+    width: 100%;
   }
 }
