@@ -26,7 +26,7 @@
     </div>
     {% else %} {% for value in row %} {% set currentCategoryIndex = loop.index0 %} {% if currentCategoryIndex > 0 %}
     <div class="q-isotype-icon-row">
-      {%- if row[currentCategoryIndex] == 0 or row[currentCategoryIndex] == null %}
+      {%- if categories.length == 1 and (row[currentCategoryIndex] == 0 or row[currentCategoryIndex] == null) %}
       <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
         <div class="q-isotype-icon-png"></div>
       </div>

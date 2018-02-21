@@ -1,0 +1,40 @@
+{
+  "title": "FIXTURE: SVG - eine Kategorie mit 0 Wert",
+  "subtitle": "Noch ein Untertitel",
+  "data": [
+    ["Icons", "Default gelb"],
+    ["Zeile 1", "10"],
+    ["Zeile 2", "0"],
+    ["Zeile 3", "3"]
+  ],
+  "icons": [
+    {
+      "file": {
+        "url":
+          "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/15/239b20b7-9d82-4ebf-9bc2-5bc2919a3434.svg",
+        "key": "2018/02/15/239b20b7-9d82-4ebf-9bc2-5bc2919a3434.svg",
+        "size": 511
+      }
+    }
+  ],
+  "notes": "Groooosses Kino",
+  "sources": [
+    {
+      "text": "NZZ",
+      "link": {
+        "isValid": true,
+        "url": "https://nzz.ch"
+      }
+    },
+    {
+      "text": "Github",
+      "link": {
+        "isValid": true,
+        "url": "https://github.com/nzzdev/Q-isotype"
+      }
+    },
+    {
+      "text": "Noch eine Quelle ohne Link"
+    }
+  ]
+}

@@ -12,7 +12,8 @@ const fixtureData = [
   require(`${fixtureDataDirectory}/svg-png-viz-color-missing-icon.json`),
   require(`${fixtureDataDirectory}/svg-png-viz-color-no-legend-no-notes-one-source.json`),
   require(`${fixtureDataDirectory}/svg-png-viz-color-one-row-no-footer.json`),
-  require(`${fixtureDataDirectory}/only-svg-with-width-and-height-data-floats.json`)
+  require(`${fixtureDataDirectory}/only-svg-with-width-and-height-data-floats.json`),
+  require(`${fixtureDataDirectory}/svg-one-category-with-zero-value.json`)
 ];
 
 module.exports = {
