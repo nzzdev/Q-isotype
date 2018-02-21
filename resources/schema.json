@@ -34,7 +34,7 @@
       "minItems": 1
     },
     "icons": {
-      "title": "Isotype Icons - Bitte beim Storytelling-Team bestellen",
+      "title": "Isotype Icons (Bitte beim Storytelling-Team bestellen)",
       "type": "array",
       "Q:options": {
         "expandable": true
