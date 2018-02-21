@@ -1,0 +1,23 @@
+{% if not item.options.hideLegend %}
+<div class="q-isotype-legend s-font-note">
+  {%- for category in categories %} {% if item.icons[loop.index0] %}
+  <div class="q-isotype-legend-container">
+    {% if item.icons[loop.index0].svg %}
+    <div class="q-isotype-legend-svg">
+      {{ item.icons[loop.index0].svg | safe }}
+    </div>
+    {% else %}
+    <div class="q-isotype-legend-png" style="background-image: url('{{ item.icons[loop.index0].url }}')"></div>
+    {%- endif %}
+    <div class="q-isotype-legend-category">{{category}}</div>
+  </div>
+  {% else %}
+  <div class="q-isotype-legend-container">
+    <div class="q-isotype-legend-svg">
+      {%- include "./no-icon-default-svg.html" %}
+    </div>
+    <div class="q-isotype-legend-category">{{category}}</div>
+  </div>
+  {%- endif %} {%- endfor %}
+</div>
+{%- endif %}

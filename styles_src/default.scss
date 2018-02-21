@@ -1,4 +1,77 @@
-$color: purple;
-h1 {
-  color: $color;
+$legend-size: 26px;
+
+.q-isotype {
+  opacity: 1 !important;
+
+  &-row {
+    margin-bottom: 24px;
+  }
+}
+
+.q-isotype-legend {
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  line-height: $legend-size;
+  flex-wrap: wrap;
+
+  &-container {
+    display: flex;
+    margin-bottom: 12px;
+  }
+
+  &-png,
+  &-svg {
+    margin-right: 5px;
+    margin-left: 12px;
+    height: $legend-size;
+    width: $legend-size;
+  }
+
+  &-png {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 26px;
+  }
+
+  &-svg svg {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.q-isotype-icon-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.q-isotype-icon-container {
+  min-width: 26px;
+  max-width: 36px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.q-isotype-icon-png,
+.q-isotype-icon-svg {
+  padding-bottom: 100%;
+}
+
+.q-isotype-icon-png {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.q-isotype-icon-svg {
+  position: relative;
+
+  & svg {
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
 }

@@ -1,0 +1,32 @@
+{
+  "title": "FIXTURE: SVG und PNG - keine viz-color - keine Quellen",
+  "subtitle": "Noch ein Untertitel",
+  "data": [
+    ["Filme", "Oscar", "Golden Globe"],
+    ["La La Land", "10", "12"],
+    ["Titanic", "13", "11"],
+    ["Spotlight", "1", "0"],
+    ["Spotlight", "1", null]
+  ],
+  "icons": [
+    {
+      "file": {
+        "url":
+          "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/15/a47987d9-e8b3-474d-8631-182bc92dbe4b.png",
+        "key": "2018/02/15/a47987d9-e8b3-474d-8631-182bc92dbe4b.png",
+        "size": 845,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "file": {
+        "url":
+          "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/08/bb3c4017-d8ca-4bc2-915c-7c7bc2cae7e2.svg",
+        "key": "2018/02/08/bb3c4017-d8ca-4bc2-915c-7c7bc2cae7e2.svg",
+        "size": 715
+      }
+    }
+  ],
+  "notes": "Groooosses Kino"
+}
