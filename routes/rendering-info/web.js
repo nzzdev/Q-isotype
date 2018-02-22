@@ -224,7 +224,8 @@ module.exports = {
     const context = {
       item: item,
       categories: categories,
-      maxAmountWidth: 100 / maxAmount
+      maxAmountWidth: 100 / maxAmount,
+      displayOptions: request.payload.toolRuntimeConfig.displayOptions || {}
     };
 
     const renderingInfo = {
