@@ -201,7 +201,8 @@ module.exports = {
               icon.svg = await response.text();
               try {
                 const svgInfo = await getSvgInfo(icon.svg);
-                icon.style = svgInfo.style;
+                // icon.style = svgInfo.style;
+                icon.style = "width:100%";
                 if (svgInfo.hasHeight || svgInfo.hasWidth) {
                   icon.svg = getCleanedSvg(icon.svg, svgInfo);
                 }
