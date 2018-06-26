@@ -5,11 +5,17 @@
   "properties": {
     "title": {
       "title": "Titel",
-      "type": "string"
+      "type": "string",
+      "Q:options": {
+        "placeholder": "Der Titel bringt die Kernaussage der Grafik auf den Punkt."
+      }
     },
     "subtitle": {
       "title": "Untertitel",
-      "type": "string"
+      "type": "string",
+      "Q:options": {
+        "placeholder": "Der Untertitel benennt präzise, was in der Grafik zu sehen ist, inklusive Einheiten."
+      }
     },
     "data": {
       "title": "Daten",
@@ -34,13 +40,13 @@
       "minItems": 1
     },
     "icons": {
-      "title": "Isotype Icons (Bitte beim Storytelling-Team bestellen)",
+      "title": "Icons (Bitte beim Storytelling-Team bestellen)",
       "type": "array",
       "Q:options": {
         "expandable": true
       },
       "items": {
-        "title": "Isotype Icon",
+        "title": "Icon",
         "type": "object",
         "properties": {
           "file": {
@@ -62,14 +68,14 @@
       }
     },
     "sources": {
-      "title": "Quellen",
+      "title": "Quelle(n)",
       "type": "array",
       "items": {
         "type": "object",
         "title": "Quelle",
         "properties": {
           "text": {
-            "title": "Text",
+            "title": "Quelle",
             "type": "string"
           },
           "link": {
@@ -78,8 +84,11 @@
             "type": "object",
             "properties": {
               "url": {
-                "title": "Url",
-                "type": "string"
+                "title": "Link",
+                "type": "string",
+                "Q:options": {
+                  "placeholder": "Direktlink zur Quelle, http://..."
+                }
               },
               "isValid": {
                 "type": "boolean"
