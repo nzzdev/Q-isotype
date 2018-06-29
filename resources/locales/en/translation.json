@@ -1,18 +1,20 @@
 {
-  "Isotype": "isotype",
-  "Title": "title",
-  "Untertitel": "subtitle",
-  "Daten": "data",
-  "Isotype Icons (Bitte beim Storytelling-Team bestellen)":
-    "isotype icons (please order icons from storytelling team)",
-  "Isotype Icon": "isotype icon",
-  "Quellen": "sources",
-  "Quelle": "source",
-  "Text": "text",
-  "Link": "link",
-  "Url": "url",
-  "Anmerkungen": "notes",
-  "Legende ausblenden": "hide legend",
+  "Isotype": "Isotype",
+  "Title": "Title",
+  "Untertitel": "Subtitle",
+  "Daten": "Data",
+  "Icons (Bitte beim Storytelling-Team bestellen)":
+    "Icons (please order icons from storytelling team)",
+  "Icon": "Icon",
+  "Quelle(n)": "Sources",
+  "Quelle": "Source",
+  "Link": "Link",
+  "Anmerkungen": "Notes",
+  "Legende ausblenden": "Hide legend",
   "Unterschiedliche Icons nebeneinander anzeigen":
-    "display icons of different categories in one row"
+    "Display icons of different categories in one row",
+  "Der Titel bringt die Kernaussage der Grafik auf den Punkt.":
+    "The title brings the core message of the graphic to the point.",
+  "Der Untertitel benennt präzise, was in der Grafik zu sehen ist, inklusive Einheiten.":
+    "The subtitle names precisely what can be seen in the graphic, including units."
 }
