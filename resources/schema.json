@@ -115,6 +115,31 @@
           "title": "Unterschiedliche Icons nebeneinander anzeigen",
           "type": "boolean",
           "default": false
+        },
+        "highlightDataSeries": {
+          "title": "Hervorhebung",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "Q:options": {
+            "dynamicEnum": {
+              "type": "ToolEndpoint",
+              "withData": true,
+              "endpoint": "dynamic-enum/highlightColumn"
+            },
+            "availabilityChecks": [
+              {
+                "type": "ToolEndpoint",
+                "withData": true,
+                "endpoint": "option-availability/highlightColumn"
+              }
+            ]
+          }
         }
       }
     }
