@@ -116,7 +116,7 @@
           "type": "boolean",
           "default": false
         },
-        "highlightDataSeries": {
+        "highlightColumn": {
           "title": "Hervorhebung",
           "oneOf": [
             {
