@@ -7,7 +7,7 @@
     <div class="q-isotype-icon-row">
       {% for value in row %} {% set currentCategoryIndex = loop.index0 %} {% if currentCategoryIndex > 0 %} {% for i in range(row[currentCategoryIndex])
       -%} {% if item.icons and item.icons[currentCategoryIndex - 1] %}
-      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
+      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%; {%- if item.options.highlightColumn !== null and item.options.highlightColumn !== currentCategoryIndex %}opacity:0.65;{%- endif %}">
         {% if item.icons[currentCategoryIndex - 1].svg %}
         <div class="q-isotype-icon-svg" style="{{ item.icons[currentCategoryIndex - 1].style }};">
           {{ item.icons[currentCategoryIndex - 1].svg | safe }}
@@ -17,7 +17,7 @@
         {%- endif %}
       </div>
       {% else %}
-      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
+      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%; {%- if item.options.highlightColumn !== null and item.options.highlightColumn !== currentCategoryIndex %}opacity:0.65;{%- endif %}">
         <div class="q-isotype-icon-svg" style="width: 100%;">
           {%- include "./no-icon-default-svg.html"%}
         </div>
@@ -27,11 +27,11 @@
     {% else %} {% for value in row %} {% set currentCategoryIndex = loop.index0 %} {% if currentCategoryIndex > 0 %}
     <div class="q-isotype-icon-row">
       {%- if categories.length == 1 and (row[currentCategoryIndex] == 0 or row[currentCategoryIndex] == null) %}
-      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
+      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%; {%- if item.options.highlightColumn !== null and item.options.highlightColumn !== currentCategoryIndex %}opacity:0.65;{%- endif %}">
         <div class="q-isotype-icon-png"></div>
       </div>
       {% else %} {% for i in range(row[currentCategoryIndex]) -%} {% if item.icons and item.icons[currentCategoryIndex - 1] %}
-      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
+      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%; {%- if item.options.highlightColumn !== null and item.options.highlightColumn !== currentCategoryIndex %}opacity:0.65;{%- endif %}">
         {% if item.icons[currentCategoryIndex - 1].svg %}
         <div class="q-isotype-icon-svg" style="{{ item.icons[currentCategoryIndex - 1].style }};">
           {{ item.icons[currentCategoryIndex - 1].svg | safe }}
@@ -41,7 +41,7 @@
         {%- endif %}
       </div>
       {% else %}
-      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
+      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%; {%- if item.options.highlightColumn !== null and item.options.highlightColumn !== currentCategoryIndex %}opacity:0.65;{%- endif %}">
         <div class="q-isotype-icon-svg" style="width: 100%;">
           {%- include "./no-icon-default-svg.html"%}
         </div>
