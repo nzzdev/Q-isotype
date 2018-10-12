@@ -1,7 +1,8 @@
 {% if not item.options.hideLegend %}
 <div class="q-isotype-legend s-font-note">
   {%- for category in categories %} {% if item.icons[loop.index0] %}
-  <div class="q-isotype-legend-container">
+  <div class="q-isotype-legend-container"
+  {%- if item.options.highlightColumn !== null and item.options.highlightColumn !== loop.index %}style="opacity:0.65;"{%- endif %}>
     {% if item.icons[loop.index0].svg %}
     <div class="q-isotype-legend-svg">
       {{ item.icons[loop.index0].svg | safe }}
@@ -12,7 +13,8 @@
     <div class="q-isotype-legend-category">{{category}}</div>
   </div>
   {% else %}
-  <div class="q-isotype-legend-container">
+  <div class="q-isotype-legend-container"
+  {%- if item.options.highlightColumn !== null and item.options.highlightColumn !== loop.index %}style="opacity:0.65;"{%- endif %}>
     <div class="q-isotype-legend-svg">
       {%- include "./no-icon-default-svg.html" %}
     </div>
