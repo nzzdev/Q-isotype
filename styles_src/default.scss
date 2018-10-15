@@ -9,21 +9,19 @@ $legend-size: 26px;
 }
 
 .q-isotype-legend {
-  text-align: right;
   display: flex;
-  justify-content: flex-end;
   line-height: $legend-size;
   flex-wrap: wrap;
 
   &-container {
     display: flex;
     margin-bottom: 12px;
+    margin-right: 12px;
   }
 
   &-png,
   &-svg {
     margin-right: 5px;
-    margin-left: 12px;
     height: $legend-size;
     width: $legend-size;
   }
