@@ -234,3 +234,31 @@ lab.experiment("option-availability", () => {
     expect(response.result.available).to.be.equals(true);
   });
 });
+
+lab.experiment("download data", () => {
+  it("should return a csv file", async () => {
+    const item = require("../resources/fixtures/data/highlight-category.json");
+    const response = await server.inject({
+      url: "/data",
+      method: "POST",
+      payload: {
+        item: item
+      }
+    });
+    expect(response.headers["content-disposition"]).to.be.equals(
+      "attachment; filename=isotype-FIXTURE:-Highlight-category.csv"
+    );
+  });
+
+  it("should return data in a csv format", async () => {
+    const item = require("../resources/fixtures/data/highlight-category.json");
+    const response = await server.inject({
+      url: "/data",
+      method: "POST",
+      payload: {
+        item: item
+      }
+    });
+    expect(response.result.length).to.be.equals(95);
+  });
+});
