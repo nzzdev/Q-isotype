@@ -39,6 +39,11 @@
       },
       "minItems": 1
     },
+    "allowDownloadData": {
+      "title": "Daten zum Herunterladen anbieten",
+      "type": "boolean",
+      "default": "false"
+    },
     "icons": {
       "title": "Icons (Bitte beim Ressort Visuals bestellen)",
       "type": "array",
