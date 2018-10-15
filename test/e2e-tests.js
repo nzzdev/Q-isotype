@@ -187,18 +187,18 @@ lab.experiment("highlight icons", () => {
 
     const dom = new JSDOM(response.result.markup);
     const legendContainer = dom.window.document.querySelectorAll(
-      "div.q-isotype-legend-container"
+      "div.q-isotype-icon-row"
     );
 
-    expect(legendContainer[1].getAttribute("style")).to.be.equal(
-      "opacity:0.65;"
-    );
-    expect(legendContainer[2].getAttribute("style")).to.be.equal(
-      "opacity:0.65;"
-    );
-    expect(legendContainer[3].getAttribute("style")).to.be.equal(
-      "opacity:0.65;"
-    );
+    expect(
+      legendContainer[1].getAttribute("class").includes("q-isotype-lowlight")
+    ).to.be.equal(true);
+    expect(
+      legendContainer[2].getAttribute("class").includes("q-isotype-lowlight")
+    ).to.be.equal(true);
+    expect(
+      legendContainer[3].getAttribute("class").includes("q-isotype-lowlight")
+    ).to.be.equal(true);
   });
 });
 
