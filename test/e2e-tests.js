@@ -175,7 +175,7 @@ lab.experiment("rendering-info", () => {
 });
 
 lab.experiment("highlight icons", () => {
-  it("should highlight the legend", async () => {
+  it("should highlight the first svg in legend", async () => {
     const response = await server.inject({
       url: "/rendering-info/web",
       method: "POST",
@@ -186,19 +186,19 @@ lab.experiment("highlight icons", () => {
     });
 
     const dom = new JSDOM(response.result.markup);
-    const legendContainer = dom.window.document.querySelectorAll(
-      "div.q-isotype-icon-row"
+    const svgs = dom.window.document.querySelectorAll(
+      "div.q-isotype-legend-svg"
     );
-
-    expect(
-      legendContainer[1].getAttribute("class").includes("q-isotype-lowlight")
-    ).to.be.equal(true);
-    expect(
-      legendContainer[2].getAttribute("class").includes("q-isotype-lowlight")
-    ).to.be.equal(true);
-    expect(
-      legendContainer[3].getAttribute("class").includes("q-isotype-lowlight")
-    ).to.be.equal(true);
+    expect(svgs[0].getAttribute("class")).to.be.equals("q-isotype-legend-svg");
+    expect(svgs[1].getAttribute("class")).to.be.equals(
+      "q-isotype-legend-svg q-isotype-lowlight"
+    );
+    expect(svgs[2].getAttribute("class")).to.be.equals(
+      "q-isotype-legend-svg q-isotype-lowlight"
+    );
+    expect(svgs[3].getAttribute("class")).to.be.equals(
+      "q-isotype-legend-svg q-isotype-lowlight"
+    );
   });
 });
 
