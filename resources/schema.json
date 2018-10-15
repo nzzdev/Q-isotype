@@ -40,7 +40,7 @@
       "minItems": 1
     },
     "icons": {
-      "title": "Icons (Bitte beim Storytelling-Team bestellen)",
+      "title": "Icons (Bitte beim Ressort Visuals bestellen)",
       "type": "array",
       "Q:options": {
         "expandable": true
