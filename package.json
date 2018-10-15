@@ -27,6 +27,7 @@
     "xml2js": "^0.4.19"
   },
   "devDependencies": {
+    "jsdom": "^12.2.0",
     "standard": "^10.0.3"
   }
 }
