@@ -2,6 +2,8 @@ const fs = require("fs");
 const Lab = require("lab");
 const Code = require("code");
 const Hapi = require("hapi");
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 const lab = (exports.lab = Lab.script());
 
 const expect = Code.expect;
@@ -169,5 +171,66 @@ lab.experiment("rendering-info", () => {
       }
     });
     expect(response.result.stylesheets[0].name).to.be.equal(filename);
+  });
+});
+
+lab.experiment("highlight icons", () => {
+  it("should highlight the legend", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/highlight-category.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    const dom = new JSDOM(response.result.markup);
+    const legendContainer = dom.window.document.querySelectorAll(
+      "div.q-isotype-legend-container"
+    );
+
+    expect(legendContainer[1].getAttribute("style")).to.be.equal(
+      "opacity:0.65;"
+    );
+    expect(legendContainer[2].getAttribute("style")).to.be.equal(
+      "opacity:0.65;"
+    );
+    expect(legendContainer[3].getAttribute("style")).to.be.equal(
+      "opacity:0.65;"
+    );
+  });
+});
+
+lab.experiment("dynamic-enum", () => {
+  it("returns columns displayed in options dropdown", async () => {
+    const item = require("../resources/fixtures/data/highlight-category.json");
+    const response = await server.inject({
+      url: "/dynamic-enum/highlightColumn",
+      method: "POST",
+      payload: item
+    });
+
+    expect(response.result.enum).to.be.equals([null, 1, 2, 3, 4]);
+    expect(response.result.enum_titles).to.be.equals([
+      "keine",
+      "Hoch",
+      "Breit",
+      "Quadratisch",
+      "Viz Gelb"
+    ]);
+  });
+});
+
+lab.experiment("option-availability", () => {
+  it("returns if option is displayed or not", async () => {
+    const item = require("../resources/fixtures/data/highlight-category.json");
+    const response = await server.inject({
+      url: "/option-availability/highlightColumn",
+      method: "POST",
+      payload: item
+    });
+
+    expect(response.result.available).to.be.equals(true);
   });
 });
