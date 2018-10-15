@@ -229,6 +229,12 @@ module.exports = {
       displayOptions: request.payload.toolRuntimeConfig.displayOptions || {}
     };
 
+    if (item.allowDownloadData) {
+      context.linkToCSV = `${
+        request.payload.toolRuntimeConfig.toolBaseUrl
+      }/data?appendItemToPayload=${request.query._id}`;
+    }
+
     const renderingInfo = {
       stylesheets: [
         {
