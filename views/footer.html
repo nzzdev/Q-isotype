@@ -6,4 +6,7 @@
   %}
   <a href="{{ source.link.url }}" target="blank" rel="noopener noreferrer">{{ source.text }}</a>
   {%- else %} {{ source.text }} {%- endif %} {%- if not loop.last %}, {%- endif %} {%- endif %} {%- endfor %} {%- endif %}
+  {%- if item.acronym %} 
+   {%- if item.notes or item.sources.length > 0 %}&nbsp;&ndash;&nbsp;{%- endif %}Grafik: {{ item.acronym }}
+  {%- endif %}
 </div>
