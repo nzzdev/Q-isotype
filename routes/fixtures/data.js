@@ -14,7 +14,8 @@ const fixtureData = [
   require(`${fixtureDataDirectory}/svg-png-viz-color-one-row-no-footer.json`),
   require(`${fixtureDataDirectory}/only-svg-with-width-and-height-data-floats.json`),
   require(`${fixtureDataDirectory}/svg-one-category-with-zero-value.json`),
-  require(`${fixtureDataDirectory}/highlight-category.json`)
+  require(`${fixtureDataDirectory}/highlight-category.json`),
+  require(`${fixtureDataDirectory}/show-acronym.json`)
 ];
 
 module.exports = {
