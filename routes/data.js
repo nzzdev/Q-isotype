@@ -25,11 +25,11 @@ module.exports = {
 };
 
 function createCSV(json) {
-  var data = typeof json != "object" ? JSON.parse(json) : json;
-  var csv = "";
-  for (var i = 0; i < data.length; i++) {
-    var line = "";
-    for (var index in data[i]) {
+  const data = typeof json != "object" ? JSON.parse(json) : json;
+  let csv = "";
+  for (let i = 0; i < data.length; i++) {
+    let line = "";
+    for (let index in data[i]) {
       if (line !== "") {
         line += ",";
       }
