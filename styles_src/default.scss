@@ -16,12 +16,12 @@ $legend-size: 26px;
   &-container {
     display: flex;
     margin-bottom: 12px;
-    margin-right: 12px;
+    margin-right: 8px;
   }
 
   &-png,
   &-svg {
-    margin-right: 5px;
+    margin-right: 4px;
     height: $legend-size;
     width: $legend-size;
   }
