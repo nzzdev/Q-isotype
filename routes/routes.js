@@ -3,5 +3,8 @@ module.exports = [
   require("./stylesheet.js"),
   require("./health.js"),
   require("./locales.js"),
-  require("./fixtures/data.js")
+  require("./fixtures/data.js"),
+  require("./option-availability.js"),
+  require("./dynamic-enum.js"),
+  require("./data.js")
 ].concat(require("./schema.js"));

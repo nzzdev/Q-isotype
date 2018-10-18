@@ -25,7 +25,7 @@
       {%- endif %} {%- endfor %} {%- endif %} {%- endfor %}
     </div>
     {% else %} {% for value in row %} {% set currentCategoryIndex = loop.index0 %} {% if currentCategoryIndex > 0 %}
-    <div class="q-isotype-icon-row">
+    <div class="q-isotype-icon-row {%- if item.options.highlightColumn !== null and item.options.highlightColumn !== undefined and item.options.highlightColumn !== loop.index0 %} q-isotype-lowlight{%- endif %}">
       {%- if categories.length == 1 and (row[currentCategoryIndex] == 0 or row[currentCategoryIndex] == null) %}
       <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
         <div class="q-isotype-icon-png"></div>
