@@ -16,7 +16,8 @@ const fixtureData = [
   require(`${fixtureDataDirectory}/svg-one-category-with-zero-value.json`),
   require(`${fixtureDataDirectory}/highlight-category.json`),
   require(`${fixtureDataDirectory}/show-acronym.json`),
-  require(`${fixtureDataDirectory}/download-data.json`)
+  require(`${fixtureDataDirectory}/download-data.json`),
+  require(`${fixtureDataDirectory}/svg-use-references.json`)
 ];
 
 module.exports = {
