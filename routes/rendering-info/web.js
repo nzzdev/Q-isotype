@@ -216,6 +216,7 @@ module.exports = {
             console.log(err);
           }
           icon.url = getResizeImageUrl(icon.file);
+          icon.key = icon.file.key
           delete icon.file;
           return icon;
         })
