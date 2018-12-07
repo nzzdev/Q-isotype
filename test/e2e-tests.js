@@ -208,7 +208,7 @@ lab.experiment("dynamic-enum", () => {
     const response = await server.inject({
       url: "/dynamic-enum/highlightColumn",
       method: "POST",
-      payload: item
+      payload: { item: item }
     });
 
     expect(response.result.enum).to.be.equals([null, 1, 2, 3, 4]);
