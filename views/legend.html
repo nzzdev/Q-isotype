@@ -1,5 +1,7 @@
-{% if not item.options.hideLegend %}
-<div class="q-isotype-legend s-font-note">
+<div class="q-isotype-legend s-font-note"
+  {% if not item.options.hideLegend %}
+    style="visibility: hidden;"
+  {%- endif %}>
   {%- for category in categories %} {% if item.icons[loop.index0] %}
   <div class="q-isotype-legend-container">
     {% if item.icons[loop.index0].svg %}
@@ -27,4 +29,3 @@
   </div>
   {%- endif %} {%- endfor %}
 </div>
-{%- endif %}
