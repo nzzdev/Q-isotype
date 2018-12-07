@@ -14,7 +14,7 @@ module.exports = {
     if (request.params.optionName === "highlightColumn") {
       let isAvailable = false;
       if (request.payload.data !== null && request.payload.data !== undefined) {
-        if (request.payload.data[0].length > 2) {
+        if (request.payload.data[1][0].length > 2) {
           isAvailable = true;
         }
       }
