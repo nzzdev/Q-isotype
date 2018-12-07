@@ -145,7 +145,7 @@
                 "type": "ToolEndpoint",
                 "config": {
                   "endpoint": "option-availability/highlightColumn",
-                  "data": ["options", "data"]
+                  "fields": ["options", "data"]
                 }
               }
             ]
