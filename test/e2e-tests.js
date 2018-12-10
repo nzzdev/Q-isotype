@@ -228,7 +228,7 @@ lab.experiment("option-availability", () => {
     const response = await server.inject({
       url: "/option-availability/highlightColumn",
       method: "POST",
-      payload: item
+      payload: { item: item }
     });
 
     expect(response.result.available).to.be.equals(true);
