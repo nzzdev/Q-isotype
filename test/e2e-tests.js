@@ -200,6 +200,28 @@ lab.experiment("highlight icons", () => {
       "q-isotype-legend-svg q-isotype-lowlight"
     );
   });
+  it("should highlight the selected column when icons displayed on one row", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/highlight-category-one-row.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    const dom = new JSDOM(response.result.markup);
+    const rows = dom.window.document.querySelectorAll("div.q-isotype-icon-row");
+    expect(
+      rows[0].getElementsByClassName("q-isotype-lowlight").length
+    ).to.be.equals(11);
+    expect(
+      rows[1].getElementsByClassName("q-isotype-lowlight").length
+    ).to.be.equals(7);
+    expect(
+      rows[2].getElementsByClassName("q-isotype-lowlight").length
+    ).to.be.equals(11);
+  });
 });
 
 lab.experiment("dynamic-enum", () => {
