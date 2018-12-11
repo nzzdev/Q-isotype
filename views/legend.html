@@ -1,6 +1,6 @@
 <div class="q-isotype-legend s-font-note"
-  {% if not item.options.hideLegend %}
-    style="visibility: hidden;"
+  {% if item.options.hideLegend %}
+    style="visibility: hidden; height: 0;"
   {%- endif %}>
   {%- for category in categories %} {% if item.icons[loop.index0] %}
   <div class="q-isotype-legend-container">
