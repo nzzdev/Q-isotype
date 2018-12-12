@@ -4,26 +4,36 @@
   <div class="q-isotype-row">
     <div class="q-isotype-row-title s-font-text-s s-font-text-s--strong">{{ row[0] }}</div>
     {%- if item.options.iconsOneRow%}
-    <div class="q-isotype-icon-row">
-      {% for value in row %} {% set currentCategoryIndex = loop.index0 %} {% if currentCategoryIndex > 0 %} {% for i in range(row[currentCategoryIndex])
-      -%} {% if item.icons and item.icons[currentCategoryIndex - 1] %}
-      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
-        {% if item.icons[currentCategoryIndex - 1].svg %}
-        <div class="q-isotype-icon-svg" style="{{ item.icons[currentCategoryIndex - 1].style }};">
-          {{ item.icons[currentCategoryIndex - 1].svg | safe }}
-        </div>
-        {% else %}
-        <div class="q-isotype-icon-png" style="background-image: url('{{ item.icons[currentCategoryIndex - 1].url }}');"></div>
-        {%- endif %}
+      <div class="q-isotype-icon-row">
+        {% for value in row %} 
+        {% set currentCategoryIndex = loop.index0 %} 
+        {% if currentCategoryIndex > 0 %} 
+          {% for i in range(row[currentCategoryIndex])-%}
+            {% if item.icons and item.icons[currentCategoryIndex - 1] %}
+              <div class="q-isotype-icon-container {%- if item.options.highlightColumn !== null and item.options.highlightColumn !== undefined and item.options.highlightColumn !== currentCategoryIndex %} q-isotype-lowlight{%- endif %}" style="width: {{ maxAmountWidth }}%;">
+              {% if item.icons[currentCategoryIndex - 1].svg %}
+                <div class="q-isotype-icon-svg" style="{{ item.icons[currentCategoryIndex - 1].style }};">
+                  <svg>
+                    <use xlink:href="#{{item.icons[currentCategoryIndex - 1].key}}"></use>
+                  </svg>
+                </div>
+              {% else %}
+                <div class="q-isotype-icon-png" style="background-image: url('{{ item.icons[currentCategoryIndex - 1].url }}');"></div>
+              {%- endif %}
+              </div>
+              {% else %}
+                <div class="q-isotype-icon-container {%- if item.options.highlightColumn !== null and item.options.highlightColumn !== undefined and item.options.highlightColumn !== currentCategoryIndex %} q-isotype-lowlight{%- endif %}" style="width: {{ maxAmountWidth }}%;">
+                  <div class="q-isotype-icon-svg" style="width: 100%;">
+                    <svg>
+                      <use xlink:href="#no-icon-default-svg"></use>
+                    </svg>
+                  </div>
+                </div>
+              {%- endif %} 
+            {%- endfor %} 
+          {%- endif %} 
+        {%- endfor %}
       </div>
-      {% else %}
-      <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
-        <div class="q-isotype-icon-svg" style="width: 100%;">
-          {%- include "./no-icon-default-svg.html"%}
-        </div>
-      </div>
-      {%- endif %} {%- endfor %} {%- endif %} {%- endfor %}
-    </div>
     {% else %} {% for value in row %} {% set currentCategoryIndex = loop.index0 %} {% if currentCategoryIndex > 0 %}
     <div class="q-isotype-icon-row {%- if item.options.highlightColumn !== null and item.options.highlightColumn !== undefined and item.options.highlightColumn !== loop.index0 %} q-isotype-lowlight{%- endif %}">
       {%- if categories.length == 1 and (row[currentCategoryIndex] == 0 or row[currentCategoryIndex] == null) %}
@@ -34,7 +44,9 @@
       <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
         {% if item.icons[currentCategoryIndex - 1].svg %}
         <div class="q-isotype-icon-svg" style="{{ item.icons[currentCategoryIndex - 1].style }};">
-          {{ item.icons[currentCategoryIndex - 1].svg | safe }}
+          <svg>
+            <use xlink:href="#{{item.icons[currentCategoryIndex - 1].key}}"></use>
+          </svg>
         </div>
         {% else %}
         <div class="q-isotype-icon-png" style="background-image: url('{{ item.icons[currentCategoryIndex - 1].url }}');"></div>
@@ -43,7 +55,9 @@
       {% else %}
       <div class="q-isotype-icon-container" style="width: {{ maxAmountWidth }}%;">
         <div class="q-isotype-icon-svg" style="width: 100%;">
-          {%- include "./no-icon-default-svg.html"%}
+          <svg>
+            <use xlink:href="#no-icon-default-svg"></use>
+          </svg>
         </div>
       </div>
       {%- endif %} {%- endfor %} {%- endif %}

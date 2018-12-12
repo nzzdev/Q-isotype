@@ -65,7 +65,8 @@
                 "key": "key",
                 "size": "size",
                 "width": "width",
-                "height": "height"
+                "height": "height",
+                "type": "type"
               }
             }
           }
@@ -134,14 +135,18 @@
           "Q:options": {
             "dynamicEnum": {
               "type": "ToolEndpoint",
-              "withData": true,
-              "endpoint": "dynamic-enum/highlightColumn"
+              "config": {
+                "endpoint": "dynamic-enum/highlightColumn",
+                "fields": ["options", "data"]
+              }
             },
             "availabilityChecks": [
               {
                 "type": "ToolEndpoint",
-                "withData": true,
-                "endpoint": "option-availability/highlightColumn"
+                "config": {
+                  "endpoint": "option-availability/highlightColumn",
+                  "fields": ["options", "data"]
+                }
               }
             ]
           }

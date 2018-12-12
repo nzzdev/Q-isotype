@@ -31,8 +31,8 @@ module.exports = {
   handler: function(request, h) {
     if (request.params.optionName === "highlightColumn") {
       return {
-        enum: getHighlightEnum(request.payload),
-        enum_titles: getHighlightEnumTitles(request.payload)
+        enum: getHighlightEnum(request.payload.item),
+        enum_titles: getHighlightEnumTitles(request.payload.item)
       };
     }
     return Boom.badRequest();

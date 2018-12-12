@@ -1,0 +1,57 @@
+{
+  "title": "FIXTURE: SVG - use references",
+  "subtitle": "Noch ein Untertitel",
+  "data": [
+    [
+      "Kammer",
+      "Republikanische Frauen",
+      "Demokratische Frauen",
+      "Männer"
+    ],
+    [
+      "Senat",
+      "6",
+      "16",
+      "75"
+    ],
+    [
+      "Repräsentantenhaus",
+      "12",
+      "83",
+      "320"
+    ]
+  ],
+  "allowDownloadData": false,
+  "icons": [
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/12/06/womanRed-2be91a133129b4cbc1d03f349101273e.svg",
+        "key": "2018/12/06/womanRed-2be91a133129b4cbc1d03f349101273e.svg",
+        "size": 2431,
+        "type": "image/svg+xml"
+      }
+    },
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/12/06/woman-c4b9ecea4bfa25695cf0e53767c3c592.svg",
+        "key": "2018/12/06/woman-c4b9ecea4bfa25695cf0e53767c3c592.svg",
+        "size": 2431,
+        "type": "image/svg+xml"
+      }
+    },
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/12/06/man-f40b5f92e4f020cd1fe24688fff7f0a8.svg",
+        "key": "2018/12/06/man-f40b5f92e4f020cd1fe24688fff7f0a8.svg",
+        "size": 3472,
+        "type": "image/svg+xml"
+      }
+    }
+  ],
+  "sources": [],
+  "options": {
+    "hideLegend": false,
+    "iconsOneRow": false,
+    "highlightColumn": null
+  }
+}
