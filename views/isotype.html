@@ -2,7 +2,7 @@
   {%- include "./header.html" %} {%- include "./legend.html" %} {% if item.data and item.data.length > 1 %} {%- for row in
   item.data.slice(1) %}
   <div class="q-isotype-row">
-    <div class="q-isotype-row-title s-font-text-s s-font-text-s--strong">{{ row[0] }}</div>
+    <div class="q-isotype-row-title s-font-title-xs">{{ row[0] }}</div>
     {%- if item.options.iconsOneRow%}
       <div class="q-isotype-icon-row">
         {% for value in row %} 
