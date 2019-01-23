@@ -42,6 +42,13 @@ function element(markup, selector) {
   });
 }
 
+function elements(markup, selector) {
+  return new Promise((resolve, reject) => {
+    const dom = new JSDOM(markup);
+    resolve(dom.window.document.querySelectorAll(selector));
+  });
+}
+
 function elementCount(markup, selector) {
   return new Promise((resolve, reject) => {
     const dom = new JSDOM(markup);
@@ -60,19 +67,21 @@ lab.experiment("highlight icons", () => {
       }
     });
 
-    const dom = new JSDOM(response.result.markup);
-    const svgs = dom.window.document.querySelectorAll(
-      "div.q-isotype-legend-svg"
-    );
-    expect(svgs[0].getAttribute("class")).to.be.equals("q-isotype-legend-svg");
-    expect(svgs[1].getAttribute("class")).to.be.equals(
-      "q-isotype-legend-svg q-isotype-lowlight"
-    );
-    expect(svgs[2].getAttribute("class")).to.be.equals(
-      "q-isotype-legend-svg q-isotype-lowlight"
-    );
-    expect(svgs[3].getAttribute("class")).to.be.equals(
-      "q-isotype-legend-svg q-isotype-lowlight"
+    return elements(response.result.markup, "div.q-isotype-legend-svg").then(
+      elements => {
+        expect(elements[0].getAttribute("class")).to.be.equals(
+          "q-isotype-legend-svg"
+        );
+        expect(elements[1].getAttribute("class")).to.be.equals(
+          "q-isotype-legend-svg q-isotype-lowlight"
+        );
+        expect(elements[2].getAttribute("class")).to.be.equals(
+          "q-isotype-legend-svg q-isotype-lowlight"
+        );
+        expect(elements[3].getAttribute("class")).to.be.equals(
+          "q-isotype-legend-svg q-isotype-lowlight"
+        );
+      }
     );
   });
   it("should highlight the selected column when icons displayed on one row", async () => {
@@ -85,16 +94,18 @@ lab.experiment("highlight icons", () => {
       }
     });
 
-    const dom = new JSDOM(response.result.markup);
-    const rows = dom.window.document.querySelectorAll("div.q-isotype-icon-row");
-    expect(
-      rows[0].getElementsByClassName("q-isotype-lowlight").length
-    ).to.be.equals(11);
-    expect(
-      rows[1].getElementsByClassName("q-isotype-lowlight").length
-    ).to.be.equals(7);
-    expect(
-      rows[2].getElementsByClassName("q-isotype-lowlight").length
-    ).to.be.equals(11);
+    return elements(response.result.markup, "div.q-isotype-icon-row").then(
+      elements => {
+        expect(
+          elements[0].getElementsByClassName("q-isotype-lowlight").length
+        ).to.be.equals(11);
+        expect(
+          elements[1].getElementsByClassName("q-isotype-lowlight").length
+        ).to.be.equals(7);
+        expect(
+          elements[2].getElementsByClassName("q-isotype-lowlight").length
+        ).to.be.equals(11);
+      }
+    );
   });
 });
