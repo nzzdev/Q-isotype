@@ -1,9 +1,6 @@
-const fs = require("fs");
 const Lab = require("lab");
 const Code = require("code");
 const Hapi = require("hapi");
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
 const lab = (exports.lab = Lab.script());
 
 const expect = Code.expect;
@@ -12,8 +9,6 @@ const after = lab.after;
 const it = lab.it;
 
 const routes = require("../routes/routes.js");
-process.env.IMAGE_SERVICE_URL =
-  "https://q-images-staging-nzz-ch.global.ssl.fastly.net/{key}?width={width}&auto=webp";
 
 let server;
 
@@ -36,7 +31,6 @@ after(async () => {
   await server.stop({ timeout: 2000 });
   server = null;
 });
-
 lab.experiment("basics", () => {
   it("starts the server", () => {
     expect(server.info.created).to.be.a.number();
@@ -48,19 +42,33 @@ lab.experiment("basics", () => {
   });
 });
 
-lab.experiment("schema route", () => {
-  it("returns existing schema", async () => {
-    const response = await server.inject(`/schema.json`);
+lab.experiment("schema endpoint", () => {
+  it("returns 200 for /schema.json", async () => {
+    const response = await server.inject("/schema.json");
     expect(response.statusCode).to.be.equal(200);
-  });
-
-  it("returns Not Found when requesting an inexisting schema", async () => {
-    const response = await server.inject("/inexisting.json");
-    expect(response.statusCode).to.be.equal(404);
   });
 });
 
-lab.experiment("stylesheets route", () => {
+lab.experiment("locales endpoint", () => {
+  it("returns 200 for en translations", async () => {
+    const request = {
+      method: "GET",
+      url: "/locales/en/translation.json"
+    };
+    const response = await server.inject(request);
+    expect(response.statusCode).to.be.equal(200);
+  });
+  it("returns 200 for fr translations", async () => {
+    const request = {
+      method: "GET",
+      url: "/locales/fr/translation.json"
+    };
+    const response = await server.inject(request);
+    expect(response.statusCode).to.be.equal(200);
+  });
+});
+
+lab.experiment("stylesheets endpoint", () => {
   it(
     "returns existing stylesheet with right cache control header",
     { plan: 2 },
@@ -80,21 +88,7 @@ lab.experiment("stylesheets route", () => {
   });
 });
 
-lab.experiment("locales route", () => {
-  it("returns existing english translation", async () => {
-    const response = await server.inject(`/locales/en/translation.json`);
-    expect(response.statusCode).to.be.equal(200);
-  });
-
-  it("returns Not Found when requesting an inexisting translation", async () => {
-    const response = await server.inject(
-      "/locales/inexisting/translation.json"
-    );
-    expect(response.statusCode).to.be.equal(404);
-  });
-});
-
-lab.experiment("rendering-info", () => {
+lab.experiment("rendering-info endpoint", () => {
   it("renders correct markup", async () => {
     const fixtureResponse = await server.inject("/fixtures/data");
     const fixtureData = fixtureResponse.result;
@@ -157,71 +151,6 @@ lab.experiment("rendering-info", () => {
     });
     expect(response.statusCode).to.be.equal(400);
   });
-
-  it("returns compiled stylesheet name", async () => {
-    const fixtureResponse = await server.inject("/fixtures/data");
-    const fixtureData = fixtureResponse.result;
-    const filename = require("../styles/hashMap.json").default;
-    const response = await server.inject({
-      url: "/rendering-info/web",
-      method: "POST",
-      payload: {
-        item: fixtureData[0],
-        toolRuntimeConfig: {}
-      }
-    });
-    expect(response.result.stylesheets[0].name).to.be.equal(filename);
-  });
-});
-
-lab.experiment("highlight icons", () => {
-  it("should highlight the first svg in legend", async () => {
-    const response = await server.inject({
-      url: "/rendering-info/web",
-      method: "POST",
-      payload: {
-        item: require("../resources/fixtures/data/highlight-category.json"),
-        toolRuntimeConfig: {}
-      }
-    });
-
-    const dom = new JSDOM(response.result.markup);
-    const svgs = dom.window.document.querySelectorAll(
-      "div.q-isotype-legend-svg"
-    );
-    expect(svgs[0].getAttribute("class")).to.be.equals("q-isotype-legend-svg");
-    expect(svgs[1].getAttribute("class")).to.be.equals(
-      "q-isotype-legend-svg q-isotype-lowlight"
-    );
-    expect(svgs[2].getAttribute("class")).to.be.equals(
-      "q-isotype-legend-svg q-isotype-lowlight"
-    );
-    expect(svgs[3].getAttribute("class")).to.be.equals(
-      "q-isotype-legend-svg q-isotype-lowlight"
-    );
-  });
-  it("should highlight the selected column when icons displayed on one row", async () => {
-    const response = await server.inject({
-      url: "/rendering-info/web",
-      method: "POST",
-      payload: {
-        item: require("../resources/fixtures/data/highlight-category-one-row.json"),
-        toolRuntimeConfig: {}
-      }
-    });
-
-    const dom = new JSDOM(response.result.markup);
-    const rows = dom.window.document.querySelectorAll("div.q-isotype-icon-row");
-    expect(
-      rows[0].getElementsByClassName("q-isotype-lowlight").length
-    ).to.be.equals(11);
-    expect(
-      rows[1].getElementsByClassName("q-isotype-lowlight").length
-    ).to.be.equals(7);
-    expect(
-      rows[2].getElementsByClassName("q-isotype-lowlight").length
-    ).to.be.equals(11);
-  });
 });
 
 lab.experiment("dynamic-enum", () => {
@@ -282,5 +211,13 @@ lab.experiment("download data", () => {
       }
     });
     expect(response.result.length).to.be.equals(95);
+  });
+});
+
+lab.experiment("fixture data endpoint", () => {
+  it("returns 16 fixture data items for /fixtures/data", async () => {
+    const response = await server.inject("/fixtures/data");
+    expect(response.statusCode).to.be.equal(200);
+    expect(response.result.length).to.be.equal(16);
   });
 });
