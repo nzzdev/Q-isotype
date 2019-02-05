@@ -28,7 +28,7 @@
   "devDependencies": {
     "code": "^5.2.4",
     "jsdom": "^12.2.0",
-    "lab": "^15.5.0",
+    "lab": "^18.0.1",
     "standard": "^10.0.3"
   }
 }
