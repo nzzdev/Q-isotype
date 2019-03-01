@@ -24,8 +24,6 @@ const schemaString = JSON.parse(
 const Ajv = require("ajv");
 const ajv = new Ajv();
 
-ajv.addMetaSchema(require("ajv/lib/refs/json-schema-draft-04.json"));
-
 const validate = ajv.compile(schemaString);
 function validateAgainstSchema(item, options) {
   if (validate(item)) {
@@ -166,7 +164,7 @@ module.exports = {
       payload: validatePayload
     }
   },
-  handler: async function(request, h) {
+  handler: async function (request, h) {
     const item = request.payload.item;
 
     item.data = getIntegerValues(item.data);
@@ -233,7 +231,7 @@ module.exports = {
     if (item.allowDownloadData) {
       context.linkToCSV = `${
         request.payload.toolRuntimeConfig.toolBaseUrl
-      }/data?appendItemToPayload=${request.query._id}`;
+        }/data?appendItemToPayload=${request.query._id}`;
     }
 
     const renderingInfo = {
