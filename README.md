@@ -23,10 +23,28 @@ $ npm run build
 [to the top](#table-of-contents)
 
 ## Configuration
-If env variables, explained here
+
+The following environment variables must be specified when starting the tool:
+- `IMAGE_SERVICE_URL`
+Please have a look at the test environment for examples on what this variables should look like.
+
+[to the top](#table-of-contents)
 
 ## Development
-Prepare the cli and how to run the tool.
+Install the Q cli and start the Q dev server:
+```
+$ Q server
+``` 
+
+To run the tool create a new file called dev.js and use the env-variable listed above with the local urls.
+```
+process.env.IMAGE_SERVICE_URL = "https://q-images.nzz.ch/{key}?width=108&format=png&auto=webp";
+require('./index.js');
+```
+You can then start the tool with:
+```
+$ node dev.js
+``` 
 
 [to the top](#table-of-contents)
 
