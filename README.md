@@ -57,7 +57,10 @@ $ npm run test
 ```
 
 ### Implementing a new test
-Rules of when and where to implement a new test
+When changing or implementing...
+
+- A `route`, it needs to be tested in the `e2e-tests.js` file
+- Something on the frontend, it needs to be tested in the `dom-tests.js` file
 
 [to the top](#table-of-contents)
 
@@ -69,43 +72,48 @@ The tool structure follows the general structure of each Q tool. Further informa
 [to the top](#table-of-contents)
 
 ## Features
-Here are all features listed which will have an impact on the tool but are not options. For example spacing issues. If there's a visual aspect, a printscreen would be nice. 
-The printscreen can be implemented as following: 
-<img src="/doc/card-layout.png" align="right" width=300 height=355>
+
+### SVG reference
+For displaying the `svg`s, we're using the [svg reference feature](https://css-tricks.com/svg-use-with-external-reference-take-2/). 
+
+#### Implementation details
+- The reference is set in the [legend](https://github.com/nzzdev/Q-isotype/blob/dev/views/legend.html#L10-L12)
+- In the list the used `svg` simply has to be referenced as following:
+```
+<svg>
+  <use xlink:href="#{{ item.icons[loop.index0].key }}"></use>
+</svg>
+```
 
 [to the top](#table-of-contents)
 
 ## Options
-All options should be listed and explained. The varieties should be listed. If there's a visual aspect, a printscreen would be nice.
-The printscreen can be implemented as following: 
-<img src="/doc/card-layout.png" align="right" width=300 height=355>
+
+### Hide legend
+This option allows to hide the header of each column. By default it's `false`.
+
+#### Implementation details
+- If the option is used, the [legend won't be rendered](https://github.com/nzzdev/Q-isotype/blob/dev/views/legend.html#L2)
+
+### Show different icons next to each other
+This option allows all icons to be next to each other. By default it's `false`. 
+
+#### Implementation details
+- If the option is used, [everything will be rendered in the same div](https://github.com/nzzdev/Q-isotype/blob/dev/views/isotype.html#L7-L36)
+
+### Highlight column 
+This option allows the user to select a column and shows the other columns in a lower `opacity`.
+
+#### Implementation details
+- The option will be available if there are more than `2` columns
+- When selecting a column, the class `q-isotype-lowlight` will be assinged to all other columns
+- When selecting a column and the option `Show different icons next to each other` is selected, the class `q-isotype-lowlight` will be assinged to every `svg`.
 
 [to the top](#table-of-contents)
 
-## LICENSE
-Adding the license + updating the year. 
-
-## Installation
-
-
-
-## Development
-
-Install the [Q cli](https://github.com/nzzdev/Q-cli) and start the Q dev server:
-
-```
-$ Q server
-```
-
-Run the Q tool:
-```
-$ node index.js
-```
-
-## Implementation details
-The tool structure follows the general structure of each Q tool. Further information can be found in [Q server documentation - Developing tools](https://nzzdev.github.io/Q-server/developing-tools.html).
-
 ## License
-Copyright (c) 2018 Neue Zürcher Zeitung. All rights reserved.
+Copyright (c) 2019 Neue Zürcher Zeitung. All rights reserved.
 
 This software is published under the MIT license.
+
+[to the top](#table-of-contents)
