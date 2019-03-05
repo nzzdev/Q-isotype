@@ -56,6 +56,38 @@ function elementCount(markup, selector) {
   });
 }
 
+lab.experiment("hide legend", () => {
+  it("shows legend", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/show-legend.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return element(response.result.markup, ".q-isotype-legend").then(element => {
+      expect(element.style.length).to.be.equal(0);
+    })
+  })
+  it("hides legend", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/hide-legend.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return element(response.result.markup, ".q-isotype-legend").then(element => {
+      expect(element.style.visibility).to.be.equal("hidden")
+      expect(element.style.height).to.be.equal("0px")
+    })
+  })
+})
+
 lab.experiment("highlight icons", () => {
   it("should highlight the first svg in legend", async () => {
     const response = await server.inject({
