@@ -49,7 +49,12 @@ $ node dev.js
 [to the top](#table-of-contents)
 
 ## Testing 
-Which testing framework is used and how to run the tests
+The testing framework used in this repository is [Code](https://github.com/hapijs/code).
+
+Run the tests:
+```
+$ npm run test
+```
 
 ### Implementing a new test
 Rules of when and where to implement a new test
