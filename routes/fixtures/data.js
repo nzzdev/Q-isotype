@@ -20,7 +20,8 @@ const fixtureData = [
   require(`${fixtureDataDirectory}/download-data.json`),
   require(`${fixtureDataDirectory}/svg-use-references.json`),
   require(`${fixtureDataDirectory}/show-legend.json`),
-  require(`${fixtureDataDirectory}/hide-legend.json`)
+  require(`${fixtureDataDirectory}/hide-legend.json`),
+  require(`${fixtureDataDirectory}/icons-on-one-row.json`)
 ];
 
 module.exports = {
