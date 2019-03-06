@@ -127,26 +127,17 @@ For displaying the `svg`s, we're using the [svg reference feature](https://css-t
 
 #### hideLegend
 
-This option allows to hide the header of each column. By default it's `false`.
-
-##### Implementation details
-
+- This option allows to hide the header of each column. By default it's `false`.
 - If the option is used, the [legend won't be rendered](https://github.com/nzzdev/Q-isotype/blob/dev/views/legend.html#L2)
 
 #### iconsOneRow
 
-This option allows all icons to be next to each other. By default it's `false`.
-
-##### Implementation details
-
+- This option allows all icons to be next to each other. By default it's `false`.
 - If the option is used, [everything will be rendered in the same div](https://github.com/nzzdev/Q-isotype/blob/dev/views/isotype.html#L7-L36)
 
 #### highlightColumn
 
-This option allows the user to select a column and shows the other columns in a lower `opacity`.
-
-##### Implementation details
-
+- This option allows the user to select a column and shows the other columns in a lower `opacity`.
 - The option will be available if there are more than `2` columns
 - When selecting a column, the class `q-isotype-lowlight` will be assinged to all other columns
 - When selecting a column and the option `Show different icons next to each other` is selected, the class `q-isotype-lowlight` will be assinged to every `svg`.
