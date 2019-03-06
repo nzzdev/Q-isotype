@@ -2,22 +2,26 @@
 
 **Maintainer**: [manuelroth](https://github.com/manuelroth)
 
-Q Isotype is one tool of the Q toolbox. Test it in the [demo](https://editor.q.tools). 
+Q Isotype is one tool of the Q toolbox. Test it in the [playground](https://q-playground.st.nzz.ch/).
 
 ## Table of contents
+
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Development](#development)
 - [Testing](#testing)
-- [Features](#features)
-- [Options](#options)
+- [Deployment](#deployment)
+- [Functionality](#functionality)
 - [License](#license)
 
 ## Installation
+
 ```bash
-$ git clone git@github.com:nzzdev/Q-isotype.git
-$ npm install
-$ npm run build
+git clone git@github.com:nzzdev/Q-isotype.git
+cd ./Q-isotype
+nvm use
+npm install
+npm run build
 ```
 
 [to the top](#table-of-contents)
@@ -25,38 +29,47 @@ $ npm run build
 ## Configuration
 
 The following environment variables must be specified when starting the tool:
+
 - `IMAGE_SERVICE_URL`
-Please have a look at the test environment for examples on what this variables should look like.
+  Please have a look at the test environment for examples on what this variables should look like.
 
 [to the top](#table-of-contents)
 
 ## Development
-Install the Q cli and start the Q dev server:
+
+Start the Q dev server:
+
 ```
-$ Q server
-``` 
+npx @nzz/q-cli server
+```
 
 To run the tool create a new file called dev.js and use the env-variable listed above with the local urls.
+
 ```
 process.env.IMAGE_SERVICE_URL = "https://q-images.nzz.ch/{key}?width=108&format=png&auto=webp";
 require('./index.js');
 ```
+
 You can then start the tool with:
+
 ```
-$ node dev.js
-``` 
+node dev.js
+```
 
 [to the top](#table-of-contents)
 
-## Testing 
+## Testing
+
 The testing framework used in this repository is [Code](https://github.com/hapijs/code).
 
 Run the tests:
+
 ```
-$ npm run test
+npm run test
 ```
 
 ### Implementing a new test
+
 When changing or implementing...
 
 - A `route`, it needs to be tested in the `e2e-tests.js` file
@@ -64,21 +77,43 @@ When changing or implementing...
 
 [to the top](#table-of-contents)
 
-##  Tool implentation details
+## Deployment
+
+We provide automatically built [docker images](https://hub.docker.com/r/nzzonline/q-isotype/).
+There are three options for deployment:
+
+- Use the provided images
+- Build your own docker images
+- Deploy the service using another technology
+
+### Use the provided docker images
+
+1. Deploy `nzzonline/q-isotype` to a docker environment
+2. Set the ENV variables as described in the [configuration section](#configuration)
+
+[to the top](#table-of-contents)
+
+## Functionality
+
 If a tool then it can use this reference to the Q-server documentation about Q-tools:
 
 The tool structure follows the general structure of each Q tool. Further information can be found in [Q server documentation - Developing tools](https://nzzdev.github.io/Q-server/developing-tools.html).
 
+Q Isotype uses the [svelte framework](https://svelte.technology/guide) to render the markup on server-side.
+
 [to the top](#table-of-contents)
 
-## Features
+### Features
 
-### SVG reference
-For displaying the `svg`s, we're using the [svg reference feature](https://css-tricks.com/svg-use-with-external-reference-take-2/). 
+#### SVG reference
 
-#### Implementation details
+For displaying the `svg`s, we're using the [svg reference feature](https://css-tricks.com/svg-use-with-external-reference-take-2/).
+
+##### Implementation details
+
 - The reference is set in the [legend](https://github.com/nzzdev/Q-isotype/blob/dev/views/legend.html#L10-L12)
 - In the list the used `svg` simply has to be referenced as following:
+
 ```
 <svg>
   <use xlink:href="#{{ item.icons[loop.index0].key }}"></use>
@@ -87,33 +122,32 @@ For displaying the `svg`s, we're using the [svg reference feature](https://css-t
 
 [to the top](#table-of-contents)
 
-## Options
+### Options
 
-### Hide legend
+#### hideLegend
+
 This option allows to hide the header of each column. By default it's `false`.
 
-#### Implementation details
+##### Implementation details
+
 - If the option is used, the [legend won't be rendered](https://github.com/nzzdev/Q-isotype/blob/dev/views/legend.html#L2)
 
-### Show different icons next to each other
-This option allows all icons to be next to each other. By default it's `false`. 
+#### iconsOneRow
 
-#### Implementation details
+This option allows all icons to be next to each other. By default it's `false`.
+
+##### Implementation details
+
 - If the option is used, [everything will be rendered in the same div](https://github.com/nzzdev/Q-isotype/blob/dev/views/isotype.html#L7-L36)
 
-### Highlight column 
+#### highlightColumn
+
 This option allows the user to select a column and shows the other columns in a lower `opacity`.
 
-#### Implementation details
+##### Implementation details
+
 - The option will be available if there are more than `2` columns
 - When selecting a column, the class `q-isotype-lowlight` will be assinged to all other columns
 - When selecting a column and the option `Show different icons next to each other` is selected, the class `q-isotype-lowlight` will be assinged to every `svg`.
-
-[to the top](#table-of-contents)
-
-## License
-Copyright (c) 2019 Neue Zürcher Zeitung. All rights reserved.
-
-This software is published under the MIT license.
 
 [to the top](#table-of-contents)
