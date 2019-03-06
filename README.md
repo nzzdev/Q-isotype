@@ -150,4 +150,12 @@ This option allows the user to select a column and shows the other columns in a 
 - When selecting a column, the class `q-isotype-lowlight` will be assinged to all other columns
 - When selecting a column and the option `Show different icons next to each other` is selected, the class `q-isotype-lowlight` will be assinged to every `svg`.
 
+#### Display options
+
+Display options can be set before embedding the graphic in the article.
+
+##### hideTitle
+
+Allows to hide the title
+
 [to the top](#table-of-contents)
