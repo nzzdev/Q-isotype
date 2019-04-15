@@ -1,0 +1,35 @@
+{
+  "title":
+    "FIXTURE: show icons next to each other",
+  "subtitle": "Noch ein Untertitel",
+  "data": [
+    ["Icons", "Hoch", "Breit", "Quadratisch", "Viz Gelb"],
+    ["Zeile 1", "10", "5", "1", "5"],
+    ["Zeile 2", "3", "6", "1", "0"],
+    ["Zeile 3", "1", null, "1", "10"]
+  ],
+  "notes": "Groooosses Kino",
+  "sources": [
+    {
+      "text": "NZZ",
+      "link": {
+        "isValid": true,
+        "url": "https://nzz.ch"
+      }
+    },
+    {
+      "text": "Github",
+      "link": {
+        "isValid": true,
+        "url": "https://github.com/nzzdev/Q-isotype"
+      }
+    },
+    {
+      "text": "Noch eine Quelle ohne Link"
+    }
+  ],
+  "options": {
+    "highlightColumn": 1,
+    "iconsOneRow": true
+  }
+}

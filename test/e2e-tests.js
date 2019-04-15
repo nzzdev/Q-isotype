@@ -1,6 +1,7 @@
 const Lab = require("lab");
 const Code = require("code");
 const Hapi = require("hapi");
+const glob = require("glob");
 const lab = (exports.lab = Lab.script());
 
 const expect = Code.expect;
@@ -88,71 +89,6 @@ lab.experiment("stylesheets endpoint", () => {
   });
 });
 
-lab.experiment("rendering-info endpoint", () => {
-  it("renders correct markup", async () => {
-    const fixtureResponse = await server.inject("/fixtures/data");
-    const fixtureData = fixtureResponse.result;
-    const response = await server.inject({
-      url: "/rendering-info/web",
-      method: "POST",
-      payload: {
-        item: fixtureData[0],
-        toolRuntimeConfig: {}
-      }
-    });
-    expect(response.statusCode).to.be.equal(200);
-    expect(response.result.markup).startsWith(
-      `<div class="s-q-item q-isotype"`
-    );
-  });
-
-  it("renders correct markup including svg without height attribute", async () => {
-    const fixtureData = require(`${__dirname}/../resources/fixtures/data/only-svg-with-width-and-height-data-floats.json`);
-    const response = await server.inject({
-      url: "/rendering-info/web",
-      method: "POST",
-      payload: {
-        item: fixtureData,
-        toolRuntimeConfig: {}
-      }
-    });
-    expect(response.statusCode).to.be.equal(200);
-    expect(response.result.markup).to.not.match(/.*<svg[^>]*height="[\d]*".*/);
-  });
-
-  it("returns 400 if no payload is given", async () => {
-    const response = await server.inject({
-      method: "POST",
-      url: "/rendering-info/web"
-    });
-    expect(response.statusCode).to.be.equal(400);
-  });
-
-  it("returns 400 if no item is given in payload", async () => {
-    const response = await server.inject({
-      method: "POST",
-      url: "/rendering-info/web",
-      payload: {
-        toolRuntimeConfig: {}
-      }
-    });
-    expect(response.statusCode).to.be.equal(400);
-  });
-
-  it("returns 400 if no toolRuntimeConfig is given in payload", async () => {
-    const fixtureResponse = await server.inject("/fixtures/data");
-    const fixtureData = fixtureResponse.result;
-    const response = await server.inject({
-      method: "POST",
-      url: "/rendering-info/web",
-      payload: {
-        item: fixtureData[0]
-      }
-    });
-    expect(response.statusCode).to.be.equal(400);
-  });
-});
-
 lab.experiment("dynamic-enum", () => {
   it("returns columns displayed in options dropdown", async () => {
     const item = require("../resources/fixtures/data/highlight-category.json");
@@ -214,10 +150,31 @@ lab.experiment("download data", () => {
   });
 });
 
+lab.experiment("all fixtures render", async () => {
+  const fixtureFiles = glob.sync(
+    `${__dirname}/../resources/fixtures/data/*.json`
+  );
+  for (let fixtureFile of fixtureFiles) {
+    const fixture = require(fixtureFile);
+    it(`doesnt fail in rendering fixture ${fixture.title}`, async () => {
+      const request = {
+        method: "POST",
+        url: "/rendering-info/web",
+        payload: {
+          item: fixture,
+          toolRuntimeConfig: {}
+        }
+      };
+      const response = await server.inject(request);
+      expect(response.statusCode).to.be.equal(200);
+    });
+  }
+});
+
 lab.experiment("fixture data endpoint", () => {
-  it("returns 16 fixture data items for /fixtures/data", async () => {
+  it("returns 19 fixture data items for /fixtures/data", async () => {
     const response = await server.inject("/fixtures/data");
     expect(response.statusCode).to.be.equal(200);
-    expect(response.result.length).to.be.equal(16);
+    expect(response.result.length).to.be.equal(19);
   });
 });

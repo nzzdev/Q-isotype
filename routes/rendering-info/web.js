@@ -2,7 +2,7 @@ const Boom = require("boom");
 const fs = require("fs");
 const path = require("path");
 const fetch = require("node-fetch");
-const parseString = require("xml2js").parseString;
+const cheerio = require("cheerio");
 
 const stylesDir = path.join(__dirname, "/../../styles/");
 const styleHashMap = require(path.join(stylesDir, "hashMap.json"));
@@ -76,68 +76,53 @@ function getResizeImageUrl(image) {
   );
 }
 
-function attrToLowerCase(name) {
-  return name.toLowerCase();
-}
-
 function getSvgInfo(svg) {
   return new Promise((resolve, reject) => {
-    parseString(
-      svg,
-      {
-        strict: false,
-        attrkey: "ATTR",
-        attrNameProcessors: [attrToLowerCase]
-      },
-      (err, result) => {
-        if (err) {
-          reject(err);
-        }
+    const $ = cheerio.load(svg);
+    const renderedSvg = $("svg")[0];
+    if (!renderedSvg.attribs.viewBox) {
+      reject("no viewBox defined in svg");
+    }
 
-        if (!result.SVG.ATTR["viewbox"]) {
-          reject("no viewbox defined in svg");
-        }
+    const hasWidthHeightAttr =
+      renderedSvg.attribs.width && renderedSvg.attribs.height;
+    let height;
+    let width;
 
-        const hasWidthHeightAttr =
-          result.SVG.ATTR["width"] && result.SVG.ATTR["height"];
-        let height;
-        let width;
-        try {
-          if (hasWidthHeightAttr) {
-            height = parseInt(result.SVG.ATTR["height"], 10);
-            width = parseInt(result.SVG.ATTR["width"], 10);
-          } else {
-            width = parseInt(
-              result.SVG.ATTR["viewbox"]
-                .toString()
-                .replace(/^\d+\s\d+\s(\d+\.?[\d])\s(\d+\.?[\d])/, "$1"),
-              10
-            );
-            height = parseInt(
-              result.SVG.ATTR["viewbox"]
-                .toString()
-                .replace(/^\d+\s\d+\s(\d+\.?[\d])\s(\d+\.?[\d])/, "$2"),
-              10
-            );
-          }
-          if (height > width) {
-            resolve({
-              hasHeight: result.SVG.ATTR["height"] !== undefined,
-              hasWidth: result.SVG.ATTR["width"] !== undefined,
-              style: "height: 100%"
-            });
-          } else {
-            resolve({
-              hasHeight: result.SVG.ATTR["height"] !== undefined,
-              hasWidth: result.SVG.ATTR["width"] !== undefined,
-              style: "width: 100%"
-            });
-          }
-        } catch (err) {
-          reject(err);
-        }
+    try {
+      if (hasWidthHeightAttr) {
+        height = parseInt(renderedSvg.attribs.height, 10);
+        width = parseInt(renderedSvg.attribs.width, 10);
+      } else {
+        width = parseInt(
+          renderedSvg.attribs.viewBox
+            .toString()
+            .replace(/^\d+\s\d+\s(\d+\.?[\d])\s(\d+\.?[\d])/, "$1"),
+          10
+        );
+        height = parseInt(
+          renderedSvg.attribs.viewBox
+            .toString()
+            .replace(/^\d+\s\d+\s(\d+\.?[\d])\s(\d+\.?[\d])/, "$2"),
+          10
+        );
       }
-    );
+      if (height > width) {
+        resolve({
+          hasHeight: height !== undefined,
+          hasWidth: width !== undefined,
+          style: "height: 100%"
+        });
+      } else {
+        resolve({
+          hasHeight: height !== undefined,
+          hasWidth: width !== undefined,
+          style: "width: 100%"
+        });
+      }
+    } catch (err) {
+      reject(err);
+    }
   });
 }
 
@@ -164,7 +149,7 @@ module.exports = {
       payload: validatePayload
     }
   },
-  handler: async function (request, h) {
+  handler: async function(request, h) {
     const item = request.payload.item;
 
     item.data = getIntegerValues(item.data);
@@ -214,7 +199,7 @@ module.exports = {
             console.log(err);
           }
           icon.url = getResizeImageUrl(icon.file);
-          icon.key = icon.file.key
+          icon.key = icon.file.key;
           delete icon.file;
           return icon;
         })
@@ -231,7 +216,7 @@ module.exports = {
     if (item.allowDownloadData) {
       context.linkToCSV = `${
         request.payload.toolRuntimeConfig.toolBaseUrl
-        }/data?appendItemToPayload=${request.query._id}`;
+      }/data?appendItemToPayload=${request.query._id}`;
     }
 
     const renderingInfo = {
