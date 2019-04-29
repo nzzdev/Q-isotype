@@ -1,6 +1,6 @@
 const Lab = require("lab");
 const Code = require("code");
-const Hapi = require("hapi");
+const Hapi = require("@hapi/hapi");
 const lab = (exports.lab = Lab.script());
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
@@ -67,10 +67,12 @@ lab.experiment("hide legend", () => {
       }
     });
 
-    return element(response.result.markup, ".q-isotype-legend").then(element => {
-      expect(element.style.length).to.be.equal(0);
-    })
-  })
+    return element(response.result.markup, ".q-isotype-legend").then(
+      element => {
+        expect(element.style.length).to.be.equal(0);
+      }
+    );
+  });
   it("hides legend", async () => {
     const response = await server.inject({
       url: "/rendering-info/web",
@@ -81,12 +83,14 @@ lab.experiment("hide legend", () => {
       }
     });
 
-    return element(response.result.markup, ".q-isotype-legend").then(element => {
-      expect(element.style.visibility).to.be.equal("hidden")
-      expect(element.style.height).to.be.equal("0px")
-    })
-  })
-})
+    return element(response.result.markup, ".q-isotype-legend").then(
+      element => {
+        expect(element.style.visibility).to.be.equal("hidden");
+        expect(element.style.height).to.be.equal("0px");
+      }
+    );
+  });
+});
 
 lab.experiment("show different icons next to each other", () => {
   it("shows all icons on a seperate row", async () => {
@@ -102,11 +106,13 @@ lab.experiment("show different icons next to each other", () => {
     return elements(response.result.markup, "div.q-isotype-icon-row").then(
       elements => {
         expect(elements.length).to.be.equal(12);
-        let iconContainers = elements[0].querySelectorAll("div.q-isotype-icon-container")
+        let iconContainers = elements[0].querySelectorAll(
+          "div.q-isotype-icon-container"
+        );
         expect(iconContainers.length).to.be.equal(10);
       }
     );
-  })
+  });
   it("shows all icons next to each other", async () => {
     const response = await server.inject({
       url: "/rendering-info/web",
@@ -120,12 +126,14 @@ lab.experiment("show different icons next to each other", () => {
     return elements(response.result.markup, "div.q-isotype-icon-row").then(
       elements => {
         expect(elements.length).to.be.equal(3);
-        let iconContainers = elements[0].querySelectorAll("div.q-isotype-icon-container")
+        let iconContainers = elements[0].querySelectorAll(
+          "div.q-isotype-icon-container"
+        );
         expect(iconContainers.length).to.be.equal(21);
       }
     );
-  })
-})
+  });
+});
 
 lab.experiment("highlight icons", () => {
   it("should highlight the first svg in legend", async () => {
