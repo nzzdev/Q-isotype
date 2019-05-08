@@ -9,7 +9,7 @@ install:
   - npm install
 before_script:
   - DOCKER_IMAGE_NAME="q-isotype"
-  - DOCKER_TAG=${TRAVIS_BRANCH/\//_}
+  - DOCKER_TAG=${TRAVIS_BRANCH//\//_}
 script:
   - npm run build
   - npm run test
