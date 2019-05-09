@@ -1,4 +1,4 @@
-# Q Isotype [![Build Status](https://travis-ci.com/nzzdev/Q-isotype.svg?token=g43MZxbtUcZ6QyxqUoJM&branch=dev)](https://travis-ci.com/nzzdev/Q-isotype) [![Greenkeeper badge](https://badges.greenkeeper.io/nzzdev/Q-isotype.svg?token=36bc6ddc1d30783a27da6e8cb5dba3acf833e860036df64acd816ec8300eabff&ts=1551342842727)](https://greenkeeper.io/)
+# Q Isotype [![Build Status](https://travis-ci.com/nzzdev/Q-isotype.svg?token=g43MZxbtUcZ6QyxqUoJM&branch=dev)](https://travis-ci.com/nzzdev/Q-isotype) [![Greenkeeper badge](https://badges.greenkeeper.io/nzzdev/Q-isotype.svg?token=36bc6ddc1d30783a27da6e8cb5dba3acf833e860036df64acd816ec8300eabff&ts=1557387012645)](https://greenkeeper.io/)
 
 **Maintainer**: [manuelroth](https://github.com/manuelroth)
 
