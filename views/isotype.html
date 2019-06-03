@@ -1,12 +1,15 @@
 <div class="s-q-item q-isotype" style="opacity: 0;">
   <Header title={item.title} subtitle={item.subtitle} hideTitle={displayOptions.hideTitle} />
+  <Legend icons={item.icons} options={item.options} {categories} />
   <Footer notes={item.notes} sources={item.sources} />
 </div>
 
 <script>
   import Header from './Header.html';
+  import Legend from './Legend.html';
   import Footer from './Footer.html';
 
   export let item;
+  export let categories;
   export let displayOptions;
 </script>

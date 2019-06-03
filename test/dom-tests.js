@@ -83,10 +83,9 @@ lab.experiment("hide legend", () => {
       }
     });
 
-    return element(response.result.markup, ".q-isotype-legend").then(
-      element => {
-        expect(element.style.visibility).to.be.equal("hidden");
-        expect(element.style.height).to.be.equal("0px");
+    return elementCount(response.result.markup, ".q-isotype-hidden-legend").then(
+      value => {
+        expect(value).to.be.equal(1);
       }
     );
   });

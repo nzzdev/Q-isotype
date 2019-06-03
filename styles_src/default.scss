@@ -77,3 +77,8 @@ $legend-size: 26px;
 .q-isotype-lowlight {
   opacity: 0.35;
 }
+
+.q-hide-hidden-legend {
+  visibility: hidden; 
+  height: 0;
+}

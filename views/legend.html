@@ -1,33 +1,44 @@
-<div class="q-isotype-legend s-font-note" {% if item.options.hideLegend %} style="visibility: hidden; height: 0;"
-  {%- endif %}>
-  {%- for category in categories %} {% if item.icons[loop.index0] %}
-  <div class="q-isotype-legend-container">
-    {% if item.icons[loop.index0].svg %}
-    <div
-      class="q-isotype-legend-svg {%- if item.options.highlightColumn !== null and item.options.highlightColumn !== undefined and item.options.highlightColumn !== loop.index %} q-isotype-lowlight{%- endif %}">
-      <svg xmlns="http://www.w3.org/2000/svg">
-        <symbol id="{{ item.icons[loop.index0].key }}">
-          {{ item.icons[loop.index0].svg | safe }}
-        </symbol>
-        <svg>
-          <use xlink:href="#{{ item.icons[loop.index0].key }}"></use>
-        </svg>
-      </svg>
+<div class="q-isotype-legend s-font-note {isHideLegend()}">
+  {#each categories as category, index}
+    {#if icons && icons[index] }
+    <div class="q-isotype-legend-container">
+      {#if icons[index].svg }
+        <div class="q-isotype-legend-svg {isLowlight(index)}">
+            <svg xmlns="http://www.w3.org/2000/svg">
+              <symbol id="{ icons[index].key }">
+                {@html icons[index].svg}
+              </symbol>
+              <svg>
+                <use xlink:href="#{ icons[index].key }"></use>
+              </svg>
+            </svg>
+        </div>
+      {:else}
+        <div class="q-isotype-legend-png {isLowlight(index)}" style="background-image: url('{ icons[index].url }')"></div>
+      {/if}
+      <div class="q-isotype-legend-category">{category}</div>
     </div>
-    {% else %}
-    <div
-      class="q-isotype-legend-png {%- if item.options.highlightColumn !== null and item.options.highlightColumn !== undefined and item.options.highlightColumn !== loop.index %} q-isotype-lowlight{%- endif %}"
-      style="background-image: url('{{ item.icons[loop.index0].url }}')"></div>
-    {%- endif %}
-    <div class="q-isotype-legend-category">{{category}}</div>
-  </div>
-  {% else %}
-  <div class="q-isotype-legend-container">
-    <div
-      class="q-isotype-legend-svg {%- if item.options.highlightColumn !== null and item.options.highlightColumn !== undefined and item.options.highlightColumn !== loop.index %} q-isotype-lowlight{%- endif %}">
-      {%- include "./no-icon-default-svg.html" %}
+    {:else}
+    <div class="q-isotype-legend-container">
+      <div class="q-isotype-legend-svg {isLowlight(index)}"><NoIconDefaultSVG /></div>
+      <div class="q-isotype-legend-category">{category}</div>
     </div>
-    <div class="q-isotype-legend-category">{{category}}</div>
-  </div>
-  {%- endif %} {%- endfor %}
+    {/if}
+  {/each}
 </div>
+
+<script>
+  import NoIconDefaultSVG from './no-icon-default-svg.html';
+
+  export let icons;
+  export let categories;
+  export let options;
+
+  function isHideLegend() {
+    return options && options.hideLegend ? "q-isotype-hidden-legend" : null;
+  }
+
+  function isLowlight(index) {
+    return options && options.highlightColumn !== null && options.highlightColumn !== undefined && options.highlightColumn !== index + 1 ? "q-isotype-lowlight" : null;
+  }
+</script>
