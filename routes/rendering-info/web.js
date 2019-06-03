@@ -7,12 +7,12 @@ const cheerio = require("cheerio");
 const stylesDir = path.join(__dirname, "/../../styles/");
 const styleHashMap = require(path.join(stylesDir, "hashMap.json"));
 
-// setup nunjucks
-const nunjucks = require("nunjucks");
-const nunjucksEnv = new nunjucks.Environment();
-
 const viewsDir = path.join(__dirname, "/../../views/");
 const maxWidth = "40";
+
+// setup svelte
+require('svelte/register');
+const staticTemplate = require(viewsDir + "Isotype.html").default;
 
 const noIconDefault = require("../../resources/assets/no-icon-default.js");
 
@@ -149,7 +149,7 @@ module.exports = {
       payload: validatePayload
     }
   },
-  handler: async function(request, h) {
+  handler: async function (request, h) {
     const item = request.payload.item;
 
     item.data = getIntegerValues(item.data);
@@ -216,7 +216,7 @@ module.exports = {
     if (item.allowDownloadData) {
       context.linkToCSV = `${
         request.payload.toolRuntimeConfig.toolBaseUrl
-      }/data?appendItemToPayload=${request.query._id}`;
+        }/data?appendItemToPayload=${request.query._id}`;
     }
 
     const renderingInfo = {
@@ -225,7 +225,7 @@ module.exports = {
           name: styleHashMap["default"]
         }
       ],
-      markup: nunjucksEnv.render(viewsDir + "isotype.html", context)
+      markup: staticTemplate.render(context).html
     };
 
     return renderingInfo;
