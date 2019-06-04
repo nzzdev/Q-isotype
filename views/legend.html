@@ -35,10 +35,11 @@
   export let options;
 
   function isHideLegend() {
-    return options && options.hideLegend ? "q-isotype-hidden-legend" : null;
+    return options && options.hideLegend ? "q-isotype-hidden-legend" : "";
   }
 
+  // todo: outsource to staticHtml
   function isLowlight(index) {
-    return options && options.highlightColumn !== null && options.highlightColumn !== undefined && options.highlightColumn !== index + 1 ? "q-isotype-lowlight" : null;
+    return options && options.highlightColumn !== null && options.highlightColumn !== undefined && options.highlightColumn !== index + 1 ? "q-isotype-lowlight" : "";
   }
 </script>

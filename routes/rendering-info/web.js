@@ -12,7 +12,7 @@ const maxWidth = "40";
 
 // setup svelte
 require('svelte/register');
-const staticTemplate = require(viewsDir + "Isotype.html").default;
+const staticTemplate = require(viewsDir + "StaticHtml.html").default;
 
 const noIconDefault = require("../../resources/assets/no-icon-default.js");
 

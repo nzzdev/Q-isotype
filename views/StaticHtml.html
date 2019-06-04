@@ -1,0 +1,18 @@
+<div class="s-q-item q-isotype" style="opacity: 0;">
+  <Header title={item.title} subtitle={item.subtitle} hideTitle={displayOptions.hideTitle} />
+  <Legend icons={item.icons} {categories} options={item.options} />
+  <Isotype data={item.data} {categories} icons={item.icons} {maxAmountWidth} options={item.options} />
+  <Footer notes={item.notes} sources={item.sources} />
+</div>
+
+<script>
+  import Header from './Header.html';
+  import Legend from './Legend.html';
+  import Isotype from './Isotype.html'
+  import Footer from './Footer.html';
+
+  export let item;
+  export let categories;
+  export let maxAmountWidth;
+  export let displayOptions;
+</script>
