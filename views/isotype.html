@@ -54,7 +54,7 @@
                       <div class="q-isotype-icon-png" style="background-image: url('{ icons[currentCategoryIndex - 1].url }');"></div>
                     {/if}
                   </div>
-                  {:else}
+                {:else}
                   <div class="q-isotype-icon-container" style="width: { maxAmountWidth }%;">
                     <div class="q-isotype-icon-svg" style="width: 100%;">
                       <svg>
@@ -86,7 +86,7 @@
     return options && options.highlightColumn !== null && options.highlightColumn !== undefined && options.highlightColumn !== index ? "q-isotype-lowlight" : "";
   }
 
-  // as used in nunjucks
+  // todo: as used in nunjucks
   function range(start, stop, step) {
     if (typeof stop === 'undefined') {
       stop = start;
