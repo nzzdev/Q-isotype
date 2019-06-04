@@ -2,7 +2,8 @@
   <Header title={item.title} subtitle={item.subtitle} hideTitle={displayOptions.hideTitle} />
   <Legend icons={item.icons} {categories} options={item.options} />
   <Isotype data={item.data} {categories} icons={item.icons} {maxAmountWidth} options={item.options} />
-  <Footer notes={item.notes} sources={item.sources} />
+  <Footer notes={item.notes} sources={item.sources} acronym={item.acronym} allowDownloadData={item.allowDownloadData}
+    {linkToCSV} />
 </div>
 
 <script>
@@ -14,5 +15,6 @@
   export let item;
   export let categories;
   export let maxAmountWidth;
+  export let linkToCSV;
   export let displayOptions;
 </script>
