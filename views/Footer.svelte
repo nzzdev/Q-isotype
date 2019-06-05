@@ -1,34 +1,27 @@
 <script>
-  export let notes;
-  export let sources;
-  export let acronym;
-  export let allowDownloadData;
+  export let item;
   export let linkToCSV;
 </script>
 
 <div class="s-q-item__footer">
-  {#if notes}
-    {notes}
-    {#if sources !== undefined && sources.length > 0}–{/if}
+  {#if item.notes}
+    {item.notes}
+    {#if item.sources !== undefined && item.sources.length > 0}–{/if}
   {/if}
-  {#if sources !== undefined && sources.length > 0}
-    {#if sources.length > 1}Quellen:{:else}Quelle:{/if}
-    {#each sources as source, index}
+  {#if item.sources !== undefined && item.sources.length > 0}
+    {#if item.sources.length > 1}Quellen:{:else}Quelle:{/if}
+    {#each item.sources as source, index}
       {#if source.text !== ''}
         {#if source.link && source.link.url && source.link.isValid}
-          <a href={source.link.url} target="blank" rel="noopener noreferrer">
-             {source.text}
-          </a>
-        {:else}{source.text}{/if}
-        {#if index !== sources.length - 1 && sources[index + 1] !== ''}, {/if}
+          <a href={source.link.url} target="blank" rel="noopener noreferrer">{source.text}</a>{:else}{source.text}{/if}{#if index !== item.sources.length - 1 && item.sources[index + 1] !== ''},&nbsp{/if}
       {/if}
     {/each}
   {/if}
-  {#if acronym}
-    {#if notes || sources.length > 0} – {/if}
-    Grafik: {acronym}
+  {#if item.acronym}
+    {#if item.notes || item.sources.length > 0}&nbsp;&ndash;&nbsp;{/if}
+    Grafik: {item.acronym}
   {/if}
-  {#if allowDownloadData}
+  {#if item.allowDownloadData}
     <br />
     <a href={linkToCSV}>Daten herunterladen</a>
   {/if}
