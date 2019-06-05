@@ -11,8 +11,8 @@ const viewsDir = path.join(__dirname, "/../../views/");
 const maxWidth = "40";
 
 // setup svelte
-require('svelte/register');
-const staticTemplate = require(viewsDir + "StaticHtml.html").default;
+require("svelte/register");
+const staticTemplate = require(viewsDir + "StaticHtml.svelte").default;
 
 const noIconDefault = require("../../resources/assets/no-icon-default.js");
 
@@ -149,7 +149,7 @@ module.exports = {
       payload: validatePayload
     }
   },
-  handler: async function (request, h) {
+  handler: async function(request, h) {
     const item = request.payload.item;
 
     item.data = getIntegerValues(item.data);
@@ -216,7 +216,7 @@ module.exports = {
     if (item.allowDownloadData) {
       context.linkToCSV = `${
         request.payload.toolRuntimeConfig.toolBaseUrl
-        }/data?appendItemToPayload=${request.query._id}`;
+      }/data?appendItemToPayload=${request.query._id}`;
     }
 
     const renderingInfo = {
