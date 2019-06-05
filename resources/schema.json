@@ -59,7 +59,7 @@
             "Q:type": "files",
             "Q:options": {
               "maxFiles": 1,
-              "acceptedFiles": "image/png,image/svg+xml",
+              "acceptedFiles": "image/svg+xml",
               "fileProperties": {
                 "url": "url",
                 "key": "key",
@@ -102,7 +102,9 @@
             }
           }
         },
-        "required": ["text"]
+        "required": [
+          "text"
+        ]
       }
     },
     "notes": {
@@ -137,7 +139,10 @@
               "type": "ToolEndpoint",
               "config": {
                 "endpoint": "dynamic-enum/highlightColumn",
-                "fields": ["options", "data"]
+                "fields": [
+                  "options",
+                  "data"
+                ]
               }
             },
             "availabilityChecks": [
@@ -145,7 +150,10 @@
                 "type": "ToolEndpoint",
                 "config": {
                   "endpoint": "option-availability/highlightColumn",
-                  "fields": ["options", "data"]
+                  "fields": [
+                    "options",
+                    "data"
+                  ]
                 }
               }
             ]
@@ -154,5 +162,7 @@
       }
     }
   },
-  "required": ["title"]
+  "required": [
+    "title"
+  ]
 }
