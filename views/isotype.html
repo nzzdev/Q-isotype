@@ -82,6 +82,9 @@
 
   // this function will return an array with the amount of entries by the value of the isotype row value
   function newArray(range) {
-    return new Array(range);
+    if (range && range > 0) {
+      return new Array(range);
+    }
+    return new Array(0);
   }
 </script>
