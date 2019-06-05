@@ -1,9 +1,8 @@
 <div class="s-q-item q-isotype" style="opacity: 0;">
-  <Header title={item.title} subtitle={item.subtitle} hideTitle={displayOptions.hideTitle} />
-  <Legend icons={item.icons} {categories} options={item.options} />
-  <Isotype data={item.data} {categories} icons={item.icons} {maxAmountWidth} options={item.options} />
-  <Footer notes={item.notes} sources={item.sources} acronym={item.acronym} allowDownloadData={item.allowDownloadData}
-    {linkToCSV} />
+  <Header {item} {displayOptions} />
+  <Legend {item} {categories} {isLowlight} />
+  <Isotype {item} {categories} {maxAmountWidth} {isLowlight} />
+  <Footer {item} {linkToCSV} />
 </div>
 
 <script>
@@ -17,4 +16,8 @@
   export let maxAmountWidth;
   export let linkToCSV;
   export let displayOptions;
+
+  function isLowlight(index) {
+    return item.options && item.options.highlightColumn !== null && item.options.highlightColumn !== undefined && item.options.highlightColumn !== index
+  }
 </script>

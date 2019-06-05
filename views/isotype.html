@@ -1,26 +1,26 @@
-{#if data && data.length > 1}
-  {#each data.slice(1) as row, index}
+{#if item.data && item.data.length > 1}
+  {#each item.data.slice(1) as row, index}
     <div class="q-isotype-row">
       <div class="q-isotype-row-title s-font-title-xs">{ row[0] }</div>
-    {#if options && options.iconsOneRow}
+    {#if item.options && item.options.iconsOneRow}
       <div class="q-isotype-icon-row">
         {#each row as value, currentCategoryIndex}
           {#if currentCategoryIndex > 0 }  
-            {#each range(row[currentCategoryIndex]) as i}
-              {#if icons && icons[currentCategoryIndex-1]}
-                <div class="q-isotype-icon-container {isLowlight(currentCategoryIndex)}" style="width: {maxAmountWidth}%;">
-                  {#if icons[currentCategoryIndex - 1].svg }
-                    <div class="q-isotype-icon-svg" style="{ icons[currentCategoryIndex - 1].style };">
+            {#each newArray(row[currentCategoryIndex]) as value, i}
+              {#if item.icons && item.icons[currentCategoryIndex-1]}
+                <div class="q-isotype-icon-container" class:q-isotype-lowlight={isLowlight(currentCategoryIndex)} style="width: {maxAmountWidth}%;">
+                  {#if item.icons[currentCategoryIndex - 1].svg }
+                    <div class="q-isotype-icon-svg" style="{ item.icons[currentCategoryIndex - 1].style };">
                       <svg>
-                        <use xlink:href="#{icons[currentCategoryIndex - 1].key}"></use>
+                        <use xlink:href="#{item.icons[currentCategoryIndex - 1].key}"></use>
                       </svg>
                     </div>  
                   {:else}
-                    <div class="q-isotype-icon-png" style="background-image: url('{ icons[currentCategoryIndex - 1].url }');"></div>
+                    <div class="q-isotype-icon-png" style="background-image: url('{ item.icons[currentCategoryIndex - 1].url }');"></div>
                   {/if}
                 </div>
               {:else}
-                <div class="q-isotype-icon-container {isLowlight(currentCategoryIndex)}" style="width: { maxAmountWidth }%;">
+                <div class="q-isotype-icon-container" class:q-isotype-lowlight={isLowlight(currentCategoryIndex)} style="width: { maxAmountWidth }%;">
                   <div class="q-isotype-icon-svg" style="width: 100%;">
                     <svg>
                       <use xlink:href="#no-icon-default-svg"></use>
@@ -35,23 +35,23 @@
     {:else}
       {#each row as value, currentCategoryIndex}
         {#if currentCategoryIndex > 0}
-          <div class="q-isotype-icon-row {isLowlight(currentCategoryIndex)}">
+          <div class="q-isotype-icon-row" class:q-isotype-lowlight={isLowlight(currentCategoryIndex)}>
             {#if categories.length === 1 && (row[currentCategoryIndex] == 0 || row[currentCategoryIndex] == null)}
               <div class="q-isotype-icon-container" style="width: { maxAmountWidth }%;">
                 <div class="q-isotype-icon-png"></div>
               </div>
             {:else}
-              {#each range(row[currentCategoryIndex]) as i}
-                {#if icons && icons[currentCategoryIndex - 1] } 
+              {#each newArray(row[currentCategoryIndex]) as i}
+                {#if item.icons && item.icons[currentCategoryIndex - 1] } 
                   <div class="q-isotype-icon-container" style="width: { maxAmountWidth }%;">
-                    {#if icons[currentCategoryIndex - 1].svg }
-                      <div class="q-isotype-icon-svg" style="{ icons[currentCategoryIndex - 1].style };">
+                    {#if item.icons[currentCategoryIndex - 1].svg }
+                      <div class="q-isotype-icon-svg" style="{ item.icons[currentCategoryIndex - 1].style };">
                         <svg>
-                          <use xlink:href="#{icons[currentCategoryIndex - 1].key}"></use>
+                          <use xlink:href="#{item.icons[currentCategoryIndex - 1].key}"></use>
                         </svg>
                       </div>
                     {:else}
-                      <div class="q-isotype-icon-png" style="background-image: url('{ icons[currentCategoryIndex - 1].url }');"></div>
+                      <div class="q-isotype-icon-png" style="background-image: url('{ item.icons[currentCategoryIndex - 1].url }');"></div>
                     {/if}
                   </div>
                 {:else}
@@ -75,37 +75,13 @@
 
 
 <script>
-  export let data;
-  export let icons;
+  export let item;
   export let categories;
   export let maxAmountWidth;
-  export let options;
+  export let isLowlight;
 
-  // todo: outsource to staticHtml
-  function isLowlight(index) {
-    return options && options.highlightColumn !== null && options.highlightColumn !== undefined && options.highlightColumn !== index ? "q-isotype-lowlight" : "";
-  }
-
-  // todo: as used in nunjucks
-  function range(start, stop, step) {
-    if (typeof stop === 'undefined') {
-      stop = start;
-      start = 0;
-      step = 1;
-    } else if (!step) {
-      step = 1;
-    }
-
-    const arr = [];
-    if (step > 0) {
-      for (let i = start; i < stop; i += step) {
-        arr.push(i);
-      }
-    } else {
-      for (let i = start; i > stop; i += step) {
-        arr.push(i);
-      }
-    }
-    return arr;
+  // this function will return an array with the amount of entries by the value of the isotype row value
+  function newArray(range) {
+    return new Array(range);
   }
 </script>

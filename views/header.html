@@ -1,14 +1,13 @@
-{#if hideTitle !== true}
-  <h3 class="s-q-item__title">{title}</h3>
+{#if displayOptions.hideTitle !== true}
+  <h3 class="s-q-item__title">{item.title}</h3>
 {/if}
-{#if subtitle}
+{#if item.subtitle}
   <div class="s-q-item__subtitle">
-    {subtitle}
+    {item.subtitle}
   </div>
 {/if}
 
 <script>
-  export let title;
-  export let subtitle;
-  export let hideTitle;
+  export let item;
+  export let displayOptions;
 </script>
