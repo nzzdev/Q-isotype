@@ -21,7 +21,9 @@ const fixtureData = [
   require(`${fixtureDataDirectory}/svg-use-references.json`),
   require(`${fixtureDataDirectory}/show-legend.json`),
   require(`${fixtureDataDirectory}/hide-legend.json`),
-  require(`${fixtureDataDirectory}/icons-on-one-row.json`)
+  require(`${fixtureDataDirectory}/icons-on-one-row.json`),
+  require(`${fixtureDataDirectory}/countable-svg.json`),
+  require(`${fixtureDataDirectory}/lots-of-icons.json`)
 ];
 
 module.exports = {
