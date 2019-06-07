@@ -83,11 +83,12 @@ lab.experiment("hide legend", () => {
       }
     });
 
-    return elementCount(response.result.markup, ".q-isotype-hidden-legend").then(
-      value => {
-        expect(value).to.be.equal(1);
-      }
-    );
+    return elementCount(
+      response.result.markup,
+      ".q-isotype-hidden-legend"
+    ).then(value => {
+      expect(value).to.be.equal(1);
+    });
   });
 });
 
