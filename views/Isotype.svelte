@@ -1,8 +1,8 @@
 <script>
   export let item;
   export let categories;
-  export let maxAmountWidth;
   export let isLowlight;
+  export let iconContainerSize;
 
   // this function will return an array with the amount of entries by the value of the isotype row value
   function newArray(range) {
@@ -26,7 +26,7 @@
                   <div
                     class="q-isotype-icon-container"
                     class:q-isotype-lowlight={isLowlight(currentCategoryIndex)}
-                    style="width: {maxAmountWidth}%;">
+                    style="flex: 0 1 calc({iconContainerSize}% - 4px)">
                     {#if item.icons[currentCategoryIndex - 1].svg}
                       <div
                         class="q-isotype-icon-svg"
@@ -46,7 +46,7 @@
                   <div
                     class="q-isotype-icon-container"
                     class:q-isotype-lowlight={isLowlight(currentCategoryIndex)}
-                    style="width: {maxAmountWidth}%;">
+                    style="flex: 0 1 calc({iconContainerSize}% - 4px)">
                     <div class="q-isotype-icon-svg" style="width: 100%;">
                       <svg>
                         <use xlink:href="#no-icon-default-svg" />
@@ -67,7 +67,7 @@
               {#if categories.length === 1 && (row[currentCategoryIndex] == 0 || row[currentCategoryIndex] == null)}
                 <div
                   class="q-isotype-icon-container"
-                  style="width: {maxAmountWidth}%;">
+                  style="flex: 0 1 calc({iconContainerSize}% - 4px)">
                   <div class="q-isotype-icon-png" />
                 </div>
               {:else}
@@ -75,7 +75,7 @@
                   {#if item.icons && item.icons[currentCategoryIndex - 1]}
                     <div
                       class="q-isotype-icon-container"
-                      style="width: {maxAmountWidth}%;">
+                      style="flex: 0 1 calc({iconContainerSize}% - 4px)">
                       {#if item.icons[currentCategoryIndex - 1].svg}
                         <div
                           class="q-isotype-icon-svg"
@@ -94,7 +94,7 @@
                   {:else}
                     <div
                       class="q-isotype-icon-container"
-                      style="width: {maxAmountWidth}%;">
+                      style="flex: 0 1 calc({iconContainerSize}% - 4px)">
                       <div class="q-isotype-icon-svg" style="width: 100%;">
                         <svg>
                           <use xlink:href="#no-icon-default-svg" />

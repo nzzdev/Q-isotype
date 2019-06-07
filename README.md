@@ -121,6 +121,14 @@ For displaying the `svg`s, we're using the [svg reference feature](https://css-t
 </svg>
 ```
 
+#### Countability (maxIconsPerRow)
+
+For guaranteeing the countability when having a lot of icons, we decided to implement rules to define the max amount of icons shown per row. This includes also the calculation of the size of the icons.
+
+##### Implementation details
+
+- The rules are described [here](https://github.com/nzzdev/Q-isotype/blob/11ff367a8fa3a45965bc470dff1ea5637a3ac1d2/routes/rendering-info/web.js#L142)
+
 [to the top](#table-of-contents)
 
 ### Options
