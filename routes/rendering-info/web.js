@@ -214,12 +214,10 @@ module.exports = {
       );
     }
 
-    // logic to define which template will be used (compareable/standard)
-    item.iconContainerSize = calculateIconContainerSize(maxAmount);
-
     const context = {
       item: item,
       categories: categories,
+      iconContainerSize: calculateIconContainerSize(maxAmount),
       displayOptions: request.payload.toolRuntimeConfig.displayOptions || {}
     };
 
