@@ -45,11 +45,12 @@ $legend-size: 26px;
 }
 
 .q-isotype-icon-container {
-  min-width: 26px;
-  max-width: 36px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  margin-top: 6px;
+  min-width: 20px;
+  max-width: 184px;
+  min-height: 20px;
+  max-height: 184px;
+  margin-top: 8px;
+  margin-right: 4px;
 }
 
 .q-isotype-icon-png,
@@ -79,6 +80,6 @@ $legend-size: 26px;
 }
 
 .q-isotype-hidden-legend {
-  visibility: hidden; 
+  visibility: hidden;
   height: 0;
 }

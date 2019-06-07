@@ -138,6 +138,14 @@ function getCleanedSvg(svg, svgInfo) {
   return svg;
 }
 
+function calculateIconContainerSize(maxAmount) {
+  if (maxAmount < 10 || maxAmount >= 50) {
+    return 100 / maxAmount;
+  } else {
+    return 10; // maxIconContainerSize will be 10% because there are at least 10 icons (100/10=10)
+  }
+}
+
 module.exports = {
   method: "POST",
   path: "/rendering-info/web",
@@ -206,10 +214,12 @@ module.exports = {
       );
     }
 
+    // logic to define which template will be used (compareable/standard)
+    item.iconContainerSize = calculateIconContainerSize(maxAmount);
+
     const context = {
       item: item,
       categories: categories,
-      maxAmountWidth: 100 / maxAmount,
       displayOptions: request.payload.toolRuntimeConfig.displayOptions || {}
     };
 
