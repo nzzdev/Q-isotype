@@ -138,11 +138,19 @@ function getCleanedSvg(svg, svgInfo) {
   return svg;
 }
 
-function calculateIconContainerSize(maxAmount) {
-  if (maxAmount < 10 || maxAmount >= 50) {
-    return 100 / maxAmount;
+function calculateIconContainerSize(maxAmount, amountOfGroups) {
+  if (amountOfGroups === 3) {
+    if (maxAmount < 5) {
+      return 100 / maxAmount;
+    } else {
+      return 20; // maxIconContainerSize will be 20% because there are at least 5 icons (100/5=20)
+    }
   } else {
-    return 10; // maxIconContainerSize will be 10% because there are at least 10 icons (100/10=10)
+    if (maxAmount < 10) {
+      return 100 / maxAmount;
+    } else {
+      return 10; // maxIconContainerSize will be 10% because there are at least 10 icons (100/10=10)
+    }
   }
 }
 
@@ -217,7 +225,10 @@ module.exports = {
     const context = {
       item: item,
       categories: categories,
-      iconContainerSize: calculateIconContainerSize(maxAmount),
+      iconContainerSize: calculateIconContainerSize(
+        maxAmount,
+        item.data.length
+      ),
       displayOptions: request.payload.toolRuntimeConfig.displayOptions || {}
     };
 
