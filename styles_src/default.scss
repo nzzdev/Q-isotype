@@ -49,7 +49,7 @@ $legend-size: 26px;
   max-width: 184px;
   min-height: 20px;
   max-height: 184px;
-  margin-top: 8px;
+  margin-top: 4px;
   margin-right: 4px;
 }
 
@@ -84,13 +84,17 @@ $legend-size: 26px;
   height: 0;
 }
 
-.q-isotype-first-column {
+.q-isotype-icon-block--first {
   margin-right: 48px;
 }
 
-.q-isotype-comparable-column {
+.q-isotype-icon-block {
   width: calc(50% - 24px);
   float: left;
   display: flex;
   flex-wrap: wrap;
+}
+
+.q-isotype-comparable-row {
+  margin-bottom: 16px;
 }
