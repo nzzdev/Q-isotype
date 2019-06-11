@@ -1,0 +1,56 @@
+{
+  "title": "FIXTURE: compare isotypes icons on one row",
+  "subtitle": "Noch ein Untertitel",
+  "data": [
+    ["Icons", "Hoch", "Breit", "Quadratisch"],
+    ["Zeile 1", "11", "12", "13"],
+    ["Zeile 2", "31", "32", "33"]
+  ],
+  "icons": [
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/19/e524bfe4-8749-46e6-ab5e-dd95da8a55eb.svg",
+        "key": "2018/02/19/e524bfe4-8749-46e6-ab5e-dd95da8a55eb.svg",
+        "size": 2459
+      }
+    },
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/19/0d9de8b5-4ddc-4ecf-88dd-d34d393fa0ee.svg",
+        "key": "2018/02/19/0d9de8b5-4ddc-4ecf-88dd-d34d393fa0ee.svg",
+        "size": 957
+      }
+    },
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/15/8fef53d4-4944-407f-bd2f-b5bd42e2fcfb.svg",
+        "key": "2018/02/15/8fef53d4-4944-407f-bd2f-b5bd42e2fcfb.svg",
+        "size": 1671
+      }
+    }
+  ],
+  "notes": "Groooosses Kino",
+  "sources": [
+    {
+      "text": "NZZ",
+      "link": {
+        "isValid": true,
+        "url": "https://nzz.ch"
+      }
+    },
+    {
+      "text": "Github",
+      "link": {
+        "isValid": true,
+        "url": "https://github.com/nzzdev/Q-isotype"
+      }
+    },
+    {
+      "text": "Noch eine Quelle ohne Link"
+    }
+  ],
+  "options": {
+    "iconsOneRow": true,
+    "highlightColumn": null
+  }
+}
