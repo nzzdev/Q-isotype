@@ -146,7 +146,7 @@ function calculateIconContainerSize(maxAmount, amountOfGroups) {
       return 20; // maxIconContainerSize will be 20% because there are at least 5 icons (100/5=20)
     }
   } else {
-    if (maxAmount < 10) {
+    if (maxAmount < 10 || maxAmount >= 50) {
       return 100 / maxAmount;
     } else {
       return 10; // maxIconContainerSize will be 10% because there are at least 10 icons (100/10=10)

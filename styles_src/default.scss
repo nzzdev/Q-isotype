@@ -83,3 +83,14 @@ $legend-size: 26px;
   visibility: hidden;
   height: 0;
 }
+
+.q-isotype-first-column {
+  margin-right: 48px;
+}
+
+.q-isotype-comparable-column {
+  width: calc(50% - 24px);
+  float: left;
+  display: flex;
+  flex-wrap: wrap;
+}

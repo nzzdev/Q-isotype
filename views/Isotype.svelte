@@ -51,14 +51,12 @@
     {item}
     data={getTemplateAndData(item.data).data}
     {categories}
-    options={item.options}
     {isLowlight}
     {newArray}
     {iconContainerSize} />
 {:else}
   <ListedIsotype
     {item}
-    data={getTemplateAndData(item.data).data}
     {categories}
     options={item.options}
     {isLowlight}
