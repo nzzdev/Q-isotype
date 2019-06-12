@@ -1,5 +1,5 @@
 {
-  "title": "FIXTURE: SVG - eine Kategorie mit 0 Wert",
+  "title": "FIXTURE: Eine Kategorie mit 0 Wert",
   "subtitle": "Noch ein Untertitel",
   "data": [
     ["Icons", "Default gelb"],
@@ -10,8 +10,7 @@
   "icons": [
     {
       "file": {
-        "url":
-          "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/15/239b20b7-9d82-4ebf-9bc2-5bc2919a3434.svg",
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/15/239b20b7-9d82-4ebf-9bc2-5bc2919a3434.svg",
         "key": "2018/02/15/239b20b7-9d82-4ebf-9bc2-5bc2919a3434.svg",
         "size": 511
       }

@@ -1,6 +1,5 @@
 {
-  "title":
-    "FIXTURE: nur SVG - svg mit width und height Attribut - Float values in Daten",
+  "title": "FIXTURE: Width und height Attribut - Float values in Daten",
   "subtitle": "Noch ein Untertitel",
   "data": [
     [null, "= 1,000 megawatts"],
@@ -19,8 +18,7 @@
   "icons": [
     {
       "file": {
-        "url":
-          "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/15/eb682a83-c7bf-4a3c-ad4c-6a0b4c824027.svg",
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/15/eb682a83-c7bf-4a3c-ad4c-6a0b4c824027.svg",
         "key": "2018/02/15/eb682a83-c7bf-4a3c-ad4c-6a0b4c824027.svg",
         "size": 4708
       }

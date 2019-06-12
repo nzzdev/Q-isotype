@@ -1,25 +1,10 @@
 {
-  "title": "FIXTURE: SVG - use references",
+  "title": "FIXTURE: Use references",
   "subtitle": "Noch ein Untertitel",
   "data": [
-    [
-      "Kammer",
-      "Republikanische Frauen",
-      "Demokratische Frauen",
-      "Männer"
-    ],
-    [
-      "Senat",
-      "6",
-      "16",
-      "75"
-    ],
-    [
-      "Repräsentantenhaus",
-      "12",
-      "83",
-      "320"
-    ]
+    ["Kammer", "Republikanische Frauen", "Demokratische Frauen", "Männer"],
+    ["Senat", "6", "16", "75"],
+    ["Repräsentantenhaus", "12", "83", "320"]
   ],
   "allowDownloadData": false,
   "icons": [
