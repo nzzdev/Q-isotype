@@ -11,20 +11,6 @@
     item.data.length
   );
 
-  function getTemplateAndData(data) {
-    if (data.length === 3) {
-      return {
-        template: "comparable",
-        data: transposeData(data) // transpose data for comparable layout
-      };
-    } else {
-      return {
-        template: "listed",
-        data: item.data
-      };
-    }
-  }
-
   function getIconContainerSize(maxAmount, amountOfGroups) {
     if (amountOfGroups === 3) {
       if (maxAmount < 5) {
@@ -66,10 +52,10 @@
   }
 </script>
 
-{#if getTemplateAndData(item.data).template === 'comparable'}
+{#if item.data.length === 3}
   <ComparableIsotype
     {item}
-    data={getTemplateAndData(item.data).data}
+    data={transposeData(item.data)}
     {categories}
     {isLowlight}
     {newArray}

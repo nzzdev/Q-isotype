@@ -1,5 +1,4 @@
 <script>
-  import IconsOnOneRow from "./IconsOnOneRow.svelte";
   import Icon from "./Icon.svelte";
   export let item;
   export let data;
@@ -15,12 +14,15 @@
       <div class="q-isotype-row-title s-font-title-xs">{row[0]}</div>
       {#if item.options && item.options.iconsOneRow}
         <div class="q-isotype-icon-row">
-          <IconsOnOneRow
-            {item}
-            {row}
-            {isLowlight}
-            {newArray}
-            {iconContainerSize} />
+          {#each row as value, currentCategoryIndex}
+            {#each newArray(row[currentCategoryIndex]) as value, i}
+              <Icon
+                {item}
+                {isLowlight}
+                {currentCategoryIndex}
+                {iconContainerSize} />
+            {/each}
+          {/each}
         </div>
       {:else}
         {#each row as value, currentCategoryIndex}
