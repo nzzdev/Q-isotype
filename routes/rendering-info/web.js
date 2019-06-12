@@ -69,13 +69,6 @@ function getIntegerValues(data) {
   });
 }
 
-function getResizeImageUrl(image) {
-  return process.env.IMAGE_SERVICE_URL.replace("{key}", image.key).replace(
-    "{width}",
-    maxWidth
-  );
-}
-
 function getSvgInfo(svg) {
   return new Promise((resolve, reject) => {
     const $ = cheerio.load(svg);
@@ -198,7 +191,6 @@ module.exports = {
           } catch (err) {
             console.log(err);
           }
-          icon.url = getResizeImageUrl(icon.file);
           icon.key = icon.file.key;
           delete icon.file;
           return icon;
