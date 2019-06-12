@@ -24,7 +24,11 @@ const fixtureData = [
   require(`${fixtureDataDirectory}/icons-on-one-row.json`),
   require(`${fixtureDataDirectory}/less-than-10-icons.json`),
   require(`${fixtureDataDirectory}/less-than-50-icons.json`),
-  require(`${fixtureDataDirectory}/more-than-50-icons.json`)
+  require(`${fixtureDataDirectory}/more-than-50-icons.json`),
+  require(`${fixtureDataDirectory}/compare-isotypes-svg.json`),
+  require(`${fixtureDataDirectory}/compare-isotypes-png.json`),
+  require(`${fixtureDataDirectory}/compare-isotypes-no-icon.json`),
+  require(`${fixtureDataDirectory}/compare-isotypes-iconsOneRow.json`)
 ];
 
 module.exports = {

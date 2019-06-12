@@ -6,9 +6,9 @@
 <div class="s-q-item__footer">
   {#if item.notes}
     {item.notes}
-    {#if item.sources > 0}–{/if}
   {/if}
-  {#if item.sources}
+  {#if item.sources && item.sources.length > 0}
+    {#if item.notes}&nbsp;&ndash;&nbsp;{/if}
     {#if item.sources.length > 1}Quellen:{:else}Quelle:{/if}
     {#each item.sources as source, index}
       {#if source.text !== ''}
@@ -19,7 +19,7 @@
     {/each}
   {/if}
   {#if item.acronym}
-    {#if item.notes || item.sources}&nbsp;&ndash;&nbsp;{/if}
+    {#if item.notes || (item.sources && item.sources.length > 0)}&nbsp;&ndash;&nbsp;{/if}
     Grafik: {item.acronym}
   {/if}
   {#if item.allowDownloadData}

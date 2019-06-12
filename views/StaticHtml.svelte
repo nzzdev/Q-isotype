@@ -6,7 +6,7 @@
 
   export let item;
   export let categories;
-  export let iconContainerSize;
+  export let maxAmount;
   export let linkToCSV;
   export let displayOptions;
 
@@ -23,6 +23,6 @@
 <div class="s-q-item q-isotype" style="opacity: 0;">
   <Header {item} {displayOptions} />
   <Legend {item} {categories} {isLowlight} />
-  <Isotype {item} {categories} {isLowlight} {iconContainerSize} />
+  <Isotype {item} {categories} {isLowlight} {maxAmount} />
   <Footer {item} {linkToCSV} />
 </div>

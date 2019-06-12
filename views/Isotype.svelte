@@ -1,8 +1,47 @@
 <script>
+  import Groups from "./Groups.svelte";
+  import CompareGroups from "./CompareGroups.svelte";
+
   export let item;
   export let categories;
   export let isLowlight;
-  export let iconContainerSize;
+  export let maxAmount;
+  export let iconContainerSize = getIconContainerSize(
+    maxAmount,
+    item.data.length
+  );
+
+  function getIconContainerSize(maxAmount, amountOfGroups) {
+    if (amountOfGroups === 3) {
+      if (maxAmount < 5) {
+        return 100 / maxAmount;
+      } else {
+        return 20; // maxIconContainerSize will be 20% because there are at least 5 icons (100/5=20)
+      }
+    } else {
+      if (maxAmount < 10 || maxAmount >= 50) {
+        return 100 / maxAmount;
+      } else {
+        return 10; // maxIconContainerSize will be 10% because there are at least 10 icons (100/10=10)
+      }
+    }
+  }
+
+  function transposeData(data) {
+    let out = [];
+
+    for (let i = 0, l1 = data.length; i < l1; i++) {
+      let row = data[i];
+
+      for (let j = 0, l2 = row.length; j < l2; j++) {
+        if (!out[j]) out[j] = [];
+
+        out[j][i] = row[j];
+      }
+    }
+
+    return out;
+  }
 
   // this function will return an array with the amount of entries by the value of the isotype row value
   function newArray(range) {
@@ -13,101 +52,20 @@
   }
 </script>
 
-{#if item.data && item.data.length > 1}
-  {#each item.data.slice(1) as row, index}
-    <div class="q-isotype-row">
-      <div class="q-isotype-row-title s-font-title-xs">{row[0]}</div>
-      {#if item.options && item.options.iconsOneRow}
-        <div class="q-isotype-icon-row">
-          {#each row as value, currentCategoryIndex}
-            {#if currentCategoryIndex > 0}
-              {#each newArray(row[currentCategoryIndex]) as value, i}
-                {#if item.icons && item.icons[currentCategoryIndex - 1]}
-                  <div
-                    class="q-isotype-icon-container"
-                    class:q-isotype-lowlight={isLowlight(currentCategoryIndex)}
-                    style="flex: 0 1 calc({iconContainerSize}% - 4px)">
-                    {#if item.icons[currentCategoryIndex - 1].svg}
-                      <div
-                        class="q-isotype-icon-svg"
-                        style="{item.icons[currentCategoryIndex - 1].style};">
-                        <svg>
-                          <use
-                            xlink:href="#{item.icons[currentCategoryIndex - 1].key}" />
-                        </svg>
-                      </div>
-                    {:else}
-                      <div
-                        class="q-isotype-icon-png"
-                        style="background-image: url('{item.icons[currentCategoryIndex - 1].url}');" />
-                    {/if}
-                  </div>
-                {:else}
-                  <div
-                    class="q-isotype-icon-container"
-                    class:q-isotype-lowlight={isLowlight(currentCategoryIndex)}
-                    style="flex: 0 1 calc({iconContainerSize}% - 4px)">
-                    <div class="q-isotype-icon-svg" style="width: 100%;">
-                      <svg>
-                        <use xlink:href="#no-icon-default-svg" />
-                      </svg>
-                    </div>
-                  </div>
-                {/if}
-              {/each}
-            {/if}
-          {/each}
-        </div>
-      {:else}
-        {#each row as value, currentCategoryIndex}
-          {#if currentCategoryIndex > 0}
-            <div
-              class="q-isotype-icon-row"
-              class:q-isotype-lowlight={isLowlight(currentCategoryIndex)}>
-              {#if categories.length === 1 && (row[currentCategoryIndex] == 0 || row[currentCategoryIndex] == null)}
-                <div
-                  class="q-isotype-icon-container"
-                  style="flex: 0 1 calc({iconContainerSize}% - 4px)">
-                  <div class="q-isotype-icon-png" />
-                </div>
-              {:else}
-                {#each newArray(row[currentCategoryIndex]) as i}
-                  {#if item.icons && item.icons[currentCategoryIndex - 1]}
-                    <div
-                      class="q-isotype-icon-container"
-                      style="flex: 0 1 calc({iconContainerSize}% - 4px)">
-                      {#if item.icons[currentCategoryIndex - 1].svg}
-                        <div
-                          class="q-isotype-icon-svg"
-                          style="{item.icons[currentCategoryIndex - 1].style};">
-                          <svg>
-                            <use
-                              xlink:href="#{item.icons[currentCategoryIndex - 1].key}" />
-                          </svg>
-                        </div>
-                      {:else}
-                        <div
-                          class="q-isotype-icon-png"
-                          style="background-image: url('{item.icons[currentCategoryIndex - 1].url}');" />
-                      {/if}
-                    </div>
-                  {:else}
-                    <div
-                      class="q-isotype-icon-container"
-                      style="flex: 0 1 calc({iconContainerSize}% - 4px)">
-                      <div class="q-isotype-icon-svg" style="width: 100%;">
-                        <svg>
-                          <use xlink:href="#no-icon-default-svg" />
-                        </svg>
-                      </div>
-                    </div>
-                  {/if}
-                {/each}
-              {/if}
-            </div>
-          {/if}
-        {/each}
-      {/if}
-    </div>
-  {/each}
+{#if item.data.length === 3}
+  <CompareGroups
+    {item}
+    data={transposeData(item.data)}
+    {categories}
+    {isLowlight}
+    {newArray}
+    {iconContainerSize} />
+{:else}
+  <Groups
+    {item}
+    data={item.data}
+    {categories}
+    {isLowlight}
+    {newArray}
+    {iconContainerSize} />
 {/if}

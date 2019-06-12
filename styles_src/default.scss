@@ -2,9 +2,21 @@ $legend-size: 26px;
 
 .q-isotype {
   opacity: 1 !important;
+  display: flex;
+  flex-direction: column;
 
   &-row {
     margin-bottom: 24px;
+    &-title {
+      word-break: break-word;
+    }
+    &--compare {
+      display: flex;
+      flex-direction: row;
+    }
+    &--margin {
+      margin-bottom: 16px;
+    }
   }
 }
 
@@ -49,7 +61,7 @@ $legend-size: 26px;
   max-width: 184px;
   min-height: 20px;
   max-height: 184px;
-  margin-top: 8px;
+  margin-top: 4px;
   margin-right: 4px;
 }
 
@@ -82,4 +94,15 @@ $legend-size: 26px;
 .q-isotype-hidden-legend {
   visibility: hidden;
   height: 0;
+}
+
+.q-isotype-icon-block--first {
+  margin-right: 48px;
+}
+
+.q-isotype-icon-block {
+  width: calc(50% - 24px);
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
