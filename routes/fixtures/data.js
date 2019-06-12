@@ -29,6 +29,8 @@ const fixtureData = [
   require(`${fixtureDataDirectory}/aspect-ratio-square.json`),
   require(`${fixtureDataDirectory}/aspect-ratio-horizontal.json`),
   require(`${fixtureDataDirectory}/aspect-ratio-vertical.json`),
+  require(`${fixtureDataDirectory}/aspect-ratio-horizontal-alot.json`),
+  require(`${fixtureDataDirectory}/aspect-ratio-vertical-alot.json`),
   require(`${fixtureDataDirectory}/aspect-ratio-mixed.json`)
 ];
 
