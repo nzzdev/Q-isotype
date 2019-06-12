@@ -1,6 +1,6 @@
 <script>
-  import ListedIsotype from "./templates/ListedIsotype.svelte";
-  import ComparableIsotype from "./templates/ComparableIsotype.svelte";
+  import Groups from "./Groups.svelte";
+  import CompareGroups from "./CompareGroups.svelte";
 
   export let item;
   export let categories;
@@ -53,7 +53,7 @@
 </script>
 
 {#if item.data.length === 3}
-  <ComparableIsotype
+  <CompareGroups
     {item}
     data={transposeData(item.data)}
     {categories}
@@ -61,7 +61,7 @@
     {newArray}
     {iconContainerSize} />
 {:else}
-  <ListedIsotype
+  <Groups
     {item}
     data={item.data}
     {categories}
