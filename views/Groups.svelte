@@ -10,7 +10,9 @@
 
 {#if data && data.length > 1}
   {#each data.slice(1) as row, index}
-    <div class="q-isotype-row">
+    <div
+      class="q-isotype-row"
+      class:q-isotype-row--margin={index !== data.slice(1).length - 1}>
       <div class="q-isotype-row-title s-font-title-xs">{row[0]}</div>
       {#if item.options && item.options.iconsOneRow}
         <div class="q-isotype-icon-row">
