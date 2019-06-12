@@ -78,7 +78,7 @@
               {#if item.icons && item.icons[rowIndex - 1]}
                 <div
                   class="q-isotype-icon-container"
-                  class:q-isotype-lowlight={isLowlight(rowIndex - 1)}
+                  class:q-isotype-lowlight={isLowlight(rowIndex)}
                   style="flex: 0 1 calc({iconContainerSize}% - 4px)">
                   {#if item.icons[rowIndex - 1].svg}
                     <div
@@ -97,7 +97,7 @@
               {:else}
                 <div
                   class="q-isotype-icon-container"
-                  class:q-isotype-lowlight={isLowlight(rowIndex - 1)}
+                  class:q-isotype-lowlight={isLowlight(rowIndex)}
                   style="flex: 0 1 calc({iconContainerSize}% - 4px)">
                   <div class="q-isotype-icon-svg" style="width: 100%;">
                     <svg>
