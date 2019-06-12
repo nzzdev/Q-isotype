@@ -1,0 +1,35 @@
+{
+  "title": "FIXTURE: aspect-ratio cube",
+  "acronym": "phk.",
+  "data": [
+    ["Kategorien", "Pokal 1"],
+    ["Deutschland", "5"],
+    ["Schweiz", "6"],
+    ["Italien", "2"]
+  ],
+  "allowDownloadData": false,
+  "icons": [
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2019/05/28/2_2-2449df4ec88938523b441f405dce1fbf.svg",
+        "key": "2019/05/28/2_2-2449df4ec88938523b441f405dce1fbf.svg",
+        "size": 9802,
+        "type": "image/svg+xml"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "link": {
+        "url": "https://google.ch",
+        "isValid": false
+      },
+      "text": "Testing Quelle"
+    }
+  ],
+  "options": {
+    "hideLegend": false,
+    "iconsOneRow": false,
+    "highlightColumn": null
+  }
+}
