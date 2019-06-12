@@ -1,0 +1,52 @@
+{
+  "title": "FIXTURE: Viz color - ohne Legende - ohne Anmerkungen - eine Quelle",
+  "subtitle": "Noch ein Untertitel",
+  "data": [
+    ["Icons", "Default gelb", "Quiz blau", "Rechner", "Oscar"],
+    ["Zeile 1", "10", "5", "1", "3"],
+    ["Zeile 2", "3", "6", "1", "4"],
+    ["Zeile 3", "1", null, "1", "5"]
+  ],
+  "icons": [
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/15/239b20b7-9d82-4ebf-9bc2-5bc2919a3434.svg",
+        "key": "2018/02/15/239b20b7-9d82-4ebf-9bc2-5bc2919a3434.svg",
+        "size": 511
+      }
+    },
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/15/8fef53d4-4944-407f-bd2f-b5bd42e2fcfb.svg",
+        "key": "2018/02/15/8fef53d4-4944-407f-bd2f-b5bd42e2fcfb.svg",
+        "size": 1671
+      }
+    },
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/15/21a447ec-e3d9-4c84-99fe-ae4f7f5e937a.svg",
+        "key": "2018/02/15/21a447ec-e3d9-4c84-99fe-ae4f7f5e937a.svg",
+        "size": 1512
+      }
+    },
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/15/21a447ec-e3d9-4c84-99fe-ae4f7f5e937a.svg",
+        "key": "2018/02/15/21a447ec-e3d9-4c84-99fe-ae4f7f5e937a.svg",
+        "size": 1512
+      }
+    }
+  ],
+  "sources": [
+    {
+      "text": "NZZ",
+      "link": {
+        "isValid": true,
+        "url": "https://nzz.ch"
+      }
+    }
+  ],
+  "options": {
+    "hideLegend": true
+  }
+}

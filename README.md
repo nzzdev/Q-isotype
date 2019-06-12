@@ -28,11 +28,7 @@ npm run build
 
 ## Configuration
 
-There is one env variable `IMAGE_SERVICE_URL` to be defined. It should contain a URL with 3 parameters that will get replaced before the URL is used to load the images.
-`{key}` will be replaced by the string Q-server stored as the key when the file got uploaded through Q-servers `/file` endpoint provided by the [file plugin](https://github.com/nzzdev/Q-server/blob/dev/plugins/file/index.js)
-`{width}` is replaced by the width the image should be loaded
-`{format}` will be `png` or `webp` (a `picture` element is used in the HTML with multiple `source` elements)
-Example: `https://q-images.nzz.ch/{key}?width={width}&format={format}`
+No configuration is needed for this tool.
 
 [to the top](#table-of-contents)
 

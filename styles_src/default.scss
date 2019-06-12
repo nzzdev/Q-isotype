@@ -31,18 +31,10 @@ $legend-size: 26px;
     margin-right: 8px;
   }
 
-  &-png,
   &-svg {
     margin-right: 4px;
     height: $legend-size;
     width: $legend-size;
-  }
-
-  &-png {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 26px;
   }
 
   &-svg svg {
@@ -65,15 +57,8 @@ $legend-size: 26px;
   margin-right: 4px;
 }
 
-.q-isotype-icon-png,
 .q-isotype-icon-svg {
   padding-bottom: 100%;
-}
-
-.q-isotype-icon-png {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 .q-isotype-icon-svg {
