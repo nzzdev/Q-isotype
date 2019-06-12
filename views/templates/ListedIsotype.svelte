@@ -1,13 +1,14 @@
 <script>
   export let item;
+  export let data;
   export let categories;
   export let isLowlight;
   export let iconContainerSize;
   export let newArray;
 </script>
 
-{#if item.data && item.data.length > 1}
-  {#each item.data.slice(1) as row, index}
+{#if data && data.length > 1}
+  {#each data.slice(1) as row, index}
     <div class="q-isotype-row">
       <div class="q-isotype-row-title s-font-title-xs">{row[0]}</div>
       {#if item.options && item.options.iconsOneRow}

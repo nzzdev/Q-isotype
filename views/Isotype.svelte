@@ -77,8 +77,8 @@
 {:else}
   <ListedIsotype
     {item}
+    data={item.data}
     {categories}
-    options={item.options}
     {isLowlight}
     {newArray}
     {iconContainerSize} />
