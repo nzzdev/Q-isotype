@@ -7,16 +7,21 @@
 
 {#if item.icons && item.icons[currentCategoryIndex - 1]}
   <div
-    class="q-isotype-icon-container"
+    class="q-isotype-icon-container q-isotype-icon-container--{item.icons[currentCategoryIndex - 1].aspectRatio}"
     class:q-isotype-lowlight={isLowlight(currentCategoryIndex)}
     style="flex: 0 1 calc({iconContainerSize}% - 4px)">
-    <div
-      class="q-isotype-icon-svg"
-      style="{item.icons[currentCategoryIndex - 1].style};">
-      <svg>
-        <use xlink:href="#{item.icons[currentCategoryIndex - 1].key}" />
-      </svg>
-    </div>
+    {#if item.icons[currentCategoryIndex - 1].svg}
+      <div
+        class="q-isotype-icon-svg q-isotype-icon-svg--{item.icons[currentCategoryIndex - 1].aspectRatio}">
+        <svg>
+          <use xlink:href="#{item.icons[currentCategoryIndex - 1].key}" />
+        </svg>
+      </div>
+    {:else}
+      <div
+        class="q-isotype-icon-png"
+        style="background-image: url('{item.icons[currentCategoryIndex - 1].url}');" />
+    {/if}
   </div>
 {:else}
   <div

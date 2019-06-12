@@ -100,17 +100,23 @@ function getSvgInfo(svg) {
           10
         );
       }
-      if (height > width) {
+      if (height === width) {
         resolve({
           hasHeight: height !== undefined,
           hasWidth: width !== undefined,
-          style: "height: 100%"
+          aspectRatio: "square"
+        });
+      } else if (height > width) {
+        resolve({
+          hasHeight: height !== undefined,
+          hasWidth: width !== undefined,
+          aspectRatio: "vertical"
         });
       } else {
         resolve({
           hasHeight: height !== undefined,
           hasWidth: width !== undefined,
-          style: "width: 100%"
+          aspectRatio: "horizontal"
         });
       }
     } catch (err) {
@@ -129,6 +135,24 @@ function getCleanedSvg(svg, svgInfo) {
     svg = svg.replace(/(<svg[^>]*)width="[\d]*"(.*)/, "$1 $2");
   }
   return svg;
+}
+
+function getAspectRatioFormat(aspectRatios) {
+  if (
+    aspectRatios.horizontal > 0 &&
+    aspectRatios.vertical === 0 &&
+    aspectRatios.square === 0
+  ) {
+    return "horizontal";
+  } else if (
+    aspectRatios.vertical > 0 &&
+    aspectRatios.horizontal === 0 &&
+    aspectRatios.square === 0
+  ) {
+    return "vertical";
+  } else {
+    return "square";
+  }
 }
 
 module.exports = {
@@ -166,6 +190,11 @@ module.exports = {
     const maxAmount = Math.max(...sumAmounts);
 
     if (item.icons) {
+      let aspectRatios = {
+        square: 0,
+        horizontal: 0,
+        vertical: 0
+      };
       await Promise.all(
         item.icons.map(async icon => {
           try {
@@ -177,15 +206,13 @@ module.exports = {
               icon.svg = await response.text();
               try {
                 const svgInfo = await getSvgInfo(icon.svg);
-                // icon.style = svgInfo.style;
-                icon.style = "width:100%";
+                aspectRatios[svgInfo.aspectRatio]++; // count the amount of aspectRatios
                 if (svgInfo.hasHeight || svgInfo.hasWidth) {
                   icon.svg = getCleanedSvg(icon.svg, svgInfo);
                 }
               } catch (err) {
                 console.log(err);
                 icon.svg = noIconDefault;
-                icon.style = "width: 100%";
               }
             }
           } catch (err) {
@@ -196,6 +223,10 @@ module.exports = {
           return icon;
         })
       );
+      let aspectRatioFormat = getAspectRatioFormat(aspectRatios);
+      item.icons.forEach(icon => {
+        icon.aspectRatio = aspectRatioFormat;
+      });
     }
 
     const context = {

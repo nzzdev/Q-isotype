@@ -26,7 +26,7 @@ const fixtureData = [
   require(`${fixtureDataDirectory}/compare-isotypes.json`),
   require(`${fixtureDataDirectory}/compare-isotypes-no-icon.json`),
   require(`${fixtureDataDirectory}/compare-isotypes-iconsOneRow.json`),
-  require(`${fixtureDataDirectory}/aspect-ratio-cube.json`),
+  require(`${fixtureDataDirectory}/aspect-ratio-square.json`),
   require(`${fixtureDataDirectory}/aspect-ratio-horizontal.json`),
   require(`${fixtureDataDirectory}/aspect-ratio-vertical.json`),
   require(`${fixtureDataDirectory}/aspect-ratio-mixed.json`)

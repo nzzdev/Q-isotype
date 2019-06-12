@@ -1,12 +1,7 @@
 {
   "title": "FIXTURE: aspect-ratio vertical",
   "acronym": "phk.",
-  "data": [
-    ["Kategorien", "Pokal 1"],
-    ["Deutschland", "5"],
-    ["Schweiz", "6"],
-    ["Italien", "2"]
-  ],
+  "data": [["Kategorien", "Pokal 1"], ["Schweiz", "383"]],
   "allowDownloadData": false,
   "icons": [
     {

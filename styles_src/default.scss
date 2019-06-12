@@ -49,16 +49,40 @@ $legend-size: 26px;
 }
 
 .q-isotype-icon-container {
-  min-width: 20px;
-  max-width: 184px;
-  min-height: 20px;
-  max-height: 184px;
   margin-top: 4px;
   margin-right: 4px;
+  &--square {
+    min-width: 20px;
+    max-width: 184px;
+    min-height: 20px;
+    max-height: 184px;
+  }
+
+  &--horizontal {
+    min-width: 20px;
+    max-width: 184px;
+    min-height: 10px;
+    max-height: 92px;
+  }
+
+  &--vertical {
+    min-width: 10px;
+    max-width: 92px;
+    min-height: 20px;
+    max-height: 184px;
+  }
 }
 
 .q-isotype-icon-svg {
   padding-bottom: 100%;
+
+  &--horizontal {
+    height: 50%;
+  }
+
+  &--vertical {
+    height: 100%;
+  }
 }
 
 .q-isotype-icon-svg {
