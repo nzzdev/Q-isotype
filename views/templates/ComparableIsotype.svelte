@@ -1,5 +1,6 @@
 <script>
   import IconsOnOneRow from "./IconsOnOneRow.svelte";
+  import Icon from "./Icon.svelte";
   export let item;
   export let data;
   export let categories;
@@ -21,10 +22,10 @@
       </div>
     </div>
     <div class="q-isotype-row--compare">
-      {#each item.data.slice(1) as row, rowIndex}
+      {#each item.data.slice(1) as row, currentCategoryIndex}
         <div
           class="q-isotype-icon-block"
-          class:q-isotype-icon-block--first={rowIndex === 0}>
+          class:q-isotype-icon-block--first={currentCategoryIndex === 0}>
           <IconsOnOneRow
             {item}
             {row}
@@ -35,12 +36,12 @@
       {/each}
     </div>
   {:else}
-    {#each data as row, rowIndex}
+    {#each data as row, currentCategoryIndex}
       <div
         class="q-isotype-row--compare"
-        class:q-isotype-row--margin={rowIndex !== data.length - 1}>
+        class:q-isotype-row--margin={currentCategoryIndex !== data.length - 1}>
         {#each row.slice(1) as val, colIndex}
-          {#if rowIndex === 0}
+          {#if currentCategoryIndex === 0}
             <div
               class="q-isotype-row-title s-font-title-xs q-isotype-icon-block"
               class:q-isotype-icon-block--first={colIndex === 0}>
@@ -51,37 +52,11 @@
               class="q-isotype-icon-block"
               class:q-isotype-icon-block--first={colIndex === 0}>
               {#each newArray(val) as value, i}
-                {#if item.icons && item.icons[rowIndex - 1]}
-                  <div
-                    class="q-isotype-icon-container"
-                    class:q-isotype-lowlight={isLowlight(rowIndex)}
-                    style="flex: 0 1 calc({iconContainerSize}% - 4px)">
-                    {#if item.icons[rowIndex - 1].svg}
-                      <div
-                        class="q-isotype-icon-svg"
-                        style="{item.icons[rowIndex - 1].style};">
-                        <svg>
-                          <use xlink:href="#{item.icons[rowIndex - 1].key}" />
-                        </svg>
-                      </div>
-                    {:else}
-                      <div
-                        class="q-isotype-icon-png"
-                        style="background-image: url('{item.icons[rowIndex - 1].url}');" />
-                    {/if}
-                  </div>
-                {:else}
-                  <div
-                    class="q-isotype-icon-container"
-                    class:q-isotype-lowlight={isLowlight(rowIndex)}
-                    style="flex: 0 1 calc({iconContainerSize}% - 4px)">
-                    <div class="q-isotype-icon-svg" style="width: 100%;">
-                      <svg>
-                        <use xlink:href="#no-icon-default-svg" />
-                      </svg>
-                    </div>
-                  </div>
-                {/if}
+                <Icon
+                  {item}
+                  {isLowlight}
+                  {currentCategoryIndex}
+                  {iconContainerSize} />
               {/each}
             </div>
           {/if}
