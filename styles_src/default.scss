@@ -2,12 +2,20 @@ $legend-size: 26px;
 
 .q-isotype {
   opacity: 1 !important;
+  display: flex;
+  flex-direction: column;
 
   &-row {
     margin-bottom: 24px;
     &-title {
-      margin-bottom: 16px;
       word-break: break-word;
+    }
+    &--compare {
+      display: flex;
+      flex-direction: row;
+    }
+    &--margin {
+      margin-bottom: 16px;
     }
   }
 }
@@ -94,8 +102,7 @@ $legend-size: 26px;
 
 .q-isotype-icon-block {
   width: calc(50% - 24px);
-  float: left;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 16px;
+  align-content: flex-start;
 }
