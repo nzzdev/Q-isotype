@@ -5,7 +5,11 @@
   export let item;
   export let categories;
   export let isLowlight;
-  export let iconContainerSize;
+  export let maxAmount;
+  export let iconContainerSize = getIconContainerSize(
+    maxAmount,
+    item.data.length
+  );
 
   function getTemplateAndData(data) {
     if (data.length === 3) {
@@ -18,6 +22,22 @@
         template: "listed",
         data: item.data
       };
+    }
+  }
+
+  function getIconContainerSize(maxAmount, amountOfGroups) {
+    if (amountOfGroups === 3) {
+      if (maxAmount < 5) {
+        return 100 / maxAmount;
+      } else {
+        return 20; // maxIconContainerSize will be 20% because there are at least 5 icons (100/5=20)
+      }
+    } else {
+      if (maxAmount < 10 || maxAmount >= 50) {
+        return 100 / maxAmount;
+      } else {
+        return 10; // maxIconContainerSize will be 10% because there are at least 10 icons (100/10=10)
+      }
     }
   }
 
