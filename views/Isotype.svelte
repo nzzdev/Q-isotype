@@ -16,7 +16,11 @@
       if (maxAmount < 5) {
         return 100 / maxAmount;
       } else {
-        return 20; // maxIconContainerSize will be 20% because there are at least 5 icons (100/5=20)
+        if (maxAmount > 10) {
+          return 10; // maxIconContainerSize will be 20% because there are at least 5 icons (100/5=20)
+        } else {
+          return 20;
+        }
       }
     } else {
       if (maxAmount < 10 || maxAmount >= 100) {
