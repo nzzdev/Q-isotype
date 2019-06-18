@@ -1,6 +1,7 @@
 <script>
   import Groups from "./Groups.svelte";
   import CompareGroups from "./CompareGroups.svelte";
+  import CompareCategories from "./CompareCategories.svelte";
 
   export let item;
   export let categories;
@@ -60,6 +61,14 @@
   <CompareGroups
     {item}
     data={transposeData(item.data)}
+    {categories}
+    {isLowlight}
+    {newArray}
+    {iconContainerSize} />
+{:else if item.data.length === 2 && item.data[0].length === 3}
+  <CompareCategories
+    {item}
+    data={item.data}
     {categories}
     {isLowlight}
     {newArray}
