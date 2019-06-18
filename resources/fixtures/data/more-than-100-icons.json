@@ -1,11 +1,11 @@
 {
-  "title": "FIXTURE: more than 50 icons",
+  "title": "FIXTURE: more than 100 icons",
   "subtitle": "Noch ein Untertitel",
   "data": [
     ["Icons", "Hoch", "Breit", "Quadratisch"],
-    ["Zeile 1", "50", "20", "15"],
-    ["Zeile 2", "15", "50", "20"],
-    ["Zeile 3", "20", "15", "50"]
+    ["Zeile 1", "100", "20", "15"],
+    ["Zeile 2", "15", "100", "20"],
+    ["Zeile 3", "20", "15", "100"]
   ],
   "icons": [
     {

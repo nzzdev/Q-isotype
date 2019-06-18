@@ -1,0 +1,30 @@
+{
+  "title": "FIXTURE: aspect-ratio vertical",
+  "acronym": "phk.",
+  "data": [["Kategorien", "Pokal 1"], ["Schweiz", "4"]],
+  "allowDownloadData": false,
+  "icons": [
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2019/05/28/1_2-0b5aae2d9c0ade6a5b99e92d17f5f6fa.svg",
+        "key": "2019/05/28/1_2-0b5aae2d9c0ade6a5b99e92d17f5f6fa.svg",
+        "size": 7642,
+        "type": "image/svg+xml"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "link": {
+        "url": "https://google.ch",
+        "isValid": false
+      },
+      "text": "Testing Quelle"
+    }
+  ],
+  "options": {
+    "hideLegend": false,
+    "iconsOneRow": false,
+    "highlightColumn": null
+  }
+}

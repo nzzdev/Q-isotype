@@ -21,11 +21,17 @@ const fixtureData = [
   require(`${fixtureDataDirectory}/hide-legend.json`),
   require(`${fixtureDataDirectory}/icons-on-one-row.json`),
   require(`${fixtureDataDirectory}/less-than-10-icons.json`),
-  require(`${fixtureDataDirectory}/less-than-50-icons.json`),
-  require(`${fixtureDataDirectory}/more-than-50-icons.json`),
+  require(`${fixtureDataDirectory}/less-than-100-icons.json`),
+  require(`${fixtureDataDirectory}/more-than-100-icons.json`),
   require(`${fixtureDataDirectory}/compare-isotypes.json`),
   require(`${fixtureDataDirectory}/compare-isotypes-no-icon.json`),
-  require(`${fixtureDataDirectory}/compare-isotypes-iconsOneRow.json`)
+  require(`${fixtureDataDirectory}/compare-isotypes-iconsOneRow.json`),
+  require(`${fixtureDataDirectory}/aspect-ratio-square.json`),
+  require(`${fixtureDataDirectory}/aspect-ratio-horizontal.json`),
+  require(`${fixtureDataDirectory}/aspect-ratio-vertical.json`),
+  require(`${fixtureDataDirectory}/aspect-ratio-horizontal-min-width.json`),
+  require(`${fixtureDataDirectory}/aspect-ratio-vertical-min-width.json`),
+  require(`${fixtureDataDirectory}/aspect-ratio-mixed.json`)
 ];
 
 module.exports = {
