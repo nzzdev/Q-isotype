@@ -1,0 +1,43 @@
+{
+  "title": "FIXTURE: nur PNG - alle Grössenoptionen - eine Zeile",
+  "subtitle": "Noch ein Untertitel",
+  "data": [
+    ["Icons", "Hoch", "Breit", "Quadratisch"],
+    ["Zeile 1", "10", "5", "1"],
+    ["Zeile 2", "3", "6", "1"],
+    ["Zeile 3", "1", null, "1"]
+  ],
+  "icons": [
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/19/e4abf8ce-bb25-49df-84d2-1df3d8ca769b.png",
+        "key": "2018/02/19/e4abf8ce-bb25-49df-84d2-1df3d8ca769b.png",
+        "size": 311299,
+        "width": 500,
+        "height": 1078
+      }
+    },
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/16/34a8eb9c-999a-4b4b-a211-085c312cdd24.png",
+        "key": "2018/02/16/34a8eb9c-999a-4b4b-a211-085c312cdd24.png",
+        "size": 857430,
+        "width": 880,
+        "height": 509
+      }
+    },
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/16/6071681e-e2bf-4fae-8fd9-65b0a9c7e045.png",
+        "key": "2018/02/16/6071681e-e2bf-4fae-8fd9-65b0a9c7e045.png",
+        "size": 16674,
+        "width": 512,
+        "height": 512
+      }
+    }
+  ],
+  "notes": "Groooosses Kino",
+  "options": {
+    "iconsOneRow": true
+  }
+}

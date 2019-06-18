@@ -31,7 +31,8 @@ const fixtureData = [
   require(`${fixtureDataDirectory}/aspect-ratio-vertical.json`),
   require(`${fixtureDataDirectory}/aspect-ratio-horizontal-min-width.json`),
   require(`${fixtureDataDirectory}/aspect-ratio-vertical-min-width.json`),
-  require(`${fixtureDataDirectory}/aspect-ratio-mixed.json`)
+  require(`${fixtureDataDirectory}/aspect-ratio-mixed.json`),
+  require(`${fixtureDataDirectory}/only-png.json`)
 ];
 
 module.exports = {

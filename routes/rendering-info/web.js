@@ -155,6 +155,13 @@ function getAspectRatioFormat(aspectRatios) {
   }
 }
 
+function getResizeImageUrl(image) {
+  return process.env.IMAGE_SERVICE_URL.replace("{key}", image.key).replace(
+    "{width}",
+    maxWidth
+  );
+}
+
 module.exports = {
   method: "POST",
   path: "/rendering-info/web",
@@ -218,6 +225,7 @@ module.exports = {
           } catch (err) {
             console.log(err);
           }
+          icon.url = getResizeImageUrl(icon.file);
           icon.key = icon.file.key;
           delete icon.file;
           return icon;
