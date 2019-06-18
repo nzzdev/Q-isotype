@@ -17,9 +17,9 @@
         return 100 / maxAmount;
       } else {
         if (maxAmount > 10) {
-          return 10; // maxIconContainerSize will be 20% because there are at least 5 icons (100/5=20)
+          return 10; // maxIconContainerSize will be 10% because when there are more than 10 items in the compare-tempalte
         } else {
-          return 20;
+          return 20; // maxIconContainerSize will be 20% because there are at least 5 icons (100/5=20)
         }
       }
     } else {
