@@ -56,7 +56,7 @@
   }
 </script>
 
-{#if item.data.length === 3}
+{#if item.data && item.data.length === 3}
   <CompareGroups
     {item}
     data={transposeData(item.data)}
