@@ -4,6 +4,8 @@ const Hapi = require("@hapi/hapi");
 const lab = (exports.lab = Lab.script());
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
+process.env.IMAGE_SERVICE_URL =
+  "https://q-images-staging-nzz-ch.global.ssl.fastly.net/{key}?width={width}&auto=webp";
 
 const expect = Code.expect;
 const before = lab.before;
