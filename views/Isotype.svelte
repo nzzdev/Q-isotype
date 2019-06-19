@@ -14,7 +14,7 @@
 
   function getIconContainerSize(maxAmount, amountOfGroups) {
     if (amountOfGroups === 3) {
-      if (maxAmount < 5) {
+      if ((maxAmount < 5 && maxAmount > 10) || maxAmount > 100) {
         return 100 / maxAmount;
       } else {
         if (maxAmount > 10) {

@@ -20,10 +20,10 @@
     </div>
   </div>
   <div class="q-isotype-row--compare">
-    {#each item.data.slice(1) as row, currentCategoryIndex}
+    {#each item.data.slice(1) as row, rowIndex}
       <div
         class="q-isotype-icon-block"
-        class:q-isotype-icon-block--first={currentCategoryIndex === 0}>
+        class:q-isotype-icon-block--first={rowIndex === 0}>
         {#each row as value, currentCategoryIndex}
           {#each newArray(row[currentCategoryIndex]) as value, i}
             <Icon
