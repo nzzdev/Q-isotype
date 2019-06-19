@@ -45,7 +45,7 @@
       "default": false
     },
     "icons": {
-      "title": "Icons (Bitte beim Ressort Visuals bestellen)",
+      "title": "Icons (Bitte beim Ressort Visuals anfragen)",
       "type": "array",
       "Q:options": {
         "expandable": true
