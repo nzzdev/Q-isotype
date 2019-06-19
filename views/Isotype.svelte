@@ -14,20 +14,20 @@
 
   function getIconContainerSize(maxAmount, amountOfGroups) {
     if (amountOfGroups === 3) {
-      if ((maxAmount < 5 && maxAmount > 10) || maxAmount > 100) {
+      if (maxAmount < 10 || maxAmount > 100) {
         return 100 / maxAmount;
       } else {
         if (maxAmount > 10) {
-          return 10; // maxIconContainerSize will be 10% because when there are more than 10 items in the compare-tempalte
+          return 10; // IconContainerSize is 10% if there are more than 10 items in the compare-tempalte
         } else {
-          return 20; // maxIconContainerSize will be 20% because there are at least 5 icons (100/5=20)
+          return 20; // IconContainerSize is 20% if there are at least 5 icons (100/5=20)
         }
       }
     } else {
-      if (maxAmount < 10 || maxAmount >= 100) {
+      if (maxAmount < 10 || maxAmount > 100) {
         return 100 / maxAmount;
       } else {
-        return 10; // maxIconContainerSize will be 10% because there are at least 10 icons (100/10=10)
+        return 10; // IconContainerSize is 10% if there are at least 10 icons (100/10=10)
       }
     }
   }
