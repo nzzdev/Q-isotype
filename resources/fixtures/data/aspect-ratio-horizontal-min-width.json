@@ -1,5 +1,5 @@
 {
-  "title": "FIXTURE: aspect-ratio horizontal",
+  "title": "FIXTURE: aspect-ratio horizontal min-width",
   "acronym": "phk.",
   "data": [["Kategorien", "Pokal 1"], ["Schweiz", "383"]],
   "allowDownloadData": false,

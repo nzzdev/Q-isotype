@@ -1,0 +1,30 @@
+{
+  "title": "FIXTURE: compare categories no icon",
+  "subtitle": "Noch ein Untertitel",
+  "data": [["Beruf", "Frauen", "Männer"], ["Anzahl", "10", "12"]],
+  "allowDownloadData": false,
+  "notes": "Groooosses Kino",
+  "sources": [
+    {
+      "text": "NZZ",
+      "link": {
+        "isValid": true,
+        "url": "https://nzz.ch"
+      }
+    },
+    {
+      "text": "Github",
+      "link": {
+        "isValid": true,
+        "url": "https://github.com/nzzdev/Q-isotype"
+      }
+    },
+    {
+      "text": "Noch eine Quelle ohne Link"
+    }
+  ],
+  "options": {
+    "iconsOneRow": false,
+    "highlightColumn": null
+  }
+}
