@@ -50,7 +50,7 @@ async function validatePayload(payload, options, next) {
   await validateAgainstSchema(payload.item, options);
 }
 
-function getIntegerValues(data) {
+function getRoundedValues(data) {
   return data.map((row, rowIndex) => {
     // keep header row as it is
     if (rowIndex === 0) {
@@ -64,7 +64,7 @@ function getIntegerValues(data) {
       if (cell === null) {
         return null;
       }
-      return parseInt(cell, 10);
+      return Math.round(cell);
     });
   });
 }
@@ -176,7 +176,7 @@ module.exports = {
   handler: async function(request, h) {
     const item = request.payload.item;
 
-    item.data = getIntegerValues(item.data);
+    item.data = getRoundedValues(item.data);
 
     let categories = [];
     if (item.data && item.data[0].length > 1) {
