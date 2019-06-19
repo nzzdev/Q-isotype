@@ -102,9 +102,7 @@
             }
           }
         },
-        "required": [
-          "text"
-        ]
+        "required": ["text"]
       }
     },
     "notes": {
@@ -139,10 +137,7 @@
               "type": "ToolEndpoint",
               "config": {
                 "endpoint": "dynamic-enum/highlightColumn",
-                "fields": [
-                  "options",
-                  "data"
-                ]
+                "fields": ["options", "data"]
               }
             },
             "availabilityChecks": [
@@ -150,10 +145,7 @@
                 "type": "ToolEndpoint",
                 "config": {
                   "endpoint": "option-availability/highlightColumn",
-                  "fields": [
-                    "options",
-                    "data"
-                  ]
+                  "fields": ["options", "data"]
                 }
               }
             ]
@@ -162,7 +154,5 @@
       }
     }
   },
-  "required": [
-    "title"
-  ]
+  "required": ["title"]
 }
