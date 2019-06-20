@@ -188,3 +188,23 @@ lab.experiment("highlight icons", () => {
     );
   });
 });
+
+lab.experiment("rounding", () => {
+  it("should display rounded results", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/rounding.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elements(
+      response.result.markup,
+      "div.q-isotype-icon-container"
+    ).then(elements => {
+      expect(elements.length).to.be.equal(100);
+    });
+  });
+});
