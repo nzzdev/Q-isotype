@@ -16,7 +16,14 @@ function getHighlightEnumTitles(item) {
   if (item.data.length < 1) {
     return ["keine"];
   }
-  return ["keine"].concat(item.data[0].slice(1));
+
+  return ["keine"].concat(
+    item.data[0]
+      .slice(1)
+      .map((title, index) =>
+        title === null ? (title = `${index + 1}. Spalte`) : title
+      )
+  );
 }
 
 module.exports = {
