@@ -30,7 +30,7 @@
             class:q-isotype-lowlight={isLowlight(index + 1)}
             style="background-image: url('{item.icons[index].url}')" />
         {/if}
-        <div class="q-isotype-legend-category">{category}</div>
+        <div class="q-isotype-legend-category">{category || ''}</div>
       </div>
     {:else}
       <div class="q-isotype-legend-container">
@@ -39,7 +39,7 @@
           class:q-isotype-lowlight={isLowlight(index + 1)}>
           <NoIconDefaultSVG />
         </div>
-        <div class="q-isotype-legend-category">{category}</div>
+        <div class="q-isotype-legend-category">{category || ''}</div>
       </div>
     {/if}
   {/each}

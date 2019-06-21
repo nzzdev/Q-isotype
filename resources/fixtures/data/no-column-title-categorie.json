@@ -1,0 +1,48 @@
+{
+  "title": "FIXTURE: no column title categorie",
+  "subtitle": "Noch ein Untertitel",
+  "data": [["Beruf", "", ""], ["Anzahl", "10", "15"]],
+  "allowDownloadData": false,
+  "icons": [
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2019/06/14/frauen-cb2066b54aa7dc3cfa174907a3bb7626.svg",
+        "key": "2019/06/14/frauen-cb2066b54aa7dc3cfa174907a3bb7626.svg",
+        "size": 2415,
+        "type": "image/svg+xml"
+      }
+    },
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2019/06/14/maenner-f40b5f92e4f020cd1fe24688fff7f0a8.svg",
+        "key": "2019/06/14/maenner-f40b5f92e4f020cd1fe24688fff7f0a8.svg",
+        "size": 3472,
+        "type": "image/svg+xml"
+      }
+    }
+  ],
+  "notes": "Groooosses Kino",
+  "sources": [
+    {
+      "text": "NZZ",
+      "link": {
+        "isValid": true,
+        "url": "https://nzz.ch"
+      }
+    },
+    {
+      "text": "Github",
+      "link": {
+        "isValid": true,
+        "url": "https://github.com/nzzdev/Q-isotype"
+      }
+    },
+    {
+      "text": "Noch eine Quelle ohne Link"
+    }
+  ],
+  "options": {
+    "iconsOneRow": false,
+    "highlightColumn": null
+  }
+}
