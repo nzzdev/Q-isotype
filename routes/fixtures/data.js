@@ -38,7 +38,9 @@ const fixtureData = [
   require(`${fixtureDataDirectory}/only-png.json`),
   require(`${fixtureDataDirectory}/rounding.json`),
   require(`${fixtureDataDirectory}/no-column-title-group.json`),
-  require(`${fixtureDataDirectory}/no-column-title-categorie.json`)
+  require(`${fixtureDataDirectory}/no-column-title-categorie.json`),
+  require(`${fixtureDataDirectory}/single-entry-less-than-30.json`),
+  require(`${fixtureDataDirectory}/single-entry-more-than-30.json`)
 ];
 
 module.exports = {
