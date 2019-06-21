@@ -9,7 +9,7 @@
 </script>
 
 {#if item.options && item.options.iconsOneRow}
-  <div class="q-isotype-row--compare q-isotype-row--margin">
+  <div class="q-isotype-row--compare">
     {#if data[0][1]}
       <div
         class="q-isotype-row-title s-font-title-xs q-isotype-icon-block
