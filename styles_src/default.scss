@@ -59,46 +59,46 @@ $legend-size: 26px;
 .q-isotype-icon-container {
   margin-top: 4px;
   margin-right: 4px;
-  &--square--countable {
-    min-width: 20px;
-    max-width: 184px;
-    min-height: 20px;
-    max-height: 184px;
-  }
-
-  &--horizontal--countable {
-    min-width: 20px;
-    max-width: 184px;
-    min-height: 10px;
-    max-height: 92px;
-  }
-
-  &--vertical--countable {
-    min-width: 10px;
-    max-width: 92px;
-    min-height: 20px;
-    max-height: 184px;
-  }
-
   &--square {
-    min-width: 32px;
+    min-width: 24px;
     max-width: 184px;
-    min-height: 32px;
+    min-height: 24px;
     max-height: 184px;
+
+    &-mobile {
+      min-width: 32px;
+      max-width: 184px;
+      min-height: 32px;
+      max-height: 184px;
+    }
   }
 
   &--horizontal {
-    min-width: 32px;
+    min-width: 24px;
     max-width: 184px;
-    min-height: 16px;
+    min-height: 12px;
     max-height: 92px;
+
+    &-mobile {
+      min-width: 32px;
+      max-width: 184px;
+      min-height: 16px;
+      max-height: 92px;
+    }
   }
 
   &--vertical {
-    min-width: 16px;
+    min-width: 12px;
     max-width: 92px;
-    min-height: 32px;
+    min-height: 24px;
     max-height: 184px;
+
+    &-mobile {
+      min-width: 16px;
+      max-width: 92px;
+      min-height: 32px;
+      max-height: 184px;
+    }
   }
 }
 
@@ -145,11 +145,11 @@ $legend-size: 26px;
 }
 
 .q-isotype-icon-block--first {
-  margin-right: 48px;
+  margin-right: 32px;
 }
 
 .q-isotype-icon-block {
-  width: calc(50% - 24px);
+  width: calc(50% - 16px);
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;

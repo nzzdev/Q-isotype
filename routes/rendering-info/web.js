@@ -3,11 +3,13 @@ const fs = require("fs");
 const path = require("path");
 const fetch = require("node-fetch");
 const cheerio = require("cheerio");
+const UglifyJS = require("uglify-js");
 
 const stylesDir = path.join(__dirname, "/../../styles/");
 const styleHashMap = require(path.join(stylesDir, "hashMap.json"));
 
 const viewsDir = path.join(__dirname, "/../../views/");
+const renderingInfoScripts = require("../../helpers/renderingInfoScript.js");
 const maxWidth = "40";
 
 // setup svelte
@@ -238,6 +240,9 @@ module.exports = {
     }
 
     const context = {
+      id: `q_isotype_${request.query._id}_${Math.floor(
+        Math.random() * 100000
+      )}`.replace(/-/g, ""),
       item: item,
       categories: categories,
       maxAmount: maxAmount,
@@ -256,7 +261,14 @@ module.exports = {
           name: styleHashMap["default"]
         }
       ],
-      markup: staticTemplate.render(context).html
+      markup: staticTemplate.render(context).html,
+      scripts: [
+        {
+          content: UglifyJS.minify(
+            renderingInfoScripts.getMobileMinWidthScript(context)
+          ).code
+        }
+      ]
     };
 
     return renderingInfo;
