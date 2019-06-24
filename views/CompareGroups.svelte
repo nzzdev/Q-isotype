@@ -4,6 +4,7 @@
   export let data;
   export let categories;
   export let isLowlight;
+  export let isCountable;
   export let iconContainerSize;
   export let newArray;
 </script>
@@ -33,6 +34,7 @@
             <Icon
               {item}
               {isLowlight}
+              {isCountable}
               {currentCategoryIndex}
               {iconContainerSize} />
           {/each}
@@ -62,6 +64,7 @@
               <Icon
                 {item}
                 {isLowlight}
+                {isCountable}
                 {currentCategoryIndex}
                 {iconContainerSize} />
             {/each}

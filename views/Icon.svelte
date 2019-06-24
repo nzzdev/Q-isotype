@@ -1,6 +1,7 @@
 <script>
   export let item;
   export let isLowlight;
+  export let isCountable;
   export let currentCategoryIndex;
   export let iconContainerSize;
 </script>
@@ -25,7 +26,7 @@
   </div>
 {:else}
   <div
-    class="q-isotype-icon-container q-isotype-icon-container--square"
+    class="q-isotype-icon-container q-isotype-icon-container--square{isCountable ? '--countable' : ''}"
     class:q-isotype-lowlight={isLowlight(currentCategoryIndex)}
     style="flex: 0 1 calc({iconContainerSize}% - 4px)">
     <div

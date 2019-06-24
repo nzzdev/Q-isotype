@@ -59,24 +59,45 @@ $legend-size: 26px;
 .q-isotype-icon-container {
   margin-top: 4px;
   margin-right: 4px;
-  &--square {
+  &--square--countable {
     min-width: 20px;
     max-width: 184px;
     min-height: 20px;
     max-height: 184px;
   }
 
-  &--horizontal {
+  &--horizontal--countable {
     min-width: 20px;
     max-width: 184px;
     min-height: 10px;
     max-height: 92px;
   }
 
-  &--vertical {
+  &--vertical--countable {
     min-width: 10px;
     max-width: 92px;
     min-height: 20px;
+    max-height: 184px;
+  }
+
+  &--square {
+    min-width: 32px;
+    max-width: 184px;
+    min-height: 32px;
+    max-height: 184px;
+  }
+
+  &--horizontal {
+    min-width: 32px;
+    max-width: 184px;
+    min-height: 16px;
+    max-height: 92px;
+  }
+
+  &--vertical {
+    min-width: 16px;
+    max-width: 92px;
+    min-height: 32px;
     max-height: 184px;
   }
 }
