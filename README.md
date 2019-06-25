@@ -92,8 +92,6 @@ There are three options for deployment:
 
 ## Functionality
 
-If a tool then it can use this reference to the Q-server documentation about Q-tools:
-
 The tool structure follows the general structure of each Q tool. Further information can be found in [Q server documentation - Developing tools](https://nzzdev.github.io/Q-server/developing-tools.html).
 
 Q Isotype uses [svelte 3.0](https://svelte.dev) to render the markup on server-side.
@@ -117,13 +115,51 @@ For displaying the `svg`s, we're using the [svg reference feature](https://css-t
 </svg>
 ```
 
-#### Countability
+#### Isotype layout templates
+
+There are 3 different templates which are used to display the icons
+
+##### Compare groups
+
+If there are 2 groups, the `CompareGroups` component will be used to display them next to each other for comparison.
+
+###### Implementation details
+
+- To display the icons correctly, the data needs to be [transposed](https://github.com/nzzdev/Q-isotype/blob/96296ddc294352f5894827cff4db19f1190f4828/views/Isotype.svelte#L35)
+- [2 rows](https://github.com/nzzdev/Q-isotype/blob/96296ddc294352f5894827cff4db19f1190f4828/views/Isotype.svelte#L60) are needed to display this layout
+
+##### Compare categories
+
+If there are 2 cateogires, the `CompareCategories` component will be used to display them next to each other for comparison.
+
+###### Implementation details
+
+- [2 categories and 1 row](https://github.com/nzzdev/Q-isotype/blob/96296ddc294352f5894827cff4db19f1190f4828/views/Isotype.svelte#L60) are needed to display this layout
+
+##### Groups
+
+The `Groups` component will be used if there are more than 2 rows. It will show the icons among each other.
+
+#### Countability and Icon Size
 
 For guaranteeing the countability when having a lot of icons, we decided to implement rules to define the max amount of icons shown per row. This includes also the calculation of the size of the icons.
 
 ##### Implementation details
 
 - The rules are described [here](https://github.com/nzzdev/Q-isotype/blob/dev/views/Isotype.svelte#L15)
+
+#### Aspect ratio
+
+There are 3 different aspect ratio types of icons
+
+- Square
+- Vertical
+- Horizontal
+
+##### Implementation details
+
+- The aspect ratio format will be set on the whole graphic, not on each icon
+- This [matrix](https://github.com/nzzdev/Q-isotype/blob/82a250c12f80e808e10714677ad043be073b5cff/routes/rendering-info/web.js#L140) will determine which format it will be
 
 [to the top](#table-of-contents)
 
