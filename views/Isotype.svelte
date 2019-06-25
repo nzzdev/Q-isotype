@@ -13,6 +13,7 @@
   );
 
   function getIconContainerSize(maxAmount, amountOfGroups) {
+    // 2 groups (compare-layout)
     if (amountOfGroups === 3) {
       if (maxAmount < 10 || maxAmount > 100) {
         return 100 / maxAmount;
@@ -23,6 +24,18 @@
           return 20; // IconContainerSize is 20% if there are at least 5 icons (100/5=20)
         }
       }
+      // single group layout (groups-layout)
+    } else if (amountOfGroups == 2) {
+      if (maxAmount < 10 || maxAmount > 30) {
+        return 100 / maxAmount;
+      } else {
+        if (maxAmount > 10) {
+          return 10; // IconContainerSize is 10% if there are more than 10 items in the compare-tempalte
+        } else {
+          return 20; // IconContainerSize is 20% if there are at least 5 icons (100/5=20)
+        }
+      }
+      // more than 3 groups (groups-layout)
     } else {
       if (maxAmount < 10 || maxAmount > 100) {
         return 100 / maxAmount;

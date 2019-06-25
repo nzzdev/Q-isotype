@@ -1,0 +1,22 @@
+{
+  "title": "FIXTURE: single entry less than 30",
+  "data": [[null, "Frauen"], ["Anzahl", "29"]],
+  "allowDownloadData": false,
+  "icons": [
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2019/06/14/frauen-cb2066b54aa7dc3cfa174907a3bb7626.svg",
+        "key": "2019/06/14/frauen-cb2066b54aa7dc3cfa174907a3bb7626.svg",
+        "size": 2415,
+        "type": "image/svg+xml"
+      }
+    }
+  ],
+  "sources": [],
+  "options": {
+    "hideLegend": false,
+    "iconsOneRow": false,
+    "highlightColumn": null
+  },
+  "subtitle": "Anzahl Frauen"
+}

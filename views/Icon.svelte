@@ -9,7 +9,8 @@
   <div
     class="q-isotype-icon-container q-isotype-icon-container--{item.icons[currentCategoryIndex - 1].aspectRatio || 'square'}"
     class:q-isotype-lowlight={isLowlight(currentCategoryIndex)}
-    style="flex: 0 1 calc({iconContainerSize}% - 4px)">
+    style="flex: 0 1 calc({iconContainerSize}% - 4px)"
+    data-container-type={item.icons[currentCategoryIndex - 1].aspectRatio || 'square'}>
     {#if item.icons[currentCategoryIndex - 1].svg}
       <div
         class="q-isotype-icon-svg q-isotype-icon-svg--{item.icons[currentCategoryIndex - 1].aspectRatio}">
@@ -27,7 +28,8 @@
   <div
     class="q-isotype-icon-container q-isotype-icon-container--square"
     class:q-isotype-lowlight={isLowlight(currentCategoryIndex)}
-    style="flex: 0 1 calc({iconContainerSize}% - 4px)">
+    style="flex: 0 1 calc({iconContainerSize}% - 4px)"
+    data-container-type="square">
     <div
       class="q-isotype-icon-svg q-isotype-icon-svg--square"
       style="width: 100%;">
