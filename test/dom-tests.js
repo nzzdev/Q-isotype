@@ -208,3 +208,113 @@ lab.experiment("rounding", () => {
     });
   });
 });
+
+lab.experiment("aspect ratios", () => {
+  it("should display icons in horizontal icon-containers", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/aspect-ratio-horizontal.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--horizontal"
+    ).then(value => {
+      expect(value).to.be.equals(4);
+    });
+  });
+
+  it("should display icons in horizontal svgs", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/aspect-ratio-horizontal.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-svg--horizontal"
+    ).then(value => {
+      expect(value).to.be.equals(4);
+    });
+  });
+
+  it("should display icons in vertical icon-containers", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/aspect-ratio-vertical.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--vertical"
+    ).then(value => {
+      expect(value).to.be.equals(4);
+    });
+  });
+
+  it("should display icons in vertical svgs", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/aspect-ratio-vertical.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-svg--vertical"
+    ).then(value => {
+      expect(value).to.be.equals(4);
+    });
+  });
+
+  it("should display icons in square icon-containers", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/aspect-ratio-square.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--square"
+    ).then(value => {
+      expect(value).to.be.equals(13);
+    });
+  });
+
+  it("should display icons in square svgs", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/aspect-ratio-square.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-svg--square"
+    ).then(value => {
+      expect(value).to.be.equals(13);
+    });
+  });
+});
