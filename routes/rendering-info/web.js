@@ -256,6 +256,7 @@ module.exports = {
     }
 
     const renderingInfo = {
+      polyfills: ["Promise"],
       stylesheets: [
         {
           name: styleHashMap["default"]
