@@ -19,7 +19,7 @@ function getMobileMinWidthScript(context) {
       iconContainers.forEach(function(iconContainer){
         if (iconContainer.classList.includes("-mobile")) {
           iconContainer.classList.add("q-isotype-icon-container" + "--" + iconContainer.dataset.containerType);
-          iconContainer.classList.remove("q-isotype-icon-container" + "--" + iconContainer.dataset.containerType + "-mobile");
+          iconContainer.classList.remove("q-isotype-icon-container" + "--" + iconContainer.dataset.containerType + "--mobile");
         }
       });
     };
@@ -27,7 +27,7 @@ function getMobileMinWidthScript(context) {
     ${isotypeObject}.addMobileMinWidthClass = function(iconContainers) {
       iconContainers.forEach(function(iconContainer){
         iconContainer.classList.remove("q-isotype-icon-container" + "--" + iconContainer.dataset.containerType);
-        iconContainer.classList.add("q-isotype-icon-container" + "--" + iconContainer.dataset.containerType + "-mobile");
+        iconContainer.classList.add("q-isotype-icon-container" + "--" + iconContainer.dataset.containerType + "--mobile");
       });
     };
     

@@ -59,18 +59,12 @@ $legend-size: 26px;
 .q-isotype-icon-container {
   margin-top: 4px;
   margin-right: 4px;
+
   &--square {
     min-width: 24px;
     max-width: 184px;
     min-height: 24px;
     max-height: 184px;
-
-    &-mobile {
-      min-width: 32px;
-      max-width: 184px;
-      min-height: 32px;
-      max-height: 184px;
-    }
   }
 
   &--horizontal {
@@ -78,13 +72,6 @@ $legend-size: 26px;
     max-width: 184px;
     min-height: 12px;
     max-height: 92px;
-
-    &-mobile {
-      min-width: 32px;
-      max-width: 184px;
-      min-height: 16px;
-      max-height: 92px;
-    }
   }
 
   &--vertical {
@@ -92,14 +79,28 @@ $legend-size: 26px;
     max-width: 92px;
     min-height: 24px;
     max-height: 184px;
-
-    &-mobile {
-      min-width: 16px;
-      max-width: 92px;
-      min-height: 32px;
-      max-height: 184px;
-    }
   }
+}
+
+.q-isotype-icon-container--square--is-countable.q-isotype-icon-container--square--mobile {
+  min-width: 20px;
+  max-width: 184px;
+  min-height: 20px;
+  max-height: 184px;
+}
+
+.q-isotype-icon-container--horizontal--is-countable.q-isotype-icon-container--horizontal--mobile {
+  min-width: 20px;
+  max-width: 184px;
+  min-height: 10px;
+  max-height: 92px;
+}
+
+.q-isotype-icon-container--vertical--is-countable.q-isotype-icon-container--vertical--mobile {
+  min-width: 10px;
+  max-width: 92px;
+  min-height: 20px;
+  max-height: 184px;
 }
 
 .q-isotype-icon-svg {

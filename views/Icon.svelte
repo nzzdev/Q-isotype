@@ -1,13 +1,18 @@
 <script>
   export let item;
+  export let isCountable;
   export let isLowlight;
   export let currentCategoryIndex;
   export let iconContainerSize;
+  export let iconContainerClass = `q-isotype-icon-container--${item.icons[
+    currentCategoryIndex - 1
+  ].aspectRatio || "square"}`;
 </script>
 
 {#if item.icons && item.icons[currentCategoryIndex - 1]}
   <div
-    class="q-isotype-icon-container q-isotype-icon-container--{item.icons[currentCategoryIndex - 1].aspectRatio || 'square'}"
+    class="q-isotype-icon-container {iconContainerClass}
+    {isCountable ? `${iconContainerClass}--is-countable` : ''}"
     class:q-isotype-lowlight={isLowlight(currentCategoryIndex)}
     style="flex: 0 1 calc({iconContainerSize}% - 4px)"
     data-container-type={item.icons[currentCategoryIndex - 1].aspectRatio || 'square'}>
@@ -27,6 +32,7 @@
 {:else}
   <div
     class="q-isotype-icon-container q-isotype-icon-container--square"
+    class:q-isotype-icon-container-square--is-countable={isCountable}
     class:q-isotype-lowlight={isLowlight(currentCategoryIndex)}
     style="flex: 0 1 calc({iconContainerSize}% - 4px)"
     data-container-type="square">
