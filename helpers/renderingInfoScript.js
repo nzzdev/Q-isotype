@@ -6,27 +6,27 @@ function getMobileMinWidthScript(context) {
     }
     ${isotypeObject}.element = document.querySelector("#${context.id}");
 
+    ${isotypeObject}.removeArticleWidthClass = function(iconContainers, articleWidthClass) {
+      iconContainers.forEach(function(iconContainer){ 
+        iconContainer.classList.remove("q-isotype-icon-container" + "--" + iconContainer.dataset.containerType + "--" + articleWidthClass);
+      });
+    };
+
+    ${isotypeObject}.addArticleWidthClass = function(iconContainers, articleWidthClass) {
+      iconContainers.forEach(function(iconContainer){
+        iconContainer.classList.add("q-isotype-icon-container" + "--" + iconContainer.dataset.containerType + "--" + articleWidthClass);
+      });
+    };
+
     ${isotypeObject}.handleMinWidth = function() {
       var iconContainers = document.querySelectorAll('.q-isotype-icon-container');
       if (${isotypeObject}.width > 400) {
-        ${isotypeObject}.removeMobileMinWidthClass(iconContainers);
+        ${isotypeObject}.removeArticleWidthClass(iconContainers, "mobile");
+        ${isotypeObject}.addArticleWidthClass(iconContainers, "content");
       } else {
-        ${isotypeObject}.addMobileMinWidthClass(iconContainers);
+        ${isotypeObject}.removeArticleWidthClass(iconContainers, "content");
+        ${isotypeObject}.addArticleWidthClass(iconContainers, "mobile");
       } 
-    };
-
-    ${isotypeObject}.removeMobileMinWidthClass = function(iconContainers) {
-      iconContainers.forEach(function(iconContainer){
-        if (iconContainer && iconContainer.classList.includes("-mobile")) {
-          iconContainer.classList.remove("q-isotype-icon-container" + "--" + iconContainer.dataset.containerType + "--mobile");
-        }
-      });
-    };
-
-    ${isotypeObject}.addMobileMinWidthClass = function(iconContainers) {
-      iconContainers.forEach(function(iconContainer){
-        iconContainer.classList.add("q-isotype-icon-container" + "--" + iconContainer.dataset.containerType + "--mobile");
-      });
     };
 
     ${isotypeObject}.debounce = function(func, wait, immediate) {

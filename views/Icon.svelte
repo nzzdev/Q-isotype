@@ -29,7 +29,7 @@
 {:else}
   <div
     class="q-isotype-icon-container q-isotype-icon-container--square"
-    class:q-isotype-icon-container-square--is-countable={isCountable}
+    class:q-isotype-icon-container--square--is-countable={isCountable}
     class:q-isotype-lowlight={isLowlight(currentCategoryIndex)}
     style="flex: 0 1 calc({iconContainerSize}% - 4px)"
     data-container-type="square">

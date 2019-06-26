@@ -61,46 +61,67 @@ $legend-size: 26px;
   margin-right: 4px;
 
   &--square {
-    min-width: 24px;
-    max-width: 184px;
-    min-height: 24px;
-    max-height: 184px;
+    &--mobile {
+      min-width: 20px;
+      max-width: 184px;
+      min-height: 20px;
+      max-height: 184px;
+    }
+    &--content {
+      min-width: 22px;
+      max-width: 184px;
+      min-height: 11px;
+      max-height: 92px;
+    }
+    &:not(.q-isotype-icon-container--square--is-countable) {
+      min-width: 32px;
+      max-width: 184px;
+      min-height: 32px;
+      max-height: 184px;
+    }
   }
 
   &--horizontal {
-    min-width: 24px;
-    max-width: 184px;
-    min-height: 12px;
-    max-height: 92px;
+    &--mobile {
+      min-width: 20px;
+      max-width: 184px;
+      min-height: 10px;
+      max-height: 92px;
+    }
+    &--content {
+      min-width: 22px;
+      max-width: 184px;
+      min-height: 11px;
+      max-height: 92px;
+    }
+    &:not(.q-isotype-icon-container--horizontal--is-countable) {
+      min-width: 32px;
+      max-width: 184px;
+      min-height: 16px;
+      max-height: 92px;
+    }
   }
 
   &--vertical {
-    min-width: 12px;
-    max-width: 92px;
-    min-height: 24px;
-    max-height: 184px;
+    &--mobile {
+      min-width: 10px;
+      max-width: 92px;
+      min-height: 20px;
+      max-height: 184px;
+    }
+    &--content {
+      min-width: 11px;
+      max-width: 92px;
+      min-height: 22px;
+      max-height: 184px;
+    }
+    &:not(.q-isotype-icon-container--vertical--is-countable) {
+      min-width: 16px;
+      max-width: 92px;
+      min-height: 32px;
+      max-height: 184px;
+    }
   }
-}
-
-.q-isotype-icon-container--square--is-countable.q-isotype-icon-container--square--mobile {
-  min-width: 20px;
-  max-width: 184px;
-  min-height: 20px;
-  max-height: 184px;
-}
-
-.q-isotype-icon-container--horizontal--is-countable.q-isotype-icon-container--horizontal--mobile {
-  min-width: 20px;
-  max-width: 184px;
-  min-height: 10px;
-  max-height: 92px;
-}
-
-.q-isotype-icon-container--vertical--is-countable.q-isotype-icon-container--vertical--mobile {
-  min-width: 10px;
-  max-width: 92px;
-  min-height: 20px;
-  max-height: 184px;
 }
 
 .q-isotype-icon-svg {
