@@ -3,6 +3,7 @@
   export let item;
   export let data;
   export let categories;
+  export let isCountable;
   export let isLowlight;
   export let iconContainerSize;
   export let newArray;
@@ -32,6 +33,7 @@
           {#each newArray(row[currentCategoryIndex]) as value, i}
             <Icon
               {item}
+              {isCountable}
               {isLowlight}
               {currentCategoryIndex}
               {iconContainerSize} />

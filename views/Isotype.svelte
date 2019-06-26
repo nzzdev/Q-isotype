@@ -6,6 +6,7 @@
   export let item;
   export let categories;
   export let isLowlight;
+  export let isCountable = true;
   export let maxAmount;
   export let iconContainerSize = getIconContainerSize(
     maxAmount,
@@ -16,6 +17,7 @@
     // 2 groups (compare-layout)
     if (amountOfGroups === 3) {
       if (maxAmount < 10 || maxAmount > 100) {
+        isCountable = false;
         return 100 / maxAmount;
       } else {
         if (maxAmount > 10) {
@@ -27,6 +29,7 @@
       // single group layout (groups-layout)
     } else if (amountOfGroups == 2) {
       if (maxAmount < 10 || maxAmount > 30) {
+        isCountable = false;
         return 100 / maxAmount;
       } else {
         if (maxAmount > 10) {
@@ -38,6 +41,7 @@
       // more than 3 groups (groups-layout)
     } else {
       if (maxAmount < 10 || maxAmount > 100) {
+        isCountable = false;
         return 100 / maxAmount;
       } else {
         return 10; // IconContainerSize is 10% if there are at least 10 icons (100/10=10)
@@ -75,6 +79,7 @@
     {item}
     data={transposeData(item.data)}
     {categories}
+    {isCountable}
     {isLowlight}
     {newArray}
     {iconContainerSize} />
@@ -83,6 +88,7 @@
     {item}
     data={item.data}
     {categories}
+    {isCountable}
     {isLowlight}
     {newArray}
     {iconContainerSize} />
@@ -91,6 +97,7 @@
     {item}
     data={item.data}
     {categories}
+    {isCountable}
     {isLowlight}
     {newArray}
     {iconContainerSize} />
