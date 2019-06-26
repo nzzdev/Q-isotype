@@ -28,7 +28,7 @@ function getHighlightEnumTitles(item) {
 
 module.exports = {
   method: "POST",
-  path: "/dynamic-enum/{optionName}",
+  path: "/dynamic-schema/{optionName}",
   options: {
     validate: {
       payload: Joi.object()
@@ -36,11 +36,18 @@ module.exports = {
     cors: true
   },
   handler: function(request, h) {
+    const item = request.payload.item;
     if (request.params.optionName === "highlightColumn") {
-      return {
-        enum: getHighlightEnum(request.payload.item),
-        enum_titles: getHighlightEnumTitles(request.payload.item)
-      };
+      try {
+        return {
+          enum: getHighlightEnum(item),
+          "Q:options": {
+            enum_titles: getHighlightEnumTitles(item)
+          }
+        };
+      } catch {
+        return {};
+      }
     }
     return Boom.badRequest();
   }
