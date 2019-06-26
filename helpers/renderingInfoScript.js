@@ -15,10 +15,9 @@ function getMobileMinWidthScript(context) {
       } 
     };
 
-    ${isotypeObject}.removeMobileMinWidth = function(iconContainers) {
+    ${isotypeObject}.removeMobileMinWidthClass = function(iconContainers) {
       iconContainers.forEach(function(iconContainer){
         if (iconContainer.classList.includes("-mobile")) {
-          iconContainer.classList.add("q-isotype-icon-container" + "--" + iconContainer.dataset.containerType);
           iconContainer.classList.remove("q-isotype-icon-container" + "--" + iconContainer.dataset.containerType + "--mobile");
         }
       });
@@ -26,9 +25,23 @@ function getMobileMinWidthScript(context) {
 
     ${isotypeObject}.addMobileMinWidthClass = function(iconContainers) {
       iconContainers.forEach(function(iconContainer){
-        iconContainer.classList.remove("q-isotype-icon-container" + "--" + iconContainer.dataset.containerType);
         iconContainer.classList.add("q-isotype-icon-container" + "--" + iconContainer.dataset.containerType + "--mobile");
       });
+    };
+
+    ${isotypeObject}.debounce = function(func, wait, immediate) {
+      var timeout;
+      return function() {
+        var context = this, args = arguments;
+        var later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+      };
     };
     
     if (!window.q_domready) {
@@ -55,7 +68,9 @@ function getMobileMinWidthScript(context) {
       ${isotypeObject}.handleMinWidth();
     });
 
-    window.addEventListener('resize', ${context.id}debounce(function() {
+    
+
+    window.addEventListener('resize', ${isotypeObject}.debounce(function() {
       requestAnimationFrame(function() {
         var newWidth = ${isotypeObject}.element.getBoundingClientRect().width;
         if (newWidth !== ${isotypeObject}.width) {
