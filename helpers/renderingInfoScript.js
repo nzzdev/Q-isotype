@@ -17,7 +17,7 @@ function getMobileMinWidthScript(context) {
 
     ${isotypeObject}.removeMobileMinWidthClass = function(iconContainers) {
       iconContainers.forEach(function(iconContainer){
-        if (iconContainer.classList.includes("-mobile")) {
+        if (iconContainer && iconContainer.classList.includes("-mobile")) {
           iconContainer.classList.remove("q-isotype-icon-container" + "--" + iconContainer.dataset.containerType + "--mobile");
         }
       });
