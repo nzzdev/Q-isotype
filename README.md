@@ -96,7 +96,7 @@ If a tool then it can use this reference to the Q-server documentation about Q-t
 
 The tool structure follows the general structure of each Q tool. Further information can be found in [Q server documentation - Developing tools](https://nzzdev.github.io/Q-server/developing-tools.html).
 
-Q Isotype uses the [nunjucks framework](https://mozilla.github.io/nunjucks/) to render the markup on server-side.
+Q Isotype uses [svelte 3.0](https://svelte.technology/guide) to render the markup on server-side.
 
 [to the top](#table-of-contents)
 
