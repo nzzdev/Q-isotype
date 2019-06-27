@@ -1,0 +1,51 @@
+{
+  "title": "FIXTURE: aspect-ratio mixed",
+  "acronym": "phk.",
+  "data": [
+    ["Kategorien", "Pokal 1", "Pokal 2", "Pokal 3"],
+    ["Deutschland", "5", "6", "3"],
+    ["Frankreich", "1", "0", "6"],
+    ["Italien", "2", "3", "7"]
+  ],
+  "allowDownloadData": false,
+  "icons": [
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2019/05/28/2_2-2449df4ec88938523b441f405dce1fbf.svg",
+        "key": "2019/05/28/2_2-2449df4ec88938523b441f405dce1fbf.svg",
+        "size": 9802,
+        "type": "image/svg+xml"
+      }
+    },
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2019/05/28/2_1-18890e235dbef6db4e5598e7304e84d3.svg",
+        "key": "2019/05/28/2_1-18890e235dbef6db4e5598e7304e84d3.svg",
+        "size": 4408,
+        "type": "image/svg+xml"
+      }
+    },
+    {
+      "file": {
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2019/05/28/1_2-0b5aae2d9c0ade6a5b99e92d17f5f6fa.svg",
+        "key": "2019/05/28/1_2-0b5aae2d9c0ade6a5b99e92d17f5f6fa.svg",
+        "size": 7642,
+        "type": "image/svg+xml"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "link": {
+        "url": "https://google.ch",
+        "isValid": false
+      },
+      "text": "Testing Quelle"
+    }
+  ],
+  "options": {
+    "hideLegend": true,
+    "iconsOneRow": false,
+    "highlightColumn": null
+  }
+}

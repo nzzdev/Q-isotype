@@ -1,6 +1,5 @@
 {
-  "title":
-    "FIXTURE: nur SVG - alle Grössenoptionen - viz colors - default options",
+  "title": "FIXTURE: Alle Grössenoptionen - viz colors - default options",
   "subtitle": "Noch ein Untertitel",
   "data": [
     ["Icons", "Hoch", "Breit", "Quadratisch", "Viz Gelb"],
@@ -11,32 +10,28 @@
   "icons": [
     {
       "file": {
-        "url":
-          "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/19/e524bfe4-8749-46e6-ab5e-dd95da8a55eb.svg",
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/19/e524bfe4-8749-46e6-ab5e-dd95da8a55eb.svg",
         "key": "2018/02/19/e524bfe4-8749-46e6-ab5e-dd95da8a55eb.svg",
         "size": 2459
       }
     },
     {
       "file": {
-        "url":
-          "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/19/0d9de8b5-4ddc-4ecf-88dd-d34d393fa0ee.svg",
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/19/0d9de8b5-4ddc-4ecf-88dd-d34d393fa0ee.svg",
         "key": "2018/02/19/0d9de8b5-4ddc-4ecf-88dd-d34d393fa0ee.svg",
         "size": 957
       }
     },
     {
       "file": {
-        "url":
-          "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/15/8fef53d4-4944-407f-bd2f-b5bd42e2fcfb.svg",
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/15/8fef53d4-4944-407f-bd2f-b5bd42e2fcfb.svg",
         "key": "2018/02/15/8fef53d4-4944-407f-bd2f-b5bd42e2fcfb.svg",
         "size": 1671
       }
     },
     {
       "file": {
-        "url":
-          "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/15/239b20b7-9d82-4ebf-9bc2-5bc2919a3434.svg",
+        "url": "https://nzz-q-assets-stage.s3.eu-west-1.amazonaws.com/2018/02/15/239b20b7-9d82-4ebf-9bc2-5bc2919a3434.svg",
         "key": "2018/02/15/239b20b7-9d82-4ebf-9bc2-5bc2919a3434.svg",
         "size": 511
       }

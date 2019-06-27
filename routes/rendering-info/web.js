@@ -1,18 +1,20 @@
-const Boom = require("boom");
+const Boom = require("@hapi/boom");
 const fs = require("fs");
 const path = require("path");
 const fetch = require("node-fetch");
 const cheerio = require("cheerio");
+const UglifyJS = require("uglify-js");
 
 const stylesDir = path.join(__dirname, "/../../styles/");
 const styleHashMap = require(path.join(stylesDir, "hashMap.json"));
 
-// setup nunjucks
-const nunjucks = require("nunjucks");
-const nunjucksEnv = new nunjucks.Environment();
-
 const viewsDir = path.join(__dirname, "/../../views/");
+const renderingInfoScripts = require("../../helpers/renderingInfoScript.js");
 const maxWidth = "40";
+
+// setup svelte
+require("svelte/register");
+const staticTemplate = require(viewsDir + "StaticHtml.svelte").default;
 
 const noIconDefault = require("../../resources/assets/no-icon-default.js");
 
@@ -50,7 +52,7 @@ async function validatePayload(payload, options, next) {
   await validateAgainstSchema(payload.item, options);
 }
 
-function getIntegerValues(data) {
+function getRoundedValues(data) {
   return data.map((row, rowIndex) => {
     // keep header row as it is
     if (rowIndex === 0) {
@@ -64,16 +66,9 @@ function getIntegerValues(data) {
       if (cell === null) {
         return null;
       }
-      return parseInt(cell, 10);
+      return Math.round(cell);
     });
   });
-}
-
-function getResizeImageUrl(image) {
-  return process.env.IMAGE_SERVICE_URL.replace("{key}", image.key).replace(
-    "{width}",
-    maxWidth
-  );
 }
 
 function getSvgInfo(svg) {
@@ -107,17 +102,23 @@ function getSvgInfo(svg) {
           10
         );
       }
-      if (height > width) {
+      if (height === width) {
         resolve({
           hasHeight: height !== undefined,
           hasWidth: width !== undefined,
-          style: "height: 100%"
+          aspectRatio: "square"
+        });
+      } else if (height > width) {
+        resolve({
+          hasHeight: height !== undefined,
+          hasWidth: width !== undefined,
+          aspectRatio: "vertical"
         });
       } else {
         resolve({
           hasHeight: height !== undefined,
           hasWidth: width !== undefined,
-          style: "width: 100%"
+          aspectRatio: "horizontal"
         });
       }
     } catch (err) {
@@ -138,6 +139,31 @@ function getCleanedSvg(svg, svgInfo) {
   return svg;
 }
 
+function getAspectRatioFormat(aspectRatios) {
+  if (
+    aspectRatios.horizontal > 0 &&
+    aspectRatios.vertical === 0 &&
+    aspectRatios.square === 0
+  ) {
+    return "horizontal";
+  } else if (
+    aspectRatios.vertical > 0 &&
+    aspectRatios.horizontal === 0 &&
+    aspectRatios.square === 0
+  ) {
+    return "vertical";
+  } else {
+    return "square";
+  }
+}
+
+function getResizeImageUrl(image) {
+  return process.env.IMAGE_SERVICE_URL.replace("{key}", image.key).replace(
+    "{width}",
+    maxWidth
+  );
+}
+
 module.exports = {
   method: "POST",
   path: "/rendering-info/web",
@@ -152,7 +178,7 @@ module.exports = {
   handler: async function(request, h) {
     const item = request.payload.item;
 
-    item.data = getIntegerValues(item.data);
+    item.data = getRoundedValues(item.data);
 
     let categories = [];
     if (item.data && item.data[0].length > 1) {
@@ -173,6 +199,11 @@ module.exports = {
     const maxAmount = Math.max(...sumAmounts);
 
     if (item.icons) {
+      let aspectRatios = {
+        square: 0,
+        horizontal: 0,
+        vertical: 0
+      };
       await Promise.all(
         item.icons.map(async icon => {
           try {
@@ -184,15 +215,13 @@ module.exports = {
               icon.svg = await response.text();
               try {
                 const svgInfo = await getSvgInfo(icon.svg);
-                // icon.style = svgInfo.style;
-                icon.style = "width:100%";
+                aspectRatios[svgInfo.aspectRatio]++; // count the amount of aspectRatios
                 if (svgInfo.hasHeight || svgInfo.hasWidth) {
                   icon.svg = getCleanedSvg(icon.svg, svgInfo);
                 }
               } catch (err) {
                 console.log(err);
                 icon.svg = noIconDefault;
-                icon.style = "width: 100%";
               }
             }
           } catch (err) {
@@ -204,12 +233,19 @@ module.exports = {
           return icon;
         })
       );
+      let aspectRatioFormat = getAspectRatioFormat(aspectRatios);
+      item.icons.forEach(icon => {
+        icon.aspectRatio = aspectRatioFormat;
+      });
     }
 
     const context = {
+      id: `q_isotype_${request.query._id}_${Math.floor(
+        Math.random() * 100000
+      )}`.replace(/-/g, ""),
       item: item,
       categories: categories,
-      maxAmountWidth: 100 / maxAmount,
+      maxAmount: maxAmount,
       displayOptions: request.payload.toolRuntimeConfig.displayOptions || {}
     };
 
@@ -220,12 +256,20 @@ module.exports = {
     }
 
     const renderingInfo = {
+      polyfills: ["Promise"],
       stylesheets: [
         {
           name: styleHashMap["default"]
         }
       ],
-      markup: nunjucksEnv.render(viewsDir + "isotype.html", context)
+      markup: staticTemplate.render(context).html,
+      scripts: [
+        {
+          content: UglifyJS.minify(
+            renderingInfoScripts.getMobileMinWidthScript(context)
+          ).code
+        }
+      ]
     };
 
     return renderingInfo;

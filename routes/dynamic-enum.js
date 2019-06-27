@@ -1,5 +1,5 @@
-const Boom = require("boom");
-const Joi = require("joi");
+const Boom = require("@hapi/boom");
+const Joi = require("@hapi/joi");
 
 function getHighlightEnum(item) {
   if (item.data.length < 1) {
@@ -16,7 +16,14 @@ function getHighlightEnumTitles(item) {
   if (item.data.length < 1) {
     return ["keine"];
   }
-  return ["keine"].concat(item.data[0].slice(1));
+
+  return ["keine"].concat(
+    item.data[0]
+      .slice(1)
+      .map((title, index) =>
+        title === null ? (title = `${index + 1}. Spalte`) : title
+      )
+  );
 }
 
 module.exports = {
@@ -29,11 +36,16 @@ module.exports = {
     cors: true
   },
   handler: function(request, h) {
+    const item = request.payload.item;
     if (request.params.optionName === "highlightColumn") {
-      return {
-        enum: getHighlightEnum(request.payload.item),
-        enum_titles: getHighlightEnumTitles(request.payload.item)
-      };
+      try {
+        return {
+          enum: getHighlightEnum(item),
+          enum_titles: getHighlightEnumTitles(item)
+        };
+      } catch {
+        return {};
+      }
     }
     return Boom.badRequest();
   }

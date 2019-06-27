@@ -2,9 +2,21 @@ $legend-size: 26px;
 
 .q-isotype {
   opacity: 1 !important;
+  display: flex;
+  flex-direction: column;
 
   &-row {
-    margin-bottom: 24px;
+    &-title {
+      word-break: break-word;
+      margin-bottom: 8px;
+    }
+    &--compare {
+      display: flex;
+      flex-direction: row;
+    }
+    &--margin {
+      margin-bottom: 16px;
+    }
   }
 }
 
@@ -45,22 +57,93 @@ $legend-size: 26px;
 }
 
 .q-isotype-icon-container {
-  min-width: 26px;
-  max-width: 36px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  margin-top: 6px;
+  margin-top: 4px;
+  margin-right: 4px;
+
+  &--square {
+    &--mobile {
+      min-width: 20px;
+      max-width: 184px;
+      min-height: 20px;
+      max-height: 184px;
+    }
+    &--content {
+      min-width: 22px;
+      max-width: 184px;
+      min-height: 11px;
+      max-height: 92px;
+    }
+    &:not(.q-isotype-icon-container--square--is-countable) {
+      min-width: 32px;
+      max-width: 184px;
+      min-height: 32px;
+      max-height: 184px;
+    }
+  }
+
+  &--horizontal {
+    &--mobile {
+      min-width: 20px;
+      max-width: 184px;
+      min-height: 10px;
+      max-height: 92px;
+    }
+    &--content {
+      min-width: 22px;
+      max-width: 184px;
+      min-height: 11px;
+      max-height: 92px;
+    }
+    &:not(.q-isotype-icon-container--horizontal--is-countable) {
+      min-width: 32px;
+      max-width: 184px;
+      min-height: 16px;
+      max-height: 92px;
+    }
+  }
+
+  &--vertical {
+    &--mobile {
+      min-width: 10px;
+      max-width: 92px;
+      min-height: 20px;
+      max-height: 184px;
+    }
+    &--content {
+      min-width: 11px;
+      max-width: 92px;
+      min-height: 22px;
+      max-height: 184px;
+    }
+    &:not(.q-isotype-icon-container--vertical--is-countable) {
+      min-width: 16px;
+      max-width: 92px;
+      min-height: 32px;
+      max-height: 184px;
+    }
+  }
 }
 
-.q-isotype-icon-png,
 .q-isotype-icon-svg {
-  padding-bottom: 100%;
+  &--square {
+    padding-bottom: 100%;
+  }
+
+  &--horizontal {
+    padding-bottom: 50%;
+  }
+
+  &--vertical {
+    height: 100%;
+    padding-bottom: 100%;
+  }
 }
 
 .q-isotype-icon-png {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  padding-bottom: 100%;
 }
 
 .q-isotype-icon-svg {
@@ -76,4 +159,20 @@ $legend-size: 26px;
 
 .q-isotype-lowlight {
   opacity: 0.35;
+}
+
+.q-isotype-hidden-legend {
+  visibility: hidden;
+  height: 0;
+}
+
+.q-isotype-icon-block--first {
+  margin-right: 32px;
+}
+
+.q-isotype-icon-block {
+  width: calc(50% - 16px);
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }

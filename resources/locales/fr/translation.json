@@ -3,18 +3,14 @@
   "Title": "Titre",
   "Untertitel": "Sous-Titre",
   "Daten": "Données",
-  "Icons (Bitte beim Ressort Visuals bestellen)":
-    "Icônes (Veuillez commander auprès de ressort Visuals)",
+  "Icons (Bitte beim Ressort Visuals anfragen)": "Icônes (Veuillez vous renseigner auprès du département Visuals)",
   "Icon": "Icône",
   "Quelle(n)": "Sources",
   "Quelle": "Source",
   "Link": "Link",
   "Anmerkungen": "Remarques",
   "Legende ausblenden": "Cacher la légende",
-  "Unterschiedliche Icons nebeneinander anzeigen":
-    "Afficher différentes icônes côte à côte",
-  "Der Titel bringt die Kernaussage der Grafik auf den Punkt&#46;":
-    "Le titre apporte le message de base du graphique au point.",
-  "Der Untertitel benennt präzise, was in der Grafik zu sehen ist, inklusive Einheiten&#46;":
-    "Les noms de sous-titres sont précisément ce qui peut être vu dans le graphique, y compris les unités."
+  "Unterschiedliche Icons nebeneinander anzeigen": "Afficher différentes icônes côte à côte",
+  "Der Titel bringt die Kernaussage der Grafik auf den Punkt&#46;": "Le titre apporte le message de base du graphique au point.",
+  "Der Untertitel benennt präzise, was in der Grafik zu sehen ist, inklusive Einheiten&#46;": "Les noms de sous-titres sont précisément ce qui peut être vu dans le graphique, y compris les unités."
 }

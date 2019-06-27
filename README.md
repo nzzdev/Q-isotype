@@ -1,4 +1,4 @@
-# Q Isotype [![Build Status](https://travis-ci.com/nzzdev/Q-isotype.svg?token=g43MZxbtUcZ6QyxqUoJM&branch=dev)](https://travis-ci.com/nzzdev/Q-isotype) [![Greenkeeper badge](https://badges.greenkeeper.io/nzzdev/Q-isotype.svg?token=36bc6ddc1d30783a27da6e8cb5dba3acf833e860036df64acd816ec8300eabff&ts=1551342842727)](https://greenkeeper.io/)
+# Q Isotype [![Build Status](https://travis-ci.com/nzzdev/Q-isotype.svg?token=g43MZxbtUcZ6QyxqUoJM&branch=dev)](https://travis-ci.com/nzzdev/Q-isotype) [![Greenkeeper badge](https://badges.greenkeeper.io/nzzdev/Q-isotype.svg?token=36bc6ddc1d30783a27da6e8cb5dba3acf833e860036df64acd816ec8300eabff&ts=1557387012645)](https://greenkeeper.io/)
 
 **Maintainer**: [manuelroth](https://github.com/manuelroth)
 
@@ -28,11 +28,7 @@ npm run build
 
 ## Configuration
 
-There is one env variable `IMAGE_SERVICE_URL` to be defined. It should contain a URL with 3 parameters that will get replaced before the URL is used to load the images.
-`{key}` will be replaced by the string Q-server stored as the key when the file got uploaded through Q-servers `/file` endpoint provided by the [file plugin](https://github.com/nzzdev/Q-server/blob/dev/plugins/file/index.js)
-`{width}` is replaced by the width the image should be loaded
-`{format}` will be `png` or `webp` (a `picture` element is used in the HTML with multiple `source` elements)
-Example: `https://q-images.nzz.ch/{key}?width={width}&format={format}`
+No configuration is needed for this tool.
 
 [to the top](#table-of-contents)
 
@@ -100,7 +96,7 @@ If a tool then it can use this reference to the Q-server documentation about Q-t
 
 The tool structure follows the general structure of each Q tool. Further information can be found in [Q server documentation - Developing tools](https://nzzdev.github.io/Q-server/developing-tools.html).
 
-Q Isotype uses the [svelte framework](https://svelte.technology/guide) to render the markup on server-side.
+Q Isotype uses [svelte 3.0](https://svelte.technology/guide) to render the markup on server-side.
 
 [to the top](#table-of-contents)
 
@@ -120,6 +116,14 @@ For displaying the `svg`s, we're using the [svg reference feature](https://css-t
   <use xlink:href="#{{ item.icons[loop.index0].key }}"></use>
 </svg>
 ```
+
+#### Countability
+
+For guaranteeing the countability when having a lot of icons, we decided to implement rules to define the max amount of icons shown per row. This includes also the calculation of the size of the icons.
+
+##### Implementation details
+
+- The rules are described [here](https://github.com/nzzdev/Q-isotype/blob/dev/views/Isotype.svelte#L15)
 
 [to the top](#table-of-contents)
 

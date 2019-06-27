@@ -1,0 +1,33 @@
+{
+  "title": "FIXTURE: compare groups no icon",
+  "subtitle": "Noch ein Untertitel",
+  "data": [
+    ["Icons", "Hoch", "Breit", "Quadratisch"],
+    ["Zeile 1", "11", "12", "13"],
+    ["Zeile 2", "31", "32", "33"]
+  ],
+  "notes": "Groooosses Kino",
+  "sources": [
+    {
+      "text": "NZZ",
+      "link": {
+        "isValid": true,
+        "url": "https://nzz.ch"
+      }
+    },
+    {
+      "text": "Github",
+      "link": {
+        "isValid": true,
+        "url": "https://github.com/nzzdev/Q-isotype"
+      }
+    },
+    {
+      "text": "Noch eine Quelle ohne Link"
+    }
+  ],
+  "options": {
+    "iconsOneRow": false,
+    "highlightColumn": null
+  }
+}
