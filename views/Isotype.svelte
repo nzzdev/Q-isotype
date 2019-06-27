@@ -8,14 +8,10 @@
   export let isLowlight;
   export let isCountable = true;
   export let maxAmount;
-  export let iconContainerSize = getIconContainerSize(
-    maxAmount,
-    item.data.length
-  );
 
   function getIconContainerSize(maxAmount, amountOfGroups) {
-    // 2 groups (compare-layout)
     if (amountOfGroups === 3) {
+      // 2 groups (compare-layout)
       if (maxAmount < 10 || maxAmount > 100) {
         isCountable = false;
         return 100 / maxAmount;
@@ -26,8 +22,8 @@
           return 20; // IconContainerSize is 20% if there are at least 5 icons (100/5=20)
         }
       }
-      // single group layout (groups-layout)
     } else if (amountOfGroups == 2) {
+      // single group layout (groups-layout)
       if (maxAmount < 10 || maxAmount > 30) {
         isCountable = false;
         return 100 / maxAmount;
@@ -38,8 +34,8 @@
           return 20; // IconContainerSize is 20% if there are at least 5 icons (100/5=20)
         }
       }
-      // more than 3 groups (groups-layout)
     } else {
+      // more than 3 groups (groups-layout)
       if (maxAmount < 10 || maxAmount > 100) {
         isCountable = false;
         return 100 / maxAmount;
@@ -82,7 +78,7 @@
     {isCountable}
     {isLowlight}
     {newArray}
-    {iconContainerSize} />
+    iconContainerSize={getIconContainerSize(maxAmount, item.data.length)} />
 {:else if item.data.length === 2 && item.data[0].length === 3}
   <CompareCategories
     {item}
@@ -91,7 +87,7 @@
     {isCountable}
     {isLowlight}
     {newArray}
-    {iconContainerSize} />
+    iconContainerSize={getIconContainerSize(maxAmount, item.data[0].length)} />
 {:else}
   <Groups
     {item}
@@ -100,5 +96,5 @@
     {isCountable}
     {isLowlight}
     {newArray}
-    {iconContainerSize} />
+    iconContainerSize={getIconContainerSize(maxAmount, item.data.length)} />
 {/if}
