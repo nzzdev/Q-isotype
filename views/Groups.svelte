@@ -19,14 +19,16 @@
     {#if item.options && item.options.iconsOneRow}
       <div class="q-isotype-icon-row">
         {#each row as value, currentCategoryIndex}
-          {#each newArray(row[currentCategoryIndex]) as value, i}
-            <Icon
-              {item}
-              {isCountable}
-              {isLowlight}
-              {currentCategoryIndex}
-              {iconContainerSize} />
-          {/each}
+          {#if currentCategoryIndex > 0}
+            {#each newArray(row[currentCategoryIndex]) as i}
+              <Icon
+                {item}
+                {isCountable}
+                {isLowlight}
+                {currentCategoryIndex}
+                {iconContainerSize} />
+            {/each}
+          {/if}
         {/each}
       </div>
     {:else}
