@@ -89,17 +89,17 @@ lab.experiment("stylesheets endpoint", () => {
   });
 });
 
-lab.experiment("dynamic-schema", () => {
+lab.experiment("dynamic-enum", () => {
   it("returns columns displayed in options dropdown", async () => {
     const item = require("../resources/fixtures/data/highlight-category.json");
     const response = await server.inject({
-      url: "/dynamic-schema/highlightColumn",
+      url: "/dynamic-enum/highlightColumn",
       method: "POST",
       payload: { item: item }
     });
 
     expect(response.result.enum).to.be.equals([null, 1, 2, 3, 4]);
-    expect(response.result["Q:options"].enum_titles).to.be.equals([
+    expect(response.result.enum_titles).to.be.equals([
       "keine",
       "Hoch",
       "Breit",

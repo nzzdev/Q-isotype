@@ -28,7 +28,7 @@ function getHighlightEnumTitles(item) {
 
 module.exports = {
   method: "POST",
-  path: "/dynamic-schema/{optionName}",
+  path: "/dynamic-enum/{optionName}",
   options: {
     validate: {
       payload: Joi.object()
@@ -41,9 +41,7 @@ module.exports = {
       try {
         return {
           enum: getHighlightEnum(item),
-          "Q:options": {
-            enum_titles: getHighlightEnumTitles(item)
-          }
+          enum_titles: getHighlightEnumTitles(item)
         };
       } catch {
         return {};
