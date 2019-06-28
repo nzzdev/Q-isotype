@@ -133,10 +133,10 @@
             }
           ],
           "Q:options": {
-            "dynamicEnum": {
+            "dynamicSchema": {
               "type": "ToolEndpoint",
               "config": {
-                "endpoint": "dynamic-enum/highlightColumn",
+                "endpoint": "dynamic-schema/highlightColumn",
                 "fields": ["options", "data"]
               }
             },
