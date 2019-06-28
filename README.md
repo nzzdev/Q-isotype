@@ -130,7 +130,7 @@ If there are 2 groups, the `CompareGroups` component will be used to display the
 
 ##### Compare categories
 
-If there are 2 cateogires, the `CompareCategories` component will be used to display them next to each other for comparison.
+If there are 2 categories, the `CompareCategories` component will be used to display them next to each other for comparison.
 
 ###### Implementation details
 
@@ -138,7 +138,7 @@ If there are 2 cateogires, the `CompareCategories` component will be used to dis
 
 ##### Groups
 
-The `Groups` component will be used if there are more than 2 rows. It will show the icons among each other.
+The `Groups` component will be used if there is one or more than 2 rows. It will show the groups below each other.
 
 #### Countability and Icon Size
 
