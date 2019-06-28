@@ -318,3 +318,113 @@ lab.experiment("aspect ratios", () => {
     });
   });
 });
+
+lab.experiment("countability", () => {
+  it("should display countable when single row and less than 30 icons", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/single-entry-less-than-30.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--square--is-countable"
+    ).then(value => {
+      expect(value).to.be.equals(29);
+    });
+  });
+
+  it("should not display countable when single row and more than 30 icons", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/single-entry-more-than-30.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--square--is-countable"
+    ).then(value => {
+      expect(value).to.be.equals(0);
+    });
+  });
+
+  it("should display countable when compare categories and less than 100 icons", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/compare-categories.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--square--is-countable"
+    ).then(value => {
+      expect(value).to.be.equals(25);
+    });
+  });
+
+  it("should not display countable when compare groups and less than 100 icons", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/compare-groups-min-width.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--square--is-countable"
+    ).then(value => {
+      expect(value).to.be.equals(0);
+    });
+  });
+
+  it("should display countable when compare groups and less than 100 icons", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/compare-groups.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--square--is-countable"
+    ).then(value => {
+      expect(value).to.be.equals(132);
+    });
+  });
+
+  it("should not display countable when compare categories and less than 100 icons", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/compare-categories-min-width.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--square--is-countable"
+    ).then(value => {
+      expect(value).to.be.equals(0);
+    });
+  });
+});
