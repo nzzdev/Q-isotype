@@ -25,6 +25,7 @@ const fixtureData = [
   require(`${fixtureDataDirectory}/more-than-100-icons.json`),
   require(`${fixtureDataDirectory}/compare-groups.json`),
   require(`${fixtureDataDirectory}/compare-groups-no-icon.json`),
+  require(`${fixtureDataDirectory}/compare-groups-min-width.json`),
   require(`${fixtureDataDirectory}/compare-groups-iconsOneRow.json`),
   require(`${fixtureDataDirectory}/compare-categories.json`),
   require(`${fixtureDataDirectory}/compare-categories-no-icon.json`),
