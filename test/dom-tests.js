@@ -188,3 +188,243 @@ lab.experiment("highlight icons", () => {
     );
   });
 });
+
+lab.experiment("rounding", () => {
+  it("should display rounded results", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/rounding.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elements(
+      response.result.markup,
+      "div.q-isotype-icon-container"
+    ).then(elements => {
+      expect(elements.length).to.be.equal(100);
+    });
+  });
+});
+
+lab.experiment("aspect ratios", () => {
+  it("should display icons in horizontal icon-containers", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/aspect-ratio-horizontal.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--horizontal"
+    ).then(value => {
+      expect(value).to.be.equals(4);
+    });
+  });
+
+  it("should display icons in horizontal svgs", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/aspect-ratio-horizontal.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-svg--horizontal"
+    ).then(value => {
+      expect(value).to.be.equals(4);
+    });
+  });
+
+  it("should display icons in vertical icon-containers", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/aspect-ratio-vertical.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--vertical"
+    ).then(value => {
+      expect(value).to.be.equals(4);
+    });
+  });
+
+  it("should display icons in vertical svgs", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/aspect-ratio-vertical.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-svg--vertical"
+    ).then(value => {
+      expect(value).to.be.equals(4);
+    });
+  });
+
+  it("should display icons in square icon-containers", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/aspect-ratio-square.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--square"
+    ).then(value => {
+      expect(value).to.be.equals(13);
+    });
+  });
+
+  it("should display icons in square svgs", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/aspect-ratio-square.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-svg--square"
+    ).then(value => {
+      expect(value).to.be.equals(13);
+    });
+  });
+});
+
+lab.experiment("countability", () => {
+  it("should display countable when single row and less than 30 icons", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/single-entry-less-than-30.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--square--is-countable"
+    ).then(value => {
+      expect(value).to.be.equals(29);
+    });
+  });
+
+  it("should not display countable when single row and more than 30 icons", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/single-entry-more-than-30.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--square--is-countable"
+    ).then(value => {
+      expect(value).to.be.equals(0);
+    });
+  });
+
+  it("should display countable when compare categories and less than 100 icons", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/compare-categories.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--square--is-countable"
+    ).then(value => {
+      expect(value).to.be.equals(25);
+    });
+  });
+
+  it("should not display countable when compare groups and less than 100 icons", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/compare-groups-min-width.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--square--is-countable"
+    ).then(value => {
+      expect(value).to.be.equals(0);
+    });
+  });
+
+  it("should display countable when compare groups and less than 100 icons", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/compare-groups.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--square--is-countable"
+    ).then(value => {
+      expect(value).to.be.equals(132);
+    });
+  });
+
+  it("should not display countable when compare categories and less than 100 icons", async () => {
+    const response = await server.inject({
+      url: "/rendering-info/web",
+      method: "POST",
+      payload: {
+        item: require("../resources/fixtures/data/compare-categories-min-width.json"),
+        toolRuntimeConfig: {}
+      }
+    });
+
+    return elementCount(
+      response.result.markup,
+      "div.q-isotype-icon-container--square--is-countable"
+    ).then(value => {
+      expect(value).to.be.equals(0);
+    });
+  });
+});

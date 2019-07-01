@@ -6,14 +6,12 @@
   export let item;
   export let categories;
   export let isLowlight;
-  export let isCountable = true;
   export let maxAmount;
 
   function getIconContainerSize(maxAmount, amountOfGroups) {
     if (amountOfGroups === 3) {
       // 2 groups (compare-layout)
       if (maxAmount < 10 || maxAmount > 100) {
-        isCountable = false;
         return 100 / maxAmount;
       } else {
         if (maxAmount > 10) {
@@ -25,7 +23,6 @@
     } else if (amountOfGroups == 2) {
       // single group layout (groups-layout)
       if (maxAmount < 10 || maxAmount > 30) {
-        isCountable = false;
         return 100 / maxAmount;
       } else {
         if (maxAmount > 10) {
@@ -37,11 +34,20 @@
     } else {
       // more than 3 groups (groups-layout)
       if (maxAmount < 10 || maxAmount > 100) {
-        isCountable = false;
         return 100 / maxAmount;
       } else {
         return 10; // IconContainerSize is 10% if there are at least 10 icons (100/10=10)
       }
+    }
+  }
+
+  function getIsCountable(maxAmount, amountOfGroups) {
+    if (amountOfGroups === 2) {
+      // group-layout
+      return maxAmount < 30;
+    } else {
+      // compare-layout
+      return maxAmount < 100;
     }
   }
 
@@ -75,7 +81,7 @@
     {item}
     data={transposeData(item.data)}
     {categories}
-    {isCountable}
+    isCountable={getIsCountable(maxAmount, item.data.length)}
     {isLowlight}
     {newArray}
     iconContainerSize={getIconContainerSize(maxAmount, item.data.length)} />
@@ -84,7 +90,7 @@
     {item}
     data={item.data}
     {categories}
-    {isCountable}
+    isCountable={getIsCountable(maxAmount, item.data[0].length)}
     {isLowlight}
     {newArray}
     iconContainerSize={getIconContainerSize(maxAmount, item.data[0].length)} />
@@ -93,7 +99,7 @@
     {item}
     data={item.data}
     {categories}
-    {isCountable}
+    isCountable={getIsCountable(maxAmount, item.data.length)}
     {isLowlight}
     {newArray}
     iconContainerSize={getIconContainerSize(maxAmount, item.data.length)} />
