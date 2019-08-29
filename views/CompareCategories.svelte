@@ -12,13 +12,13 @@
 <div class="q-isotype-row--compare">
   {#if data[0][1]}
     <div
-      class="q-isotype-row-title s-font-title-xs q-isotype-icon-block
+      class="q-isotype-row-title s-font-title-s q-isotype-icon-block
       q-isotype-icon-block--first">
        {data[0][1]}
     </div>
   {/if}
   {#if data[0][2]}
-    <div class="q-isotype-row-title s-font-title-xs q-isotype-icon-block">
+    <div class="q-isotype-row-title s-font-title-s q-isotype-icon-block">
        {data[0][2]}
     </div>
   {/if}
