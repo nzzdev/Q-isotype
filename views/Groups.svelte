@@ -14,7 +14,7 @@
     class="q-isotype-row"
     class:q-isotype-row--margin={index !== data.slice(1).length - 1}>
     {#if row[0]}
-      <div class="q-isotype-row-title s-font-title-xs">{row[0]}</div>
+      <div class="q-isotype-row-title s-font-title-s">{row[0]}</div>
     {/if}
     {#if item.options && item.options.iconsOneRow}
       <div class="q-isotype-icon-row">
