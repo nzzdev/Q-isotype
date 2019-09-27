@@ -10,7 +10,7 @@
   "author": "",
   "license": "",
   "dependencies": {
-    "@hapi/boom": "^7.4.2",
+    "@hapi/boom": "^8.0.0",
     "@hapi/hapi": "^18.3.1",
     "@hapi/inert": "^5.2.0",
     "@hapi/joi": "^15.0.0",
