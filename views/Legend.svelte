@@ -16,6 +16,9 @@
             class="q-isotype-legend-svg"
             class:q-isotype-lowlight={isLowlight(index + 1)}>
             <svg xmlns="http://www.w3.org/2000/svg">
+              {#if item.icons[index].svgDefinitions}
+                {@html item.icons[index].svgDefinitions}
+              {/if}
               <symbol id={item.icons[index].key}>
                 {@html item.icons[index].svg}
               </symbol>
