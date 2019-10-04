@@ -83,8 +83,13 @@ function getSvgInfo(svg) {
       renderedSvg.attribs.width && renderedSvg.attribs.height;
     let height;
     let width;
+    // Firefox doesn't support gradient definitions inside symbols. Therefore we move all the definitions outside of the symbol. See bugzilla: https://bugzilla.mozilla.org/show_bug.cgi?id=353575
+    let svgDefinitions;
 
     try {
+      if ($("svg").has("defs")) {
+        svgDefinitions = $.html("svg > defs");
+      }
       if (hasWidthHeightAttr) {
         height = parseInt(renderedSvg.attribs.height, 10);
         width = parseInt(renderedSvg.attribs.width, 10);
@@ -106,19 +111,22 @@ function getSvgInfo(svg) {
         resolve({
           hasHeight: height !== undefined,
           hasWidth: width !== undefined,
-          aspectRatio: "square"
+          aspectRatio: "square",
+          svgDefinitions: svgDefinitions
         });
       } else if (height > width) {
         resolve({
           hasHeight: height !== undefined,
           hasWidth: width !== undefined,
-          aspectRatio: "vertical"
+          aspectRatio: "vertical",
+          svgDefinitions: svgDefinitions
         });
       } else {
         resolve({
           hasHeight: height !== undefined,
           hasWidth: width !== undefined,
-          aspectRatio: "horizontal"
+          aspectRatio: "horizontal",
+          svgDefinitions: svgDefinitions
         });
       }
     } catch (err) {
@@ -218,6 +226,7 @@ module.exports = {
                 aspectRatios[svgInfo.aspectRatio]++; // count the amount of aspectRatios
                 if (svgInfo.hasHeight || svgInfo.hasWidth) {
                   icon.svg = getCleanedSvg(icon.svg, svgInfo);
+                  icon.svgDefinitions = svgInfo.svgDefinitions;
                 }
               } catch (err) {
                 console.log(err);
@@ -250,9 +259,7 @@ module.exports = {
     };
 
     if (item.allowDownloadData) {
-      context.linkToCSV = `${
-        request.payload.toolRuntimeConfig.toolBaseUrl
-      }/data?appendItemToPayload=${request.query._id}`;
+      context.linkToCSV = `${request.payload.toolRuntimeConfig.toolBaseUrl}/data?appendItemToPayload=${request.query._id}`;
     }
 
     const renderingInfo = {
