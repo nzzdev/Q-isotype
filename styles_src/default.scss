@@ -57,6 +57,7 @@ $legend-size: 26px;
 }
 
 .q-isotype-icon-container {
+  display: flex;
   margin-top: 4px;
   margin-right: 4px;
 
@@ -125,6 +126,10 @@ $legend-size: 26px;
 }
 
 .q-isotype-icon-svg {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+
   &--square {
     padding-bottom: 100%;
   }
@@ -134,7 +139,6 @@ $legend-size: 26px;
   }
 
   &--vertical {
-    height: 100%;
     padding-bottom: 100%;
   }
 }
@@ -144,6 +148,9 @@ $legend-size: 26px;
   background-repeat: no-repeat;
   background-position: center;
   padding-bottom: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
 }
 
 .q-isotype-icon-svg {
