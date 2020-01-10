@@ -11,7 +11,7 @@
   "license": "",
   "dependencies": {
     "@hapi/boom": "^7.4.11",
-    "@hapi/hapi": "^18.4.0",
+    "@hapi/hapi": "^19.0.0",
     "@hapi/inert": "^5.2.2",
     "@hapi/joi": "^15.1.1",
     "ajv": "^6.10.2",
